@@ -5,9 +5,6 @@ const nextConfig = {
   // mode off for the app router; Next 13.5+ turns it on, so keep it off here.
   // Production builds are unaffected either way.
   reactStrictMode: false,
-  images: {
-    remotePatterns: [new URL("https://i.scdn.co/**")],
-  },
 };
 
 module.exports = nextConfig;
