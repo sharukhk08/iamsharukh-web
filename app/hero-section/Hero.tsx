@@ -113,7 +113,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
           variants={bodyAnimation}
         >
           <p className="z-50 text-center text-[16px] font-medium text-[#e4ded7] md:text-[20px] lg:text-left">
-            Frontend Engineer and Tech Entrepreneur, Co-founder at{' '}
+            Full-Stack Developer & Software Engineer, Co-founder & CTO at{' '}
             <Link
               href="https://www.innovaft.com"
               target="_blank"
@@ -122,7 +122,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
             >
               Innovaft
             </Link>
-            , crafting exceptional digital experiences.
+            , building web and mobile products with Next.js, React and React Native.
           </p>
         </motion.div>
 
@@ -131,8 +131,8 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
           variants={bodyAnimation}
         >
           <p className="text-right text-[16px] font-semibold text-[#e4ded7] md:text-[20px]">
-            Transforming ideas into seamless interfaces, working remotely from
-            Hisar, Haryana.
+            Websites, web apps and mobile apps for clients across Haryana and
+            around the world, working from Hisar.
           </p>
         </motion.div>
       </div>

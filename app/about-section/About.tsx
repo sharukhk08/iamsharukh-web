@@ -24,9 +24,9 @@ const About = () => {
         <div className="mx-auto flex w-[100%] flex-col lg:max-w-[1200px] lg:flex-row lg:gap-20">
           {/* Main content section */}
           <div className="mb-10 flex w-[100%] flex-col gap-4 text-[18px] font-medium leading-relaxed tracking-wide text-[#e4ded7] md:mb-16 md:gap-6 md:text-[20px] md:leading-relaxed lg:mb-16 lg:max-w-[90%] lg:text-[24px]">
-            <AnimatedBody text="I specialize in building scalable web applications and high-performance digital solutions for businesses. With expertise in modern frontend technologies, I transform complex requirements into elegant, user-centric interfaces." />
-            <AnimatedBody text="As a tech entrepreneur and co-founder of Innovaft, I lead a team dedicated to delivering cutting-edge web solutions. We focus on creating applications that not only look exceptional but also drive business growth." />
-            <AnimatedBody text="My approach combines technical expertise with business acumen, ensuring each project meets both user needs and business objectives. I'm passionate about optimizing performance and creating seamless user experiences." />
+            <AnimatedBody text="I am a full-stack developer and software engineer with 7 years of experience building websites, web applications and mobile apps with Next.js, React, React Native and Node.js, from Figma design to a launched product." />
+            <AnimatedBody text="As co-founder and CTO of Innovaft in Hisar, I lead the technical side of client projects. I also mentor students: 50+ trained so far, 10 of them placed in jobs." />
+            <AnimatedBody text="My approach combines technical expertise with clear planning and communication, so each project meets both user needs and business goals. I care about performance and about software that is simple to use." />
           </div>
 
           {/* Skills section */}
@@ -42,7 +42,7 @@ const About = () => {
               />
               <AnimatedBody
                 text={
-                  'JavaScript (ES6+), TypeScript, React, Next.js, Redux Toolkit, Strapi, Node JS, Git/GitHub, CI/CD'
+                  'JavaScript (ES6+), TypeScript, React, Next.js, React Native, Redux Toolkit, Node JS, MongoDB, Firebase, Strapi, Git/GitHub, CI/CD'
                 }
               />
             </div>
@@ -74,7 +74,7 @@ const About = () => {
               />
               <AnimatedBody
                 text={
-                  'System Architecture, Team Leadership, Agile Methodologies, Technical Writing, UI/UX Design Principles, Performance Monitoring'
+                  'System Architecture, Project Management, Team Leadership, Mentoring, Agile Methodologies, UI/UX Design Principles'
                 }
               />
             </div>
