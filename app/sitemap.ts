@@ -49,6 +49,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     })),
+    {
+      url: `${SITE_URL}/contact`,
+      changeFrequency: 'yearly',
+      priority: 0.8,
+    },
     ...locations.map((location) => ({
       url: `${SITE_URL}/locations/${location.slug}`,
       changeFrequency: 'monthly' as const,

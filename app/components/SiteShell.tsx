@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { ReactNode } from 'react'
-import { BOOKING_URL } from '../lib/contact'
 import { locations } from '../lib/locations'
 import { services } from '../lib/services'
 
@@ -32,14 +31,12 @@ export default function SiteShell({ children }: { children: ReactNode }) {
           <Link href="/blog" className="hidden hover:underline md:inline">
             Blog
           </Link>
-          <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/contact"
             className="rounded-full bg-[#e4ded7] px-4 py-2 font-semibold text-primary"
           >
-            Book a call
-          </a>
+            Contact
+          </Link>
         </nav>
       </header>
 
@@ -68,6 +65,14 @@ export default function SiteShell({ children }: { children: ReactNode }) {
               ))}
             </ul>
             <ul className="space-y-2 text-[14px]">
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-[#95979D] hover:text-[#e4ded7] hover:underline"
+                >
+                  Contact
+                </Link>
+              </li>
               <li>
                 <Link
                   href="/work"

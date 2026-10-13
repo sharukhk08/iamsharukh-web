@@ -3,9 +3,11 @@ import emailjs from "@emailjs/browser";
 emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
 
 export interface EnquiryData {
+  audience: "client" | "student";
   name: string;
   email: string;
   phone: string;
+  // City or country, as typed or picked from the suggestions.
   country: string;
   // Human-readable labels of the services chosen.
   services: string[];
@@ -20,8 +22,13 @@ const MAX_FIELD = 3000;
 const clean = (value: string) => value.trim().slice(0, MAX_FIELD);
 
 // Subject example: [Custom SaaS Dashboard Development] Lead - Germany
-export const buildSubject = (data: EnquiryData) =>
-  `[${data.services[0] ?? "Enquiry"}] Lead - ${data.country || "Unknown"}`;
+export const buildSubject = (data: EnquiryData) => {
+  const place = data.country || "Unknown";
+  const first = data.services[0] ?? "Enquiry";
+  return data.audience === "student"
+    ? `[Learning: ${first}] Student enquiry - ${place}`
+    : `[${first}] Lead - ${place}`;
+};
 
 // Everything in one readable block, grouped, so the existing EmailJS
 // template (which already prints {{message}}) shows the full enquiry.
@@ -36,10 +43,11 @@ export const buildMessage = (data: EnquiryData) =>
       .map((item) => `${item.label}: ${item.value}`),
     "",
     "TIMING AND CONTACT",
-    `Timeline: ${data.timeline}`,
+    `Type: ${data.audience === "student" ? "Student" : "Client"}`,
+    ...(data.timeline ? [`Timeline: ${data.timeline}`] : []),
     `Preferred contact: ${data.contactMethod}`,
-    `Found me via: ${data.source}`,
-    `Country: ${data.country}`,
+    ...(data.source ? [`Found me via: ${data.source}`] : []),
+    `Location: ${data.country}`,
   ].join("\n");
 
 export const sendEnquiry = async (raw: EnquiryData): Promise<void> => {

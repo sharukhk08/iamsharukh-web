@@ -1,3 +1,4 @@
+import { courses } from '../lib/courses'
 import { services } from '../lib/services'
 
 export type FieldType = 'text' | 'textarea' | 'select'
@@ -10,6 +11,8 @@ export type Field = {
   placeholder?: string
   options?: string[]
 }
+
+export type Audience = 'client' | 'student'
 
 export type EnquiryOption = {
   value: string
@@ -24,23 +27,48 @@ const groupFor = (slug: string): EnquiryOption['group'] => {
   return 'project'
 }
 
-// One option per service page, plus learning and other.
-export const ENQUIRY_OPTIONS: EnquiryOption[] = [
+// What a client can pick: one option per service page, plus "something else".
+export const CLIENT_OPTIONS: EnquiryOption[] = [
   ...services.map((service) => ({
     value: service.slug,
     label: service.title,
     group: groupFor(service.slug),
   })),
-  {
-    value: 'learning',
-    label: 'Learning: Innovaft courses or mentoring',
-    group: 'learning' as const,
-  },
   { value: 'other', label: 'Something else', group: 'other' as const },
 ]
 
-export const getOption = (value: string) =>
-  ENQUIRY_OPTIONS.find((option) => option.value === value)
+// What a student can pick: one of the Innovaft courses, or not sure yet.
+export const STUDENT_OPTIONS: EnquiryOption[] = [
+  ...courses.map((course) => ({
+    value: course.slug,
+    label: course.name,
+    group: 'learning' as const,
+  })),
+  { value: 'unsure', label: 'Not sure yet', group: 'learning' as const },
+]
+
+export const getOption = (value: string, audience?: Audience) => {
+  const lists =
+    audience === 'student'
+      ? [STUDENT_OPTIONS]
+      : audience === 'client'
+        ? [CLIENT_OPTIONS]
+        : [CLIENT_OPTIONS, STUDENT_OPTIONS]
+  for (const list of lists) {
+    const found = list.find((option) => option.value === value)
+    if (found) return found
+  }
+  return undefined
+}
+
+// Deep links use ?service=<slug>. "learning" means the student path.
+export const audienceFor = (value?: string): Audience | undefined => {
+  if (!value) return undefined
+  if (value === 'learning') return 'student'
+  return CLIENT_OPTIONS.some((option) => option.value === value)
+    ? 'client'
+    : undefined
+}
 
 // The detail questions depend on what the person picked first.
 export const DETAIL_FIELDS: Record<EnquiryOption['group'], Field[]> = {

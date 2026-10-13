@@ -1,5 +1,7 @@
 export const BOOKING_URL = 'https://cal.com/iamsharukh/30min'
+export const CONTACT_EMAIL = 'iamsharukh08@gmail.com'
 
-// Opens the contact section on the home page with the service pre-selected.
+// Links to the contact page with the service pre-selected.
+// "learning" starts the student path.
 export const contactHref = (service?: string) =>
-  service ? `/?service=${encodeURIComponent(service)}#contact` : '/#contact'
+  service ? `/contact?service=${encodeURIComponent(service)}` : '/contact'
