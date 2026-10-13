@@ -10,6 +10,7 @@ import ServiceDeepLink from './contact-section/ServiceDeepLink'
 
 import dynamic from 'next/dynamic'
 import Reviews from './reviews-section/ReviewGrid'
+import ServicesSection from './services-section/ServicesSection'
 const Work = dynamic(() => import('./work-section/Work'))
 const About = dynamic(() => import('./about-section/About'))
 const Contact = dynamic(() => import('./contact-section/Contact'))
@@ -50,6 +51,7 @@ export default function Home() {
       <main className="flex flex-col items-center justify-center">
         <Hero onContactClick={() => setIsModalOpen(true)} />
         <Work />
+        <ServicesSection />
         <Reviews />
         <About />
         <Contact onContactClick={() => setIsModalOpen(true)} />
