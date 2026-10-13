@@ -1,11 +1,12 @@
 'use client'
 import useBlobity from 'blobity/lib/react/useBlobity'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import PreLoader from './animations/PreLoader/PreLoader'
 import Hero from './hero-section/Hero'
 import NavBar from './navbar/NavBar'
 import { initialBlobityOptions } from './utils/BlobityConfig'
 import ContactFormModal from './contact-section/ContactFormModal'
+import ServiceDeepLink from './contact-section/ServiceDeepLink'
 
 import dynamic from 'next/dynamic'
 import Reviews from './reviews-section/ReviewGrid'
@@ -16,6 +17,7 @@ const Footer = dynamic(() => import('./footer/Footer'))
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [initialService, setInitialService] = useState<string | undefined>()
   const blobityInstance = useBlobity(initialBlobityOptions)
 
   useEffect(() => {
@@ -35,6 +37,14 @@ export default function Home() {
   return (
     <>
       <PreLoader />
+      <Suspense fallback={null}>
+        <ServiceDeepLink
+          onService={(service) => {
+            setInitialService(service)
+            setIsModalOpen(true)
+          }}
+        />
+      </Suspense>
       <NavBar />
 
       <main className="flex flex-col items-center justify-center">
@@ -48,7 +58,11 @@ export default function Home() {
 
       <ContactFormModal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        initialService={initialService}
+        onClose={() => {
+          setIsModalOpen(false)
+          setInitialService(undefined)
+        }}
       />
     </>
   )
