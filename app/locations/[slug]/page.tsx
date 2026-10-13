@@ -99,11 +99,11 @@ export default async function LocationPage({ params }: PageProps) {
   }
 
   return (
-    <main className="mx-auto w-[90%] max-w-[1200px] pt-10 md:pt-16">
+    <main className="mx-auto w-[90%] max-w-[1440px] pt-10 md:pt-16">
       <JsonLd data={serviceJsonLd} />
       <JsonLd data={breadcrumb} />
 
-      <p className="text-[14px] text-[#95979D]">
+      <p className="text-[14px] text-[#c9c4bd]">
         <Link href="/locations" className="hover:underline">
           Locations
         </Link>{' '}
@@ -112,7 +112,7 @@ export default async function LocationPage({ params }: PageProps) {
       <div className="mt-4 grid items-center gap-10 lg:grid-cols-2">
         <div>
           <IconBadge icon={MapPin} size={26} />
-          <h1 className="mt-4 max-w-[900px] text-[36px] leading-tight md:text-[56px]">
+          <h1 className="h1-compact mt-4 max-w-[900px] text-[36px] leading-tight md:text-[56px]">
             <RevealWords text={location.h1} />
           </h1>
           <p className="mt-6 max-w-[800px] text-[16px] leading-relaxed text-[#c9c4bd] md:text-[18px]">
@@ -122,7 +122,7 @@ export default async function LocationPage({ params }: PageProps) {
             <Magnet>
               <Link
                 href={contactHref()}
-                className="inline-block rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+                className="inline-block rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
               >
                 Tell me about your project
               </Link>
@@ -131,7 +131,7 @@ export default async function LocationPage({ params }: PageProps) {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-[#e4ded7]/40 px-6 py-3 font-semibold"
+              className="rounded-md border-2 border-[#e4ded7]/40 px-6 py-3 text-[14px] font-semibold uppercase text-[#e4ded7] transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
             >
               Book a free 30-minute call
             </a>
@@ -215,7 +215,7 @@ export default async function LocationPage({ params }: PageProps) {
         </p>
         <Link
           href={contactHref()}
-          className="mt-6 inline-block rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+          className="mt-6 inline-block rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
         >
           Send an enquiry
         </Link>

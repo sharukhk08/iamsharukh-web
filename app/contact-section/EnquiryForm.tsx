@@ -110,7 +110,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
         found.email = 'Please enter a valid email address'
       const digits = info.phone.replace(/\D/g, '').length
       if (digits < 7 || digits > 15)
-        found.phone = 'Please enter a valid phone or WhatsApp number'
+        found.phone = 'Please enter a valid phone number'
       if (!info.place.trim()) found.place = 'Please enter your city or country'
     }
     return found
@@ -298,7 +298,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
           : 'border-gray-600 hover:border-[#e4ded7]'
       }`}
     >
-      <span className="mt-1 text-[#8b8fff]">{icon}</span>
+      <span className="mt-1 text-[#e4ded7]">{icon}</span>
       <span>
         <span className="block text-[18px] font-semibold">{title}</span>
         <span className="mt-1 block text-[14px] text-[#95979D]">{text}</span>
@@ -443,7 +443,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
 
             <div>
               <label htmlFor="phone" className="mb-2 block text-sm font-medium">
-                Phone or WhatsApp
+                Phone number
               </label>
               <input
                 id="phone"

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import RevealWords from '../components/effects/RevealWords'
+import PageBackdrop from '../components/PageBackdrop'
 import TiltCard from '../components/effects/TiltCard'
 import Reveal from '../components/Reveal'
 import { caseStudies } from '../lib/caseStudies'
@@ -26,12 +27,13 @@ const breadcrumb = {
 
 export default function WorkPage() {
   return (
-    <main className="mx-auto w-[90%] max-w-[1200px] pt-10 md:pt-16">
+    <main className="mx-auto w-[90%] max-w-[1440px] pt-10 md:pt-16">
       <JsonLd data={breadcrumb} />
+      <PageBackdrop />
       <h1 className="text-[36px] leading-tight md:text-[56px]">
         <RevealWords text="Selected work" />
       </h1>
-      <p className="mt-4 max-w-[680px] text-[16px] text-[#95979D] md:text-[18px]">
+      <p className="mt-4 max-w-[680px] text-[16px] text-[#c9c4bd] md:text-[18px]">
         A few projects built with Next.js, React and Node.js. More work from my
         company is on the{' '}
         <a

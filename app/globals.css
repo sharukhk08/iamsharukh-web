@@ -187,7 +187,7 @@ body:has(.scroll-page) {
   transition: opacity 0.3s ease;
   background: radial-gradient(
     380px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(139, 143, 255, 0.22),
+    rgba(228, 222, 215, 0.14),
     transparent 70%
   );
 }
@@ -244,15 +244,16 @@ body:has(.scroll-page) {
   height: 420px;
   top: -140px;
   left: 8%;
-  background: #8b8fff;
+  background: #e4ded7;
+  opacity: 0.1;
 }
 .aurora span:nth-child(2) {
   width: 360px;
   height: 360px;
   top: 40px;
   right: 6%;
-  background: #5ad19a;
-  opacity: 0.12;
+  background: #95979d;
+  opacity: 0.1;
   animation-delay: -6s;
 }
 @keyframes aurora-drift {
@@ -290,4 +291,75 @@ body:has(.scroll-page) {
   .tilt {
     transition: none;
   }
+}
+
+/* Shimmering text */
+.shiny-text {
+  background: linear-gradient(110deg, #95979d 35%, #ffffff 50%, #95979d 65%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 3.2s linear infinite;
+}
+@keyframes shine {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shiny-text {
+    animation: none;
+    background: none;
+    color: #c9c4bd;
+  }
+}
+
+
+/* ---- Content pages: follow the home page's type scale and look ---- */
+.site-page h1,
+.site-page h2[class*='md:text-[32px]'] {
+  font-family: var(--font-mona), sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: -0.005em;
+  color: #e4ded7;
+}
+/* One scale for every page title, so none is oversized. */
+.site-page h1 {
+  font-size: clamp(42px, 7vw, 88px);
+}
+.site-page h2[class*='md:text-[32px]'] {
+  font-size: clamp(30px, 4.2vw, 52px);
+}
+/* Long titles (blog posts, location pages) use a smaller step of the scale. */
+.site-page h1.h1-compact {
+  font-size: clamp(34px, 5vw, 60px);
+}
+.site-page .page-hero {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 680px;
+  z-index: -20;
+  opacity: 0.7;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent);
+  mask-image: linear-gradient(to bottom, #000 30%, transparent);
+}
+.site-page .page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/hero.jpg') center / cover no-repeat;
+}
+.site-page .page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #08090d;
+  mix-blend-mode: color;
 }

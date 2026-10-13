@@ -12,7 +12,7 @@ export default function IconBadge({
 }) {
   return (
     <span
-      className={`inline-flex shrink-0 items-center justify-center rounded-2xl bg-[#8b8fff]/15 p-3 text-[#8b8fff] ${className}`}
+      className={`inline-flex shrink-0 items-center justify-center rounded-2xl bg-[#e4ded7]/10 p-3 text-[#e4ded7] ${className}`}
     >
       <Icon size={size} aria-hidden="true" />
     </span>

@@ -81,11 +81,11 @@ export default async function ServicePage({ params }: PageProps) {
   }
 
   return (
-    <main className="mx-auto w-[90%] max-w-[1200px] pt-10 md:pt-16">
+    <main className="mx-auto w-[90%] max-w-[1440px] pt-10 md:pt-16">
       <JsonLd data={serviceJsonLd} />
       <JsonLd data={breadcrumb} />
 
-      <p className="text-[14px] text-[#95979D]">
+      <p className="text-[14px] text-[#c9c4bd]">
         <Link href="/services" className="hover:underline">
           Services
         </Link>{' '}
@@ -102,7 +102,7 @@ export default async function ServicePage({ params }: PageProps) {
             <Magnet>
               <Link
                 href={contactHref(service.slug)}
-                className="inline-block rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+                className="inline-block rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
               >
                 Tell me about your project
               </Link>
@@ -111,7 +111,7 @@ export default async function ServicePage({ params }: PageProps) {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-[#e4ded7]/40 px-6 py-3 font-semibold"
+              className="rounded-md border-2 border-[#e4ded7]/40 px-6 py-3 text-[14px] font-semibold uppercase text-[#e4ded7] transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
             >
               Book a free 30-minute call
             </a>
@@ -144,7 +144,7 @@ export default async function ServicePage({ params }: PageProps) {
           <ul className="mt-4 space-y-3 text-[15px] text-[#c9c4bd]">
             {service.forWho.map((item) => (
               <li key={item} className="flex gap-3">
-                <Check size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-[#8b8fff]" />
+                <Check size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-[#e4ded7]" />
                 {item}
               </li>
             ))}
@@ -155,7 +155,7 @@ export default async function ServicePage({ params }: PageProps) {
           <ul className="mt-4 space-y-3 text-[15px] text-[#c9c4bd]">
             {service.deliverables.map((item) => (
               <li key={item} className="flex gap-3">
-                <Check size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-[#5ad19a]" />
+                <Check size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-[#c9c4bd]" />
                 {item}
               </li>
             ))}
@@ -229,7 +229,7 @@ export default async function ServicePage({ params }: PageProps) {
           <Magnet>
             <Link
               href={contactHref(service.slug)}
-              className="inline-block rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+              className="inline-block rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
             >
               Send an enquiry
             </Link>
@@ -250,7 +250,7 @@ export default async function ServicePage({ params }: PageProps) {
               >
                 {(() => {
                   const Icon = SERVICE_ICONS[item.slug]
-                  return Icon ? <Icon size={16} aria-hidden="true" className="text-[#8b8fff]" /> : null
+                  return Icon ? <Icon size={16} aria-hidden="true" className="text-[#e4ded7]" /> : null
                 })()}
                 {item.title}
               </Link>

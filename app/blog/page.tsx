@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import RevealWords from '../components/effects/RevealWords'
+import PageBackdrop from '../components/PageBackdrop'
 import Reveal from '../components/Reveal'
 import { formatDate, getPosts } from '../lib/blog'
 import { JsonLd } from '../lib/jsonLd'
@@ -26,12 +27,13 @@ export default function BlogPage() {
   const posts = getPosts()
 
   return (
-    <main className="mx-auto w-[90%] max-w-[1200px] pt-10 md:pt-16">
+    <main className="mx-auto w-[90%] max-w-[1440px] pt-10 md:pt-16">
       <JsonLd data={breadcrumb} />
+      <PageBackdrop />
       <h1 className="text-[36px] leading-tight md:text-[56px]">
         <RevealWords text="Blog" />
       </h1>
-      <p className="mt-4 max-w-[680px] text-[16px] text-[#95979D] md:text-[18px]">
+      <p className="mt-4 max-w-[680px] text-[16px] text-[#c9c4bd] md:text-[18px]">
         Practical notes on Next.js, React, Figma to code and getting AI-built
         apps ready for launch.
       </p>

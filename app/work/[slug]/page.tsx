@@ -83,7 +83,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
       <JsonLd data={work} />
       <JsonLd data={breadcrumb} />
 
-      <p className="text-[14px] text-[#95979D]">
+      <p className="text-[14px] text-[#c9c4bd]">
         <Link href="/work" className="hover:underline">
           Work
         </Link>{' '}
@@ -110,7 +110,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               href={study.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+              className="rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
             >
               View live site
             </a>
@@ -120,7 +120,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               href={study.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-[#e4ded7]/40 px-6 py-3 font-semibold"
+              className="rounded-md border-2 border-[#e4ded7]/40 px-6 py-3 text-[14px] font-semibold uppercase text-[#e4ded7] transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
             >
               View code
             </a>
@@ -159,7 +159,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           <div className="mt-6 flex flex-wrap gap-4">
             <Link
               href={contactHref()}
-              className="rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+              className="rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
             >
               Send an enquiry
             </Link>
@@ -167,7 +167,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-[#e4ded7]/40 px-6 py-3 font-semibold"
+              className="rounded-md border-2 border-[#e4ded7]/40 px-6 py-3 text-[14px] font-semibold uppercase text-[#e4ded7] transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
             >
               Book a free 30-minute call
             </a>

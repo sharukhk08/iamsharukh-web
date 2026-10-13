@@ -8,7 +8,7 @@ const BG = '#1b1d23'
 const LINE = '#2c2f38'
 const CREAM = '#e4ded7'
 const MUTED = '#95979D'
-const ACCENT = '#8b8fff'
+const ACCENT = '#b9bcc4'
 
 function Frame({ children }: { children: ReactNode }) {
   return (
@@ -101,7 +101,7 @@ export function DesignIllustration() {
         <rect x="264" y="168" width="48" height="18" rx="9" fill={ACCENT} opacity="0.85" />
       </g>
       <g>
-        {[CREAM, ACCENT, '#5ad19a', '#ffd166', '#ff6b6b'].map((color, i) => (
+        {[CREAM, ACCENT, '#c9c4bd', '#ffd166', '#ff6b6b'].map((color, i) => (
           <circle key={color} cx={382 + (i % 3) * 26} cy={72 + Math.floor(i / 3) * 26} r="10" fill={color} className="anim-blink" style={{ animationDelay: `${i * 0.3}s` }} />
         ))}
       </g>
@@ -244,7 +244,7 @@ export function RoadmapIllustration() {
             <g key={row} className="anim-float" style={{ animationDelay: `${-(col * 2 + row)}s` }}>
               <rect x={52 + col * 140} y={134 + row * 46} width="100" height="36" rx="8" fill={BG} stroke={LINE} />
               <rect x={62 + col * 140} y={144 + row * 46} width="60" height="6" rx="3" fill={CREAM} opacity="0.8" />
-              <rect x={62 + col * 140} y={156 + row * 46} width="36" height="5" rx="2.5" fill={col === 2 ? '#5ad19a' : ACCENT} opacity="0.8" />
+              <rect x={62 + col * 140} y={156 + row * 46} width="36" height="5" rx="2.5" fill={col === 2 ? '#c9c4bd' : ACCENT} opacity="0.8" />
             </g>
           ))}
         </g>

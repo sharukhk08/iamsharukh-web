@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import Marquee from '../components/effects/Marquee'
+import RotatingWords from '../components/effects/RotatingWords'
+import PageBackdrop from '../components/PageBackdrop'
 import RevealWords from '../components/effects/RevealWords'
 import Reveal from '../components/Reveal'
 import ServiceCard from '../components/ServiceCard'
@@ -31,14 +33,26 @@ const breadcrumb = {
 
 export default function ServicesPage() {
   return (
-    <main className="mx-auto w-[90%] max-w-[1200px] pt-10 md:pt-16">
+    <main className="mx-auto w-[90%] max-w-[1440px] pt-10 md:pt-16">
       <JsonLd data={breadcrumb} />
+      <PageBackdrop />
       <h1 className="text-[36px] leading-tight md:text-[56px]">
         <RevealWords text="Web and mobile development services" />
       </h1>
-      <p className="mt-4 max-w-[680px] text-[16px] text-[#95979D] md:text-[18px]">
-        I design, build and fix web and mobile products with Next.js, React and
-        React Native. Pick a service to see what is included and how I work.
+      <p className="mt-4 max-w-[680px] text-[16px] text-[#c9c4bd] md:text-[18px]">
+        Using Next.js, React and React Native, I design, build and fix{' '}
+        <RotatingWords
+          wordClassName="shiny-text font-semibold"
+          words={[
+            'websites',
+            'web apps',
+            'mobile apps',
+            'dashboards',
+            'online stores',
+            'AI-built apps',
+          ]}
+        />
+        . Pick a service to see what is included and how I work.
       </p>
 
       <div className="mt-10">

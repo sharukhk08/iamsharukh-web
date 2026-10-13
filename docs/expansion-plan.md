@@ -51,7 +51,7 @@ Hisar, Hansi, Bhiwani, Rohtak and a Haryana state page. Each needs unique conten
 
 ## Multi-step contact form
 
-1. You: name, email, phone/WhatsApp, country/city.
+1. You: name, email, phone, city/country.
 2. Need: service(s) or course/mentoring enquiry.
 3. Details depending on the choice (Figma/app link, features, new vs fix, platform for mobile, level and goal for students).
 4. Timing, how they found you, preferred contact method, review and submit.
@@ -94,3 +94,6 @@ Before each commit: `node scripts/dev-guard.mjs .`, `npx tsc --noEmit`, `npx esl
 16. **Case studies** (`/work/<slug>`) are `noindex` and left out of the sitemap until `challenge`, `solution` and `outcome` are filled in for that slug in `app/lib/caseStudies.ts`. Live and repo links come from `projectDetails.ts`, or can be set there; currently blank.
 17. **Animation and icons.** Effects are in-house components in `app/components/effects/` (SpotlightCard, TiltCard, Magnet, CountUp, RevealWords, Marquee, Aurora, FuzzyText on the 404 page, ShapeWaves behind the learn page hero) inspired by React Bits but written here with no new dependency, because React Bits is copy-paste code from an external registry and should be reviewed line by line before it enters this repo. Icons come from `lucide-react`; mappings are in `app/lib/icons.ts`. Everything respects `prefers-reduced-motion`.
 18. **Contact:** `/contact` is the main contact page. Service, location, learn and case-study buttons link to `/contact?service=<slug>` (`learning` starts the student path). The home page still has its own Contact section and modal.
+19. **WhatsApp removed** from the whole site (contact page, learn page, enquiry form, copy). The form's contact methods are now Email and Phone call.
+20. **Visual language.** Content pages now follow the home page: the grainy `hero.jpg` texture behind the top of each page (`.page-hero`), Mona Sans Narrow uppercase headings (`.site-page h1` and section `h2`), uppercase nav and buttons, monochrome palette (no indigo accent), 1440px container. One heading scale: h1 `clamp(42px, 7vw, 88px)`, long titles use `.h1-compact`. See `app/globals.css`.
+21. **More effects:** RotatingWords (services intro), ProcessTrace (contact page, no timings), DotGrid via PageBackdrop (list pages and contact). ShinyText component was removed; its CSS class `.shiny-text` is used by RotatingWords.

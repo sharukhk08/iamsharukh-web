@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import { CalendarDays, Mail, MapPin, MessageCircle } from 'lucide-react'
+import { CalendarDays, Mail, MapPin } from 'lucide-react'
 import EnquiryForm from '../contact-section/EnquiryForm'
 import RevealWords from '../components/effects/RevealWords'
+import PageBackdrop from '../components/PageBackdrop'
+import ProcessTrace from '../components/effects/ProcessTrace'
 import { BOOKING_URL, CONTACT_EMAIL } from '../lib/contact'
-import { WHATSAPP_URL } from '../lib/courses'
 import { JsonLd } from '../lib/jsonLd'
 import { HISAR_OFFICE } from '../lib/locations'
 import { SITE } from '../lib/site'
@@ -11,7 +12,7 @@ import { SITE } from '../lib/site'
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Contact Sharukh Khan about a web or app project, or about learning with Innovaft. Send an enquiry, book a free call or message on WhatsApp.',
+    'Contact Sharukh Khan about a web or app project, or about learning with Innovaft. Send an enquiry, book a free call or send an email.',
   alternates: { canonical: '/contact' },
 }
 
@@ -51,14 +52,6 @@ const ways = [
     external: true,
   },
   {
-    icon: MessageCircle,
-    title: 'WhatsApp',
-    text: 'Message the Innovaft number.',
-    href: WHATSAPP_URL,
-    label: 'Open WhatsApp',
-    external: true,
-  },
-  {
     icon: Mail,
     title: 'Email',
     text: CONTACT_EMAIL,
@@ -73,13 +66,14 @@ export default async function ContactPage({ searchParams }: PageProps) {
   const initialService = Array.isArray(service) ? service[0] : service
 
   return (
-    <main className="mx-auto w-[90%] max-w-[1200px] pt-10 md:pt-16">
+    <main className="mx-auto w-[90%] max-w-[1440px] pt-10 md:pt-16">
       <JsonLd data={jsonLd} />
+      <PageBackdrop />
 
       <h1 className="text-[36px] leading-tight md:text-[56px]">
         <RevealWords text="Contact" />
       </h1>
-      <p className="mt-4 max-w-[680px] text-[16px] text-[#95979D] md:text-[18px]">
+      <p className="mt-4 max-w-[680px] text-[16px] text-[#c9c4bd] md:text-[18px]">
         Have a project, or want to learn? Answer a few quick questions and I
         will reply with next steps. You can also use any of the options on the
         right.
@@ -97,6 +91,16 @@ export default async function ContactPage({ searchParams }: PageProps) {
         </section>
 
         <aside className="space-y-4">
+          <ProcessTrace
+            title="What happens after you send this"
+            steps={[
+              'I read your message',
+              'I reply with questions or next steps',
+              'We agree the scope and a plan',
+              'I build and keep you updated',
+              'Launch, handover and support',
+            ]}
+          />
           {ways.map(({ icon: Icon, title, text, href, label, external }) => (
             <a
               key={title}
@@ -104,7 +108,7 @@ export default async function ContactPage({ searchParams }: PageProps) {
               {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               className="flex items-start gap-4 rounded-3xl bg-secondary p-5 transition hover:bg-[#23262e]"
             >
-              <span className="rounded-2xl bg-[#8b8fff]/15 p-3 text-[#8b8fff]">
+              <span className="rounded-2xl bg-[#e4ded7]/10 p-3 text-[#e4ded7]">
                 <Icon size={22} />
               </span>
               <span>
@@ -120,7 +124,7 @@ export default async function ContactPage({ searchParams }: PageProps) {
           ))}
 
           <div className="flex items-start gap-4 rounded-3xl bg-secondary p-5">
-            <span className="rounded-2xl bg-[#8b8fff]/15 p-3 text-[#8b8fff]">
+            <span className="rounded-2xl bg-[#e4ded7]/10 p-3 text-[#e4ded7]">
               <MapPin size={22} />
             </span>
             <span>

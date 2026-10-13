@@ -35,7 +35,7 @@ export default function NotFound() {
         <Magnet>
           <Link
             href="/"
-            className="inline-block rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+            className="inline-block rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
           >
             Back to home
           </Link>

@@ -31,7 +31,7 @@ Path: `public/work/<project-slug>/cover.webp`, `public/work/<project-slug>/shot-
 ## 4. Contact form (multi-step, step 4)
 
 Design the 4 steps in Figma (desktop and mobile):
-1. You (name, email, phone/WhatsApp, country/city)
+1. You (name, email, phone, country/city)
 2. Need (service chips, including React Native, plus a course/mentoring option)
 3. Details (changes depending on the service chosen)
 4. Timing and review, then a success screen

@@ -45,4 +45,3 @@ export const courses: Course[] = [
   },
 ]
 
-export const WHATSAPP_URL = 'https://wa.me/919114244000'

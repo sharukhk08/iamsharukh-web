@@ -192,4 +192,4 @@ export const SOURCES = [
   'Other',
 ]
 
-export const CONTACT_METHODS = ['Email', 'WhatsApp', 'Phone call']
+export const CONTACT_METHODS = ['Email', 'Phone call']

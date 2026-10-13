@@ -16,7 +16,7 @@ const ServicesSection = () => {
         <h2 className="text-[36px] leading-tight md:text-[48px] lg:text-[64px]">
           What I can build for you
         </h2>
-        <p className="mt-4 max-w-[680px] text-[16px] text-[#95979D] md:text-[18px]">
+        <p className="mt-4 max-w-[680px] text-[16px] text-[#c9c4bd] md:text-[18px]">
           Websites, web apps and mobile apps with Next.js, React and React
           Native. Choose a service to see what is included.
         </p>

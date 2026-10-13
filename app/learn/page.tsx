@@ -11,7 +11,7 @@ import Reveal from '../components/Reveal'
 import { COURSE_ICONS } from '../lib/icons'
 import { LearnIllustration } from '../components/Illustrations'
 import { contactHref } from '../lib/contact'
-import { WHATSAPP_URL, courses } from '../lib/courses'
+import { courses } from '../lib/courses'
 import { JsonLd } from '../lib/jsonLd'
 import { HISAR_OFFICE } from '../lib/locations'
 import { SITE } from '../lib/site'
@@ -72,12 +72,12 @@ const faqs = [
 
 export default function LearnPage() {
   return (
-    <main className="mx-auto w-[90%] max-w-[1200px] pt-10 md:pt-16">
+    <main className="mx-auto w-[90%] max-w-[1440px] pt-10 md:pt-16">
       <JsonLd data={jsonLd} />
       {/* Positioned against the page shell; fades out so text stays readable. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[760px] opacity-40 [mask-image:linear-gradient(to_bottom,#000_25%,transparent_95%)]"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[760px] opacity-25 [mask-image:linear-gradient(to_bottom,#000_25%,transparent_95%)]"
       >
         <ShapeWaves className="h-full w-full" />
       </div>
@@ -98,19 +98,11 @@ export default function LearnPage() {
             <Magnet>
               <Link
                 href={contactHref('learning')}
-                className="inline-block rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+                className="inline-block rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
               >
                 Ask about a course
               </Link>
             </Magnet>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-[#e4ded7]/40 px-6 py-3 font-semibold"
-            >
-              Message on WhatsApp
-            </a>
           </div>
         </div>
         <div>
@@ -185,7 +177,7 @@ export default function LearnPage() {
               'A completion certificate',
             ].map((item) => (
               <li key={item} className="flex gap-3">
-                <Check size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-[#5ad19a]" />
+                <Check size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-[#c9c4bd]" />
                 {item}
               </li>
             ))}
@@ -230,18 +222,10 @@ export default function LearnPage() {
         <div className="mt-6 flex flex-wrap gap-4">
           <Link
             href={contactHref('learning')}
-            className="rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+            className="rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
           >
             Send an enquiry
           </Link>
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border border-[#e4ded7]/40 px-6 py-3 font-semibold"
-          >
-            WhatsApp
-          </a>
         </div>
       </section>
       </Reveal>

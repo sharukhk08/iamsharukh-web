@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { MapPin } from 'lucide-react'
 import IconBadge from '../components/IconBadge'
 import RevealWords from '../components/effects/RevealWords'
+import PageBackdrop from '../components/PageBackdrop'
 import SpotlightCard from '../components/effects/SpotlightCard'
 import { JsonLd } from '../lib/jsonLd'
 import { locations } from '../lib/locations'
@@ -31,12 +32,13 @@ const breadcrumb = {
 
 export default function LocationsPage() {
   return (
-    <main className="mx-auto w-[90%] max-w-[1200px] pt-10 md:pt-16">
+    <main className="mx-auto w-[90%] max-w-[1440px] pt-10 md:pt-16">
       <JsonLd data={breadcrumb} />
+      <PageBackdrop />
       <h1 className="text-[36px] leading-tight md:text-[56px]">
         <RevealWords text="Where I work" />
       </h1>
-      <p className="mt-4 max-w-[680px] text-[16px] text-[#95979D] md:text-[18px]">
+      <p className="mt-4 max-w-[680px] text-[16px] text-[#c9c4bd] md:text-[18px]">
         I am based in Hisar, Haryana, and I work with clients across Haryana and
         around the world. Most projects run online, with in-person meetings
         available in Hisar.

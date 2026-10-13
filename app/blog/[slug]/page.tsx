@@ -66,14 +66,14 @@ export default async function PostPage({ params }: PageProps) {
       <JsonLd data={article} />
       <JsonLd data={breadcrumb} />
 
-      <p className="text-[14px] text-[#95979D]">
+      <p className="text-[14px] text-[#c9c4bd]">
         <Link href="/blog" className="hover:underline">
           Blog
         </Link>{' '}
         / {formatDate(post.date)}
       </p>
-      <h1 className="mt-4 text-[34px] leading-tight md:text-[48px]">{post.title}</h1>
-      <p className="mt-4 text-[18px] text-[#95979D]">{post.description}</p>
+      <h1 className="h1-compact mt-4 text-[34px] leading-tight md:text-[48px]">{post.title}</h1>
+      <p className="mt-4 text-[18px] text-[#c9c4bd]">{post.description}</p>
 
       <div className="mt-10">
         <Markdown source={post.content} />
@@ -87,7 +87,7 @@ export default async function PostPage({ params }: PageProps) {
         </p>
         <Link
           href={contactHref()}
-          className="mt-6 inline-block rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+          className="mt-6 inline-block rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
         >
           Send an enquiry
         </Link>

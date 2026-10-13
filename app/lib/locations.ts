@@ -113,7 +113,7 @@ export const locations: Location[] = [
       'Hansi is only about 25 km from Hisar, where I am based. If you run a business, school, clinic or startup in Hansi, you can work with a full-stack developer who is practically next door.',
     working: [
       'Most of the project runs online, so you do not lose time travelling. When it helps, we can meet in person at the Innovaft office in Hisar.',
-      'A good starting point for many Hansi businesses is a website that shows up when people search for you, with a contact form that sends enquiries straight to your email or WhatsApp.',
+      'A good starting point for many Hansi businesses is a website that shows up when people search for you, with a contact form that sends enquiries straight to your email.',
       'If you already have a website that is slow, outdated or hard to update, I can rebuild it rather than start from nothing.',
     ],
     featuredServices: [

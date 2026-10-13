@@ -89,7 +89,7 @@ export function Markdown({ source }: { source: string }) {
       const children = renderInline(heading[2], key)
       blocks.push(
         level === 2 ? (
-          <h2 key={key} className="mt-12 text-[26px] md:text-[32px]">
+          <h2 key={key} className="mt-12 text-[24px] md:text-[28px]">
             {children}
           </h2>
         ) : level === 3 ? (

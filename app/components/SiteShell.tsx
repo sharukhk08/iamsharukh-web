@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { monaSans } from '../fonts/monaSans'
 import Aurora from './effects/Aurora'
 import { ReactNode } from 'react'
 import { locations } from '../lib/locations'
@@ -8,13 +9,19 @@ export default function SiteShell({ children }: { children: ReactNode }) {
   const year = new Date().getFullYear()
 
   return (
-    <div className="scroll-page relative isolate min-h-screen overflow-x-clip bg-primary text-[#e4ded7]">
+    <div
+      className={`scroll-page site-page ${monaSans.variable} relative isolate min-h-screen overflow-x-clip bg-primary text-[#e4ded7]`}
+    >
+      <div className="page-hero" aria-hidden="true" />
       <Aurora />
-      <header className="mx-auto flex w-[90%] max-w-[1200px] items-center justify-between py-6">
-        <Link href="/" className="text-[18px] font-bold md:text-[20px]">
+      <header className="mx-auto flex w-[90%] max-w-[1440px] items-center justify-between py-6">
+        <Link
+          href="/"
+          className="font-[family-name:var(--font-mona)] text-[22px] font-extrabold uppercase leading-none md:text-[28px]"
+        >
           Sharukh Khan
         </Link>
-        <nav className="flex items-center gap-4 text-[14px] md:gap-6 md:text-[16px]">
+        <nav className="flex items-center gap-4 text-[13px] font-semibold uppercase tracking-wide md:gap-6 md:text-[14px]">
           <Link href="/" className="hover:underline">
             Home
           </Link>
@@ -35,7 +42,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
           </Link>
           <Link
             href="/contact"
-            className="rounded-full bg-[#e4ded7] px-4 py-2 font-semibold text-primary"
+            className="rounded-md border-2 border-[#e4ded7] px-4 py-2 text-[13px] font-semibold uppercase text-[#e4ded7] transition-colors hover:bg-[#e4ded7] hover:text-[#0E1016] md:text-[14px]"
           >
             Contact
           </Link>
@@ -45,16 +52,18 @@ export default function SiteShell({ children }: { children: ReactNode }) {
       {children}
 
       <footer className="mt-24 border-t-[3px] border-[#e4ded7]/30 py-10">
-        <div className="mx-auto grid w-[90%] max-w-[1200px] gap-8 md:grid-cols-2">
+        <div className="mx-auto grid w-[90%] max-w-[1440px] gap-8 md:grid-cols-2">
           <div>
-            <p className="text-[18px] font-bold">Sharukh Khan</p>
-            <p className="mt-2 max-w-[420px] text-[14px] text-[#95979D]">
+            <p className="font-[family-name:var(--font-mona)] text-[28px] font-extrabold uppercase leading-none">
+              Sharukh Khan
+            </p>
+            <p className="mt-3 max-w-[420px] text-[12px] font-semibold uppercase leading-relaxed text-[#95979D] md:text-[14px]">
               Full-stack developer and software engineer in Hisar, Haryana.
               Co-founder & CTO at Innovaft. Working with clients worldwide.
             </p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2">
-            <ul className="space-y-2 text-[14px]">
+            <ul className="space-y-2 text-[12px] font-semibold uppercase md:text-[13px]">
               {services.map((service) => (
                 <li key={service.slug}>
                   <Link
@@ -66,7 +75,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
                 </li>
               ))}
             </ul>
-            <ul className="space-y-2 text-[14px]">
+            <ul className="space-y-2 text-[12px] font-semibold uppercase md:text-[13px]">
               <li>
                 <Link
                   href="/contact"
@@ -112,7 +121,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
             </ul>
           </div>
         </div>
-        <p className="mx-auto mt-8 w-[90%] max-w-[1200px] text-[12px] uppercase text-[#95979D]">
+        <p className="mx-auto mt-8 w-[90%] max-w-[1440px] text-[12px] uppercase text-[#95979D]">
           Copyright {year}
         </p>
       </footer>
