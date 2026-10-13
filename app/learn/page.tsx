@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Check } from 'lucide-react'
 import CountUp from '../components/effects/CountUp'
 import Magnet from '../components/effects/Magnet'
+import ShapeWaves from '../components/effects/ShapeWaves'
 import RevealWords from '../components/effects/RevealWords'
 import SpotlightCard from '../components/effects/SpotlightCard'
 import IconBadge from '../components/IconBadge'
@@ -73,6 +74,13 @@ export default function LearnPage() {
   return (
     <main className="mx-auto w-[90%] max-w-[1200px] pt-10 md:pt-16">
       <JsonLd data={jsonLd} />
+      {/* Positioned against the page shell; fades out so text stays readable. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[760px] opacity-40 [mask-image:linear-gradient(to_bottom,#000_25%,transparent_95%)]"
+      >
+        <ShapeWaves className="h-full w-full" />
+      </div>
 
       <div className="mt-4 grid items-center gap-10 lg:grid-cols-2">
         <div>
