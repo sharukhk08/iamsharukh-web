@@ -37,3 +37,8 @@ body {
 body {
   overflow-y: hidden;
 }
+
+/* Content pages have no preloader to unlock scrolling, so they opt in with .scroll-page */
+body:has(.scroll-page) {
+  overflow-y: auto;
+}

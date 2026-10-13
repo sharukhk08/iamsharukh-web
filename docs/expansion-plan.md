@@ -1,0 +1,88 @@
+# Portfolio expansion plan
+
+Goal: bring in international and Haryana clients from Fiverr, Upwork, LinkedIn, Contra and local leads, and promote mentoring and Innovaft courses.
+
+Branch: `dev` (push to `dev`, open a PR into `main`, never push to `main` directly).
+Last updated: 2026-10-13. Design assets needed from the designer are listed in `docs/design-requests.md`.
+
+## Decisions (confirmed by Sharukh)
+
+- Market: international and Haryana equally.
+- Structure: one page per service, plus a short services section on the home page.
+- Blog: markdown files in this repo (no CMS). A markdown renderer is a new dependency and needs approval first.
+- Brand: personal brand first, Innovaft as "my company".
+- Budget field in the contact form: dropped.
+- Contact form: multi-step, optimised so every enquiry arrives in email ready to quote.
+- Salary and earnings claims: never shown.
+
+## Confirmed facts (only these may appear on the site)
+
+| Item | Value |
+| --- | --- |
+| Name / title | Sharukh Khan, Full-Stack Developer & Software Engineer |
+| Role | Co-founder & CTO of Innovaft |
+| Location | Hisar, Haryana, India |
+| Experience | 7 years |
+| Mentoring | 50+ students trained, 10 placed |
+| Innovaft clients | 600+ (see open issue 1) |
+| Stack | React, Next.js, React Native, TypeScript, Node.js, Tailwind, Firebase |
+| Contact | cal.com/iamsharukh/30min, contact@innovaft.com |
+| Profiles | github.com/sharukhk08, linkedin.com/in/sharukh08, contra.com/iamsharukh, instagram.com/sharukh_k08, x.com/sharukhk08 |
+
+Do not use: "500+ students", "95% placement", "4.9 by 10,000 users", salary figures, "230+/250+ clients" from the Innovaft pages.
+
+## Services (`/services/<slug>`)
+
+1. Figma to Next.js website
+2. Figma UI/UX design
+3. Custom SaaS dashboards
+4. Full-stack web apps
+5. CRM and custom software
+6. E-commerce apps
+7. React Native mobile apps
+8. Claude Code export cleanup
+9. Lovable / Bolt / AI-built app cleanup
+10. Project management and technical leadership (supporting)
+11. Mentoring and Innovaft courses (supporting)
+
+## Location pages
+
+Hisar, Hansi, Bhiwani, Rohtak and a Haryana state page. Each needs unique content. No invented clients or results. If a page would be generic, do not publish it.
+
+## Multi-step contact form
+
+1. You: name, email, phone/WhatsApp, country/city.
+2. Need: service(s) or course/mentoring enquiry.
+3. Details depending on the choice (Figma/app link, features, new vs fix, platform for mobile, level and goal for students).
+4. Timing, how they found you, preferred contact method, review and submit.
+
+Email subject: `[Service] Lead - Country`. Auto-reply to the client. Spam protection: honeypot, time check, EmailJS domain restrictions, CAPTCHA if needed. New EmailJS template variables must be added by the site owner. No new dependencies.
+
+## Order of work
+
+| # | Step | Status |
+| --- | --- | --- |
+| 1 | Upgrade Next.js to 16.4.0, update and clean dependencies | Done, pushed |
+| 2 | SEO foundation (metadataBase, canonical, sitemap, robots, JSON-LD) | Done, committed locally |
+| 3 | Services data file and pages | Done, committed locally |
+| 4 | Multi-step contact form | Not started |
+| 5 | Case studies (`/work/[slug]`) | Not started |
+| 6 | Location pages | Not started |
+| 7 | Learn / mentoring page | Not started |
+| 8 | Blog (markdown) | Not started |
+| 9 | Home page updates (services section, nav, footer) | Not started |
+
+Before each commit: `node scripts/dev-guard.mjs .`, `npx tsc --noEmit`, `npx eslint .`.
+
+## Open issues
+
+1. **Client count.** The live Innovaft pages say "230+" and "250+ trusted clients" and "+100 Brands". Sharukh asked for 600+. Publishing 600+ here contradicts the Innovaft site. Update Innovaft first, or keep the number off the portfolio until it matches.
+2. **Innovaft portfolio** work is mostly landing pages and UI/UX (Digital Design, Rumble, Blockframe, NexCash, AI Call, EatSumn, Xinate, BRCA Strong). Describe it as design and front-end work, not full-stack.
+3. **Profiles out of date:** Contra says Ambala and "over six years"; GitHub says "Frontend Developer". Update them to match this site.
+4. **React Native case studies:** need project name, one-line description, store/demo link and screenshot for each real client app.
+5. **Project links:** `projectDetails.ts` has empty demo and GitHub links.
+6. **Innovaft site problems** (not in this repo): blog.innovaft.com returns HTTP 500, learn.innovaft.com footer email links to a personal Gmail, FAQ answers are mismatched, testimonials stuck on "loading", conflicting course lengths (6 months vs 2-6 months).
+7. **React 19** is blocked by `blobity` (supports React 18 only). Next 16 warns React 18 is deprecated and removes support in Next 17.
+8. **Remaining `npm audit` findings (10)** are build-time only (Tailwind 3 toolchain, eslint-config-next). Fix is a Tailwind 4 migration.
+9. Open Graph image is 896x1152; a 1200x630 image would give better link previews.
+10. Confirm the canonical domain: `www.iamsharukh.com` or `iamsharukh.com`.
