@@ -34,6 +34,17 @@ const ServicesSection = () => {
         </ul>
 
         <p className="mt-8 text-[14px] text-[#95979D]">
+          Want to learn instead?{' '}
+          <Link
+            href="/learn"
+            className="underline underline-offset-2 hover:no-underline"
+          >
+            See mentoring and Innovaft courses
+          </Link>
+          .
+        </p>
+
+        <p className="mt-3 text-[14px] text-[#95979D]">
           Based in Hisar, Haryana, working with clients worldwide:{' '}
           {locations.map((location, index) => (
             <span key={location.slug}>

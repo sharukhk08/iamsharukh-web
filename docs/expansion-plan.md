@@ -68,7 +68,7 @@ Email subject: `[Service] Lead - Country`. Auto-reply to the client. Spam protec
 | 4 | Multi-step contact form | Done, committed locally |
 | 5 | Case studies (`/work/[slug]`) | Not started |
 | 6 | Location pages | Done, committed locally |
-| 7 | Learn / mentoring page | Not started |
+| 7 | Learn / mentoring page | Done, committed locally |
 | 8 | Blog (markdown) | Not started |
 | 9 | Home page updates (services section, nav, footer) | Partly done: nav link, services section, footer links. Hero and About copy still to update |
 
