@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import RevealWords from '../components/effects/RevealWords'
+import TiltCard from '../components/effects/TiltCard'
 import Reveal from '../components/Reveal'
 import { caseStudies } from '../lib/caseStudies'
 import { JsonLd } from '../lib/jsonLd'
@@ -26,7 +28,9 @@ export default function WorkPage() {
   return (
     <main className="mx-auto w-[90%] max-w-[1200px] pt-10 md:pt-16">
       <JsonLd data={breadcrumb} />
-      <h1 className="text-[36px] leading-tight md:text-[56px]">Selected work</h1>
+      <h1 className="text-[36px] leading-tight md:text-[56px]">
+        <RevealWords text="Selected work" />
+      </h1>
       <p className="mt-4 max-w-[680px] text-[16px] text-[#95979D] md:text-[18px]">
         A few projects built with Next.js, React and Node.js. More work from my
         company is on the{' '}
@@ -45,6 +49,7 @@ export default function WorkPage() {
         {caseStudies.map((study, index) => (
           <li key={study.slug}>
             <Reveal delay={(index % 2) * 80} className="h-full">
+              <TiltCard className="h-full">
               <Link
                 href={`/work/${study.slug}`}
                 className="flex h-full flex-col overflow-hidden rounded-3xl bg-secondary transition hover:bg-[#23262e]"
@@ -72,6 +77,7 @@ export default function WorkPage() {
                   </ul>
                 </div>
               </Link>
+              </TiltCard>
             </Reveal>
           </li>
         ))}

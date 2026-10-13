@@ -171,3 +171,123 @@ body:has(.scroll-page) {
     animation: none;
   }
 }
+
+/* ---- Effects: spotlight, tilt, magnet, marquee, aurora, word reveal ---- */
+.spotlight {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    380px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(139, 143, 255, 0.22),
+    transparent 70%
+  );
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+.tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease;
+  will-change: transform;
+}
+
+.marquee {
+  display: flex;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+.marquee-track {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.75rem;
+  padding-right: 0.75rem;
+  animation: marquee 32s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.aurora {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora span {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.22;
+  animation: aurora-drift 18s ease-in-out infinite alternate;
+}
+.aurora span:nth-child(1) {
+  width: 420px;
+  height: 420px;
+  top: -140px;
+  left: 8%;
+  background: #8b8fff;
+}
+.aurora span:nth-child(2) {
+  width: 360px;
+  height: 360px;
+  top: 40px;
+  right: 6%;
+  background: #5ad19a;
+  opacity: 0.12;
+  animation-delay: -6s;
+}
+@keyframes aurora-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(40px, 30px, 0) scale(1.15);
+  }
+}
+
+@keyframes word-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5em);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+.word-in {
+  display: inline-block;
+  animation: word-in 0.7s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .aurora span,
+  .word-in {
+    animation: none;
+  }
+  .tilt {
+    transition: none;
+  }
+}

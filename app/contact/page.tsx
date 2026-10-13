@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { CalendarDays, Mail, MapPin, MessageCircle } from 'lucide-react'
 import EnquiryForm from '../contact-section/EnquiryForm'
+import RevealWords from '../components/effects/RevealWords'
 import { BOOKING_URL, CONTACT_EMAIL } from '../lib/contact'
 import { WHATSAPP_URL } from '../lib/courses'
 import { JsonLd } from '../lib/jsonLd'
@@ -75,7 +76,9 @@ export default async function ContactPage({ searchParams }: PageProps) {
     <main className="mx-auto w-[90%] max-w-[1200px] pt-10 md:pt-16">
       <JsonLd data={jsonLd} />
 
-      <h1 className="text-[36px] leading-tight md:text-[56px]">Contact</h1>
+      <h1 className="text-[36px] leading-tight md:text-[56px]">
+        <RevealWords text="Contact" />
+      </h1>
       <p className="mt-4 max-w-[680px] text-[16px] text-[#95979D] md:text-[18px]">
         Have a project, or want to learn? Answer a few quick questions and I
         will reply with next steps. You can also use any of the options on the

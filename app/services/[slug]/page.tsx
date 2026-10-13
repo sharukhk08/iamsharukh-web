@@ -2,7 +2,13 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { Check } from 'lucide-react'
+import IconBadge from '../../components/IconBadge'
+import Magnet from '../../components/effects/Magnet'
+import RevealWords from '../../components/effects/RevealWords'
+import SpotlightCard from '../../components/effects/SpotlightCard'
 import Reveal from '../../components/Reveal'
+import { PROCESS_ICONS, SERVICE_ICONS } from '../../lib/icons'
 import { ServiceIllustration } from '../../components/Illustrations'
 import { BOOKING_URL, contactHref } from '../../lib/contact'
 import { JsonLd } from '../../lib/jsonLd'
@@ -87,17 +93,20 @@ export default async function ServicePage({ params }: PageProps) {
       </p>
       <div className="mt-4 grid items-center gap-10 lg:grid-cols-2">
         <div>
-          <h1 className="text-[36px] leading-tight md:text-[52px]">
-            {service.title}
+          <IconBadge icon={SERVICE_ICONS[service.slug] ?? PROCESS_ICONS[0]} size={26} />
+          <h1 className="mt-4 text-[36px] leading-tight md:text-[52px]">
+            <RevealWords text={service.title} />
           </h1>
           <p className="mt-4 text-[18px] md:text-[22px]">{service.tagline}</p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href={contactHref(service.slug)}
-              className="rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
-            >
-              Tell me about your project
-            </Link>
+            <Magnet>
+              <Link
+                href={contactHref(service.slug)}
+                className="inline-block rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+              >
+                Tell me about your project
+              </Link>
+            </Magnet>
             <a
               href={BOOKING_URL}
               target="_blank"
@@ -130,22 +139,28 @@ export default async function ServicePage({ params }: PageProps) {
 
       <Reveal>
       <section className="mt-14 grid gap-10 md:grid-cols-2">
-        <div className="rounded-3xl bg-secondary p-6 md:p-8">
+        <SpotlightCard className="rounded-3xl bg-secondary p-6 md:p-8">
           <h2 className="text-[22px]">Who this is for</h2>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-[15px] text-[#c9c4bd]">
+          <ul className="mt-4 space-y-3 text-[15px] text-[#c9c4bd]">
             {service.forWho.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item} className="flex gap-3">
+                <Check size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-[#8b8fff]" />
+                {item}
+              </li>
             ))}
           </ul>
-        </div>
-        <div className="rounded-3xl bg-secondary p-6 md:p-8">
+        </SpotlightCard>
+        <SpotlightCard className="rounded-3xl bg-secondary p-6 md:p-8">
           <h2 className="text-[22px]">What you get</h2>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-[15px] text-[#c9c4bd]">
+          <ul className="mt-4 space-y-3 text-[15px] text-[#c9c4bd]">
             {service.deliverables.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item} className="flex gap-3">
+                <Check size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-[#5ad19a]" />
+                {item}
+              </li>
             ))}
           </ul>
-        </div>
+        </SpotlightCard>
       </section>
       </Reveal>
 
@@ -154,10 +169,15 @@ export default async function ServicePage({ params }: PageProps) {
         <h2 className="text-[26px] md:text-[32px]">How it works</h2>
         <ol className="mt-6 grid gap-6 md:grid-cols-4">
           {service.process.map((step, index) => (
-            <li key={step.title} className="rounded-3xl bg-secondary p-6">
-              <p className="text-[14px] text-[#95979D]">Step {index + 1}</p>
-              <h3 className="mt-1 text-[20px]">{step.title}</h3>
-              <p className="mt-3 text-[14px] text-[#c9c4bd]">{step.text}</p>
+            <li key={step.title}>
+              <SpotlightCard className="h-full rounded-3xl bg-secondary p-6">
+                <div className="flex items-center justify-between">
+                  <IconBadge icon={PROCESS_ICONS[index % PROCESS_ICONS.length]} size={20} />
+                  <span className="text-[14px] text-[#95979D]">Step {index + 1}</span>
+                </div>
+                <h3 className="mt-4 text-[20px]">{step.title}</h3>
+                <p className="mt-3 text-[14px] text-[#c9c4bd]">{step.text}</p>
+              </SpotlightCard>
             </li>
           ))}
         </ol>
@@ -205,12 +225,16 @@ export default async function ServicePage({ params }: PageProps) {
           Tell me what you need and I will reply with next steps. Based in
           Hisar, Haryana, working with clients worldwide.
         </p>
-        <Link
-          href={contactHref(service.slug)}
-          className="mt-6 inline-block rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
-        >
-          Send an enquiry
-        </Link>
+        <div className="mt-6">
+          <Magnet>
+            <Link
+              href={contactHref(service.slug)}
+              className="inline-block rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+            >
+              Send an enquiry
+            </Link>
+          </Magnet>
+        </div>
       </section>
       </Reveal>
 
@@ -222,8 +246,12 @@ export default async function ServicePage({ params }: PageProps) {
             <li key={item.slug}>
               <Link
                 href={`/services/${item.slug}`}
-                className="inline-block rounded-full border border-[#e4ded7]/30 px-4 py-2 text-[14px] hover:bg-secondary"
+                className="inline-flex items-center gap-2 rounded-full border border-[#e4ded7]/30 px-4 py-2 text-[14px] hover:bg-secondary"
               >
+                {(() => {
+                  const Icon = SERVICE_ICONS[item.slug]
+                  return Icon ? <Icon size={16} aria-hidden="true" className="text-[#8b8fff]" /> : null
+                })()}
                 {item.title}
               </Link>
             </li>

@@ -1,6 +1,13 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Check } from 'lucide-react'
+import CountUp from '../components/effects/CountUp'
+import Magnet from '../components/effects/Magnet'
+import RevealWords from '../components/effects/RevealWords'
+import SpotlightCard from '../components/effects/SpotlightCard'
+import IconBadge from '../components/IconBadge'
 import Reveal from '../components/Reveal'
+import { COURSE_ICONS } from '../lib/icons'
 import { LearnIllustration } from '../components/Illustrations'
 import { contactHref } from '../lib/contact'
 import { WHATSAPP_URL, courses } from '../lib/courses'
@@ -70,7 +77,7 @@ export default function LearnPage() {
       <div className="mt-4 grid items-center gap-10 lg:grid-cols-2">
         <div>
           <h1 className="max-w-[900px] text-[36px] leading-tight md:text-[56px]">
-            Learn web and app development with real mentoring
+            <RevealWords text="Learn web and app development with real mentoring" />
           </h1>
           <p className="mt-6 max-w-[780px] text-[16px] leading-relaxed text-[#c9c4bd] md:text-[18px]">
             I am a full-stack developer with 7 years of experience, and I handle
@@ -80,12 +87,14 @@ export default function LearnPage() {
             real projects you can show.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href={contactHref('learning')}
-              className="rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
-            >
-              Ask about a course
-            </Link>
+            <Magnet>
+              <Link
+                href={contactHref('learning')}
+                className="inline-block rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+              >
+                Ask about a course
+              </Link>
+            </Magnet>
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -102,25 +111,50 @@ export default function LearnPage() {
       </div>
 
       <Reveal>
+        <dl className="mt-14 grid grid-cols-3 gap-4 text-center">
+          {[
+            { to: 7, suffix: '', label: 'years of experience' },
+            { to: 50, suffix: '+', label: 'students trained' },
+            { to: 10, suffix: '', label: 'placed in jobs' },
+          ].map((stat) => (
+            <div key={stat.label} className="flex flex-col rounded-3xl bg-secondary p-4 md:p-6">
+              <dt className="order-2 mt-1 text-[12px] text-[#95979D] md:text-[14px]">
+                {stat.label}
+              </dt>
+              <dd className="text-[34px] font-bold text-[#e4ded7] md:text-[52px]">
+                <CountUp to={stat.to} suffix={stat.suffix} />
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </Reveal>
+
+      <Reveal>
       <section className="mt-16">
         <h2 className="text-[26px] md:text-[32px]">Courses</h2>
         <ul className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {courses.map((course) => (
-            <li key={course.slug} className="rounded-3xl bg-secondary p-6">
-              <h3 className="text-[20px]">{course.name}</h3>
-              <p className="mt-2 text-[15px] text-[#c9c4bd]">
-                {course.summary}
-              </p>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {course.topics.map((topic) => (
-                  <li
-                    key={topic}
-                    className="rounded-full border border-[#e4ded7]/30 px-3 py-1 text-[13px]"
-                  >
-                    {topic}
-                  </li>
-                ))}
-              </ul>
+            <li key={course.slug}>
+              <SpotlightCard className="h-full rounded-3xl bg-secondary p-6">
+                {(() => {
+                  const Icon = COURSE_ICONS[course.slug]
+                  return Icon ? <IconBadge icon={Icon} /> : null
+                })()}
+                <h3 className="mt-4 text-[20px]">{course.name}</h3>
+                <p className="mt-2 text-[15px] text-[#c9c4bd]">
+                  {course.summary}
+                </p>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {course.topics.map((topic) => (
+                    <li
+                      key={topic}
+                      className="rounded-full border border-[#e4ded7]/30 px-3 py-1 text-[13px]"
+                    >
+                      {topic}
+                    </li>
+                  ))}
+                </ul>
+              </SpotlightCard>
             </li>
           ))}
         </ul>
@@ -134,15 +168,19 @@ export default function LearnPage() {
       <section className="mt-16 grid gap-6 md:grid-cols-2">
         <div className="rounded-3xl bg-secondary p-6 md:p-8">
           <h2 className="text-[22px]">How learning works</h2>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-[15px] text-[#c9c4bd]">
-            <li>In-person classes in Hisar, with online support</li>
-            <li>Hands-on projects, not just theory</li>
-            <li>Mentor support when you get stuck</li>
-            <li>
-              Job assistance: resume building, LinkedIn, mock interviews and a
-              portfolio
-            </li>
-            <li>A completion certificate</li>
+          <ul className="mt-4 space-y-3 text-[15px] text-[#c9c4bd]">
+            {[
+              'In-person classes in Hisar, with online support',
+              'Hands-on projects, not just theory',
+              'Mentor support when you get stuck',
+              'Job assistance: resume building, LinkedIn, mock interviews and a portfolio',
+              'A completion certificate',
+            ].map((item) => (
+              <li key={item} className="flex gap-3">
+                <Check size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-[#5ad19a]" />
+                {item}
+              </li>
+            ))}
           </ul>
         </div>
         <div className="rounded-3xl bg-secondary p-6 md:p-8">

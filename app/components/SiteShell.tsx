@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Aurora from './effects/Aurora'
 import { ReactNode } from 'react'
 import { locations } from '../lib/locations'
 import { services } from '../lib/services'
@@ -7,7 +8,8 @@ export default function SiteShell({ children }: { children: ReactNode }) {
   const year = new Date().getFullYear()
 
   return (
-    <div className="scroll-page min-h-screen bg-primary text-[#e4ded7]">
+    <div className="scroll-page relative isolate min-h-screen overflow-x-clip bg-primary text-[#e4ded7]">
+      <Aurora />
       <header className="mx-auto flex w-[90%] max-w-[1200px] items-center justify-between py-6">
         <Link href="/" className="text-[18px] font-bold md:text-[20px]">
           Sharukh Khan

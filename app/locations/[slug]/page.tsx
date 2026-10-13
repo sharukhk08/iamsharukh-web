@@ -1,7 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { MapPin } from 'lucide-react'
+import IconBadge from '../../components/IconBadge'
+import Magnet from '../../components/effects/Magnet'
+import RevealWords from '../../components/effects/RevealWords'
 import Reveal from '../../components/Reveal'
+import ServiceCard from '../../components/ServiceCard'
 import { LocationIllustration } from '../../components/Illustrations'
 import { BOOKING_URL, contactHref } from '../../lib/contact'
 import { JsonLd } from '../../lib/jsonLd'
@@ -106,19 +111,22 @@ export default async function LocationPage({ params }: PageProps) {
       </p>
       <div className="mt-4 grid items-center gap-10 lg:grid-cols-2">
         <div>
+          <IconBadge icon={MapPin} size={26} />
           <h1 className="mt-4 max-w-[900px] text-[36px] leading-tight md:text-[56px]">
-            {location.h1}
+            <RevealWords text={location.h1} />
           </h1>
           <p className="mt-6 max-w-[800px] text-[16px] leading-relaxed text-[#c9c4bd] md:text-[18px]">
             {location.intro}
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href={contactHref()}
-              className="rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
-            >
-              Tell me about your project
-            </Link>
+            <Magnet>
+              <Link
+                href={contactHref()}
+                className="inline-block rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+              >
+                Tell me about your project
+              </Link>
+            </Magnet>
             <a
               href={BOOKING_URL}
               target="_blank"
@@ -153,15 +161,11 @@ export default async function LocationPage({ params }: PageProps) {
         <ul className="mt-6 grid gap-6 md:grid-cols-2">
           {featured.map((service) => (
             <li key={service.slug}>
-              <Link
-                href={`/services/${service.slug}`}
-                className="flex h-full flex-col rounded-3xl bg-secondary p-6 transition hover:bg-[#23262e]"
-              >
-                <h3 className="text-[20px]">{service.title}</h3>
-                <p className="mt-2 text-[15px] text-[#95979D]">
-                  {service.tagline}
-                </p>
-              </Link>
+              <ServiceCard
+                slug={service.slug}
+                title={service.title}
+                tagline={service.tagline}
+              />
             </li>
           ))}
         </ul>

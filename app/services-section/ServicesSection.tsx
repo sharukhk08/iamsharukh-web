@@ -1,7 +1,10 @@
 import Link from 'next/link'
+import Marquee from '../components/effects/Marquee'
 import Reveal from '../components/Reveal'
+import ServiceCard from '../components/ServiceCard'
 import { locations } from '../lib/locations'
 import { services } from '../lib/services'
+import { STACK } from '../lib/stack'
 
 const ServicesSection = () => {
   return (
@@ -18,19 +21,28 @@ const ServicesSection = () => {
           Native. Choose a service to see what is included.
         </p>
 
+        <div className="mt-8">
+          <Marquee
+            items={STACK.map((tech) => (
+              <span
+                key={tech}
+                className="rounded-full border border-[#e4ded7]/25 px-4 py-2 text-[14px] text-[#c9c4bd]"
+              >
+                {tech}
+              </span>
+            ))}
+          />
+        </div>
+
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
             <li key={service.slug}>
               <Reveal delay={(index % 3) * 80} className="h-full">
-              <Link
-                href={`/services/${service.slug}`}
-                className="flex h-full flex-col rounded-3xl bg-secondary p-6 transition hover:bg-[#23262e]"
-              >
-                <h3 className="text-[20px] leading-snug">{service.title}</h3>
-                <p className="mt-2 text-[14px] text-[#95979D]">
-                  {service.tagline}
-                </p>
-              </Link>
+                <ServiceCard
+                  slug={service.slug}
+                  title={service.title}
+                  tagline={service.tagline}
+                />
               </Reveal>
             </li>
           ))}
