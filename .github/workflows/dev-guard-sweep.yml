@@ -1,0 +1,72 @@
+name: dev-guard-sweep
+
+# Daily sweep of EVERY branch (including old and forgotten ones) with the guard from the default branch,
+# so a branch that was infected before the workflow existed, or never pushed again, is still found.
+# Optional alerts (same secrets as dev-guard.yml): SLACK_WEBHOOK_URL, and for email SMTP_HOST, SMTP_PORT,
+# SMTP_USER, SMTP_PASSWORD, SMTP_FROM, ALERT_EMAIL_TO.
+# Note: scheduled workflows run only from the default branch. GitHub pauses schedules on repos with no
+# activity for 60 days (public repos) - open the Actions tab occasionally, or run it by hand.
+
+on:
+  schedule:
+    - cron: "17 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      SMTP_FROM: ${{ secrets.SMTP_FROM }}
+      ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+      - name: Scan every branch
+        id: scan
+        run: |
+          # Use the guard from the default branch, not the copy inside each branch (a branch could tamper with it).
+          cp scripts/dev-guard.mjs "$RUNNER_TEMP/guard.mjs"
+          bad=""
+          for ref in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin | grep -v -E '^origin$|^origin/HEAD$'); do
+            git checkout -q --detach "$ref" 2>/dev/null || continue
+            if ! node "$RUNNER_TEMP/guard.mjs" . > "$RUNNER_TEMP/out.txt" 2>&1; then
+              echo "::error::malware signs on branch ${ref#origin/}"; sed -n '1,12p' "$RUNNER_TEMP/out.txt"
+              bad="$bad ${ref#origin/}"
+            fi
+            git clean -fdxq
+          done
+          echo "bad=$(echo $bad | tr ' ' ',')" >> "$GITHUB_OUTPUT"
+          [ -z "$bad" ] || exit 1
+      - name: Alert (Slack and email)
+        if: failure() && steps.scan.outputs.bad != ''
+        env:
+          REPO: ${{ github.repository }}
+          BAD: ${{ steps.scan.outputs.bad }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          import json, os, smtplib, ssl, urllib.request as u
+          from email.message import EmailMessage
+          e = os.environ
+          text = "[SECURITY] malware signs found in %s on branch(es): %s\nDetails: %s\nDo not pull, merge or open these branches on a laptop. Tell the team lead." % (e["REPO"], e["BAD"], e["RUN_URL"])
+          if e.get("SLACK_WEBHOOK_URL"):
+              u.urlopen(u.Request(e["SLACK_WEBHOOK_URL"], json.dumps({"text": text}).encode(), {"Content-Type": "application/json"}), timeout=20)
+          if e.get("SMTP_HOST") and e.get("ALERT_EMAIL_TO"):
+              m = EmailMessage(); m["Subject"] = "[SECURITY] malware signs in " + e["REPO"]; m["From"] = e.get("SMTP_FROM") or e["SMTP_USER"]; m["To"] = e["ALERT_EMAIL_TO"]; m.set_content(text + "\n")
+              port = int(e.get("SMTP_PORT") or 587); ctx = ssl.create_default_context()
+              if port == 465: s = smtplib.SMTP_SSL(e["SMTP_HOST"], port, context=ctx, timeout=30)
+              else: s = smtplib.SMTP(e["SMTP_HOST"], port, timeout=30); s.starttls(context=ctx)
+              s.login(e["SMTP_USER"], e["SMTP_PASSWORD"]); s.send_message(m); s.quit()
+          PY

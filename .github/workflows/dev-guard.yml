@@ -1,0 +1,208 @@
+name: dev-guard
+
+# Blocks pushes and PRs that show signs of the PolinRider / Contagious Interview malware.
+# Jobs (all run BEFORE any dependency install, so a malicious install script never gets to run):
+#   dev-guard           full-project scan: hidden VS Code tasks, .vscode folders, infected config files,
+#                       fake fonts, .gitignore fingerprint, known-bad npm packages and versions
+#   workflow-hygiene    workflow files must not use pull_request_target or pipe downloads into a shell
+#   dependency-hygiene  no git/URL dependencies, no install scripts that download or evaluate code
+#   commit-integrity    flags rewritten history: author/committer timezone mismatch, clock rewound
+#   force-push-notice   alerts when a branch was force-pushed
+# Make "dev-guard" (and the other jobs you want) REQUIRED checks in the branch ruleset, otherwise
+# a push made with --no-verify from an infected laptop is not stopped.
+# Optional alerts: add a repository/organization secret SLACK_WEBHOOK_URL (any URL that accepts {"text": "..."}).
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+permissions:
+  contents: read
+
+jobs:
+  dev-guard:
+    runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      SMTP_FROM: ${{ secrets.SMTP_FROM }}
+      ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+      - name: Verify the guard file was not tampered with
+        env:
+          EXPECTED: ${{ vars.DEV_GUARD_SHA256 }}
+        run: |
+          actual=$(sha256sum scripts/dev-guard.mjs | cut -d' ' -f1)
+          if [ -z "$EXPECTED" ]; then
+            echo "::warning::Organization variable DEV_GUARD_SHA256 is not set, so the guard file cannot be verified. Set it to the approved SHA-256 (owners only)."
+          elif [ "$actual" != "$EXPECTED" ]; then
+            echo "::error::scripts/dev-guard.mjs ($actual) does not match the approved version. Someone changed or replaced the guard."; exit 1
+          fi
+      - name: Scan for malware signs
+        run: node scripts/dev-guard.mjs .
+      - name: Alert on failure
+        if: failure() && env.SLACK_WEBHOOK_URL != ''
+        env:
+          REPO: ${{ github.repository }}
+          REF: ${{ github.ref_name }}
+          ACTOR: ${{ github.actor }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 -c 'import json,os,urllib.request as u; e=os.environ; t="🚨 dev-guard FAILED in %s on %s (pushed by %s)\n%s" % (e["REPO"],e["REF"],e["ACTOR"],e["RUN_URL"]); u.urlopen(u.Request(e["SLACK_WEBHOOK_URL"], json.dumps({"text":t}).encode(), {"Content-Type":"application/json"}))'
+      - name: Email alert
+        if: failure() && env.SMTP_HOST != '' && env.ALERT_EMAIL_TO != ''
+        env:
+          REPO: ${{ github.repository }}
+          REF: ${{ github.ref_name }}
+          ACTOR: ${{ github.actor }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          SUBJECT: "[SECURITY] dev-guard FAILED in ${{ github.repository }} on ${{ github.ref_name }}"
+        run: |
+          python3 - <<'PY'
+          import os, smtplib, ssl
+          from email.message import EmailMessage
+          e = os.environ
+          m = EmailMessage()
+          m["Subject"] = e["SUBJECT"]
+          m["From"] = e.get("SMTP_FROM") or e["SMTP_USER"]
+          m["To"] = e["ALERT_EMAIL_TO"]
+          m.set_content(e["SUBJECT"] + "\n\nRepository: " + e["REPO"] + "\nBranch: " + e["REF"] + "\nPushed by: " + e["ACTOR"] + "\nDetails: " + e["RUN_URL"] + "\n\nDo not pull, merge or open this branch on a laptop. Tell the team lead.\n")
+          port = int(e.get("SMTP_PORT") or 587)
+          ctx = ssl.create_default_context()
+          if port == 465:
+              s = smtplib.SMTP_SSL(e["SMTP_HOST"], port, context=ctx, timeout=30)
+          else:
+              s = smtplib.SMTP(e["SMTP_HOST"], port, timeout=30); s.starttls(context=ctx)
+          s.login(e["SMTP_USER"], e["SMTP_PASSWORD"]); s.send_message(m); s.quit()
+          PY
+
+  force-push-notice:
+    if: github.event_name == 'push' && github.event.forced == true
+    runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      SMTP_FROM: ${{ secrets.SMTP_FROM }}
+      ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+    steps:
+      - name: Alert on force push
+        if: env.SLACK_WEBHOOK_URL != ''
+        env:
+          REPO: ${{ github.repository }}
+          REF: ${{ github.ref_name }}
+          ACTOR: ${{ github.actor }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.event.after }}
+        run: |
+          python3 -c 'import json,os,urllib.request as u; e=os.environ; t="🚨 FORCE PUSH on %s branch %s by %s (%s -> %s). Check it and restore from the before commit." % (e["REPO"],e["REF"],e["ACTOR"],e["BEFORE"][:7],e["AFTER"][:7]); u.urlopen(u.Request(e["SLACK_WEBHOOK_URL"], json.dumps({"text":t}).encode(), {"Content-Type":"application/json"}))'
+      - name: Email alert
+        if: true && env.SMTP_HOST != '' && env.ALERT_EMAIL_TO != ''
+        env:
+          REPO: ${{ github.repository }}
+          REF: ${{ github.ref_name }}
+          ACTOR: ${{ github.actor }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.event.after }}
+          SUBJECT: "[SECURITY] FORCE PUSH on ${{ github.repository }} branch ${{ github.ref_name }}"
+        run: |
+          python3 - <<'PY'
+          import os, smtplib, ssl
+          from email.message import EmailMessage
+          e = os.environ
+          m = EmailMessage()
+          m["Subject"] = e["SUBJECT"]
+          m["From"] = e.get("SMTP_FROM") or e["SMTP_USER"]
+          m["To"] = e["ALERT_EMAIL_TO"]
+          m.set_content(e["SUBJECT"] + "\n\nRepository: " + e["REPO"] + "\nBranch: " + e["REF"] + "\nPushed by: " + e["ACTOR"] + "\nBefore commit (restore from this): " + e["BEFORE"] + "\nAfter commit: " + e["AFTER"] + "\nDetails: " + e["RUN_URL"] + "\n\nDo not pull, merge or open this branch on a laptop. Tell the team lead.\n")
+          port = int(e.get("SMTP_PORT") or 587)
+          ctx = ssl.create_default_context()
+          if port == 465:
+              s = smtplib.SMTP_SSL(e["SMTP_HOST"], port, context=ctx, timeout=30)
+          else:
+              s = smtplib.SMTP(e["SMTP_HOST"], port, timeout=30); s.starttls(context=ctx)
+          s.login(e["SMTP_USER"], e["SMTP_PASSWORD"]); s.send_message(m); s.quit()
+          PY
+
+  workflow-hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Check workflow files
+        run: |
+          bad=0
+          if [ -d .github/workflows ]; then
+            if grep -rnE 'pull_request_target' .github/workflows; then echo "::error::pull_request_target is not allowed (it runs untrusted PR code with secrets)"; bad=1; fi
+            if grep -rnE '(curl|wget)[^|]*\|[[:space:]]*(sudo[[:space:]]+)?(ba|z)?sh' .github/workflows; then echo "::error::workflow pipes a download into a shell"; bad=1; fi
+            if grep -rnE 'uses:[[:space:]]*[^./[:space:]][^@[:space:]]*@[^0-9a-f[:space:]]' .github/workflows | grep -vE '@[0-9a-f]{40}'; then echo "::warning::some actions are not pinned to a commit SHA"; fi
+          fi
+          exit $bad
+
+  dependency-hygiene:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "22"
+      - name: Check dependencies and install scripts (no install is run)
+        run: |
+          node --input-type=module - <<'JS'
+          import { readdirSync, readFileSync } from "node:fs";
+          import { join } from "node:path";
+          const SKIP = new Set(["node_modules", ".git", ".next", "dist", "build"]);
+          const files = [];
+          (function walk(d) { for (const e of readdirSync(d, { withFileTypes: true })) {
+            if (e.isDirectory()) { if (!SKIP.has(e.name)) walk(join(d, e.name)); }
+            else if (e.name === "package.json") files.push(join(d, e.name)); } })(".");
+          let bad = 0;
+          for (const f of files) {
+            let j; try { j = JSON.parse(readFileSync(f, "utf8")); } catch { console.log("::error file=" + f + "::package.json is not valid JSON"); bad = 1; continue; }
+            for (const k of ["dependencies", "devDependencies", "optionalDependencies"])
+              for (const [n, v] of Object.entries(j[k] || {}))
+                if (/^(git\+|git:|github:|https?:|file:|ssh:)/i.test(String(v))) { console.log("::error file=" + f + "::" + n + " uses a git/URL/file source (" + v + ")"); bad = 1; }
+            for (const k of ["preinstall", "install", "postinstall", "prepare"]) {
+              const v = (j.scripts || {})[k];
+              if (typeof v === "string" && /(curl|wget|iwr|Invoke-WebRequest|powershell|node\s+-e|eval|base64|\bnc\b)/i.test(v)) { console.log("::error file=" + f + "::scripts." + k + " downloads or evaluates code: " + v.slice(0, 80)); bad = 1; }
+            }
+          }
+          process.exit(bad);
+          JS
+
+  commit-integrity:
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+      - name: Look for rewritten history
+        env:
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          # New branch pushes have an all-zero "before"; scan only the last 50 commits then.
+          if [ -z "$BASE" ] || echo "$BASE" | grep -qE '^0+$'; then RANGE="-50 $HEAD"; else RANGE="$BASE..$HEAD"; fi
+          warn=0
+          git log $RANGE --format='%H|%an|%ae|%ad|%cn|%cd|%P' --date=iso | while IFS='|' read -r sha an ae ad cn cd parents; do
+            atz=${ad##* }; ctz=${cd##* }
+            if [ "$cn" != "GitHub" ] && [ "$atz" != "$ctz" ]; then echo "::warning::commit ${sha:0:8} has author timezone $atz but committer timezone $ctz (possible rewritten commit)"; fi
+            p=${parents%% *}
+            if [ -n "$p" ]; then
+              pt=$(git show -s --format=%ct "$p" 2>/dev/null || echo 0); ct=$(git show -s --format=%ct "$sha")
+              if [ "$ct" -lt "$pt" ]; then echo "::warning::commit ${sha:0:8} is dated BEFORE its parent (system clock was rewound?)"; fi
+            fi
+          done
+          exit 0

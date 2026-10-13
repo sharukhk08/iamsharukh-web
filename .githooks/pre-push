@@ -1,0 +1,11 @@
+#!/bin/sh
+# dev-guard pre-push: scans the WHOLE project (not just changed files) before every push.
+# Blocks the push when malware signs are found. Install: sh dev-guard/hooks/install-hooks.sh
+ROOT=$(git rev-parse --show-toplevel) || exit 1
+G="$ROOT/scripts/dev-guard.mjs"
+command -v node >/dev/null 2>&1 || { echo "dev-guard: Node.js is required. Push BLOCKED."; exit 1; }
+[ -f "$G" ] || { echo "dev-guard: scripts/dev-guard.mjs is missing. Push BLOCKED."; exit 1; }
+echo "dev-guard: scanning the full project before push..."
+node "$G" "$ROOT" || { echo "Push BLOCKED by dev-guard. Fix the findings above first."; exit 1; }
+if [ -f "$ROOT/scripts/malware-guard.mjs" ]; then node "$ROOT/scripts/malware-guard.mjs" || { echo "Push BLOCKED by malware-guard."; exit 1; }; fi
+exit 0

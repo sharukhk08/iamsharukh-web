@@ -1,0 +1,27 @@
+# Copy to .github/CODEOWNERS. Replace @sharukhk08 with your real team (2 or more people, WRITE access to the repo).
+# A pull request that changes any path below cannot be merged without an approval from a code owner.
+# The owner team must have at least TWO members, so a change made BY an owner still gets a second owner's review.
+
+# The protection itself: the guard, hooks, workflows, ownership rules, rulesets, install settings.
+/.github/                       @sharukhk08
+/.github/CODEOWNERS             @sharukhk08
+/.githooks/                     @sharukhk08
+/scripts/dev-guard.mjs          @sharukhk08
+/scripts/                       @sharukhk08
+/.npmrc                         @sharukhk08
+/pnpm-workspace.yaml            @sharukhk08
+
+# Files this malware campaign targets, and anything that runs code at install, build or open time.
+/package.json                   @sharukhk08
+/package-lock.json              @sharukhk08
+/pnpm-lock.yaml                 @sharukhk08
+/yarn.lock                      @sharukhk08
+/Dockerfile                     @sharukhk08
+*.config.js                     @sharukhk08
+*.config.mjs                    @sharukhk08
+*.config.cjs                    @sharukhk08
+*.config.ts                     @sharukhk08
+/.eslintrc*                     @sharukhk08
+/.babelrc*                      @sharukhk08
+/.vscode/                       @sharukhk08
+/.gitignore                     @sharukhk08
