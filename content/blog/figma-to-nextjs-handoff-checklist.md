@@ -1,5 +1,5 @@
 ---
-title: Figma to Next.js: what to prepare before handing over your design
+title: Figma to Next.js: prepare your design for handoff
 description: A practical checklist for designers and founders so a Figma design can be built into a fast, accurate Next.js website without delays or guesswork.
 date: 2026-10-13
 ---

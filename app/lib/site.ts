@@ -7,7 +7,7 @@ export const SITE = {
   jobTitle: 'Full-Stack Developer & Software Engineer',
   title: 'Sharukh Khan | Full-Stack Developer & Software Engineer',
   description:
-    'Full-stack developer and software engineer with 7 years of experience building Next.js, React, React Native and SaaS products. Co-founder & CTO at Innovaft, working with clients worldwide and across Haryana, India.',
+    'Full-stack developer in Hisar, Haryana with 7 years of experience in Next.js, React, React Native and SaaS. Co-founder & CTO at Innovaft. Clients worldwide.',
   locale: 'en-IN',
   ogImage: {
     url: '/sharukh-image.jpeg',

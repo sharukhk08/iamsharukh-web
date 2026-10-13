@@ -11,7 +11,7 @@ import { SITE } from '../lib/site'
 export const metadata: Metadata = {
   title: 'Learn: Mentoring & Innovaft Courses in Hisar',
   description:
-    'Learn web and app development in Hisar with Innovaft: UI/UX, frontend, backend, full stack, mobile and WordPress courses, with mentoring from a developer with 7 years of experience.',
+    'Learn web and app development in Hisar with Innovaft: UI/UX, frontend, backend, full stack, mobile and WordPress, with mentoring from a 7-year developer.',
   alternates: { canonical: '/learn' },
 }
 

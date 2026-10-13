@@ -20,6 +20,13 @@ export function generateStaticParams() {
   return caseStudies.map((study) => ({ slug: study.slug }))
 }
 
+// Keep meta descriptions short enough for Google to show in full.
+const metaDescription = (text: string, max = 155) => {
+  if (text.length <= max) return text
+  const cut = text.slice(0, max).replace(/\s+\S*$/, '')
+  return `${cut}...`
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
   const study = getCaseStudy(slug)
@@ -27,13 +34,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${study.name} case study`,
-    description: study.summary,
+    description: metaDescription(study.summary),
     alternates: { canonical: `/work/${study.slug}` },
     // Pages without a confirmed challenge, solution and outcome stay out of Google.
     robots: hasFullDetails(study) ? undefined : { index: false, follow: true },
     openGraph: {
       title: `${study.name} | ${SITE.name}`,
-      description: study.summary,
+      description: metaDescription(study.summary),
       url: `${SITE.url}/work/${study.slug}`,
       type: 'article',
     },

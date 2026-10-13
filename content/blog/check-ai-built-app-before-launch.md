@@ -1,6 +1,6 @@
 ---
 title: How to check an AI-built app before you launch it
-description: A plain-language checklist for apps built with Claude Code, Lovable, Bolt or other AI tools, covering secrets, access control, data, dependencies and testing before real users arrive.
+description: A plain-language checklist for apps built with Claude Code, Lovable, Bolt or other AI tools: secrets, access, data, dependencies and testing before launch.
 date: 2026-10-13
 ---
 
