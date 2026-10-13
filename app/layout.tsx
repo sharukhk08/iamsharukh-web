@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Syne } from 'next/font/google'
 import { ReactNode } from 'react'
 import './globals.css'
@@ -33,7 +33,6 @@ export const metadata: Metadata = {
     'digital solutions',
     'Innovaft co-founder',
   ],
-  colorScheme: 'dark',
   openGraph: {
     title: 'Sharukh Khan | Frontend Engineer & Tech Entrepreneur',
     description:
@@ -72,6 +71,10 @@ export const metadata: Metadata = {
     },
   },
   category: 'technology',
+}
+
+export const viewport: Viewport = {
+  colorScheme: 'dark',
 }
 
 type RootLayoutProps = {
