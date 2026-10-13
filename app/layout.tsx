@@ -3,6 +3,8 @@ import { Syne } from 'next/font/google'
 import { ReactNode } from 'react'
 import './globals.css'
 import GoogleAnalytics from './GoogleAnalytics'
+import { JsonLd, personJsonLd, websiteJsonLd } from './lib/jsonLd'
+import { SITE } from './lib/site'
 
 const syne = Syne({
   subsets: ['latin'],
@@ -11,52 +13,48 @@ const syne = Syne({
 })
 
 export const metadata: Metadata = {
-  title: 'Sharukh Khan | Frontend Engineer & Tech Entrepreneur',
-  description:
-    'Co-founder at Innovaft, specializing in scalable web applications and high-performance digital solutions. Based in Hisar, Haryana.',
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: SITE.title,
+    template: `%s | ${SITE.name}`,
+  },
+  description: SITE.description,
   generator: 'Next.js',
-  applicationName: 'Sharukh Khan Portfolio',
+  manifest: '/site.webmanifest',
+  applicationName: SITE.siteName,
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
   keywords: [
-    'frontend engineer',
-    'tech entrepreneur',
-    'web developer',
+    'full-stack developer',
+    'software engineer',
+    'Next.js developer',
     'React developer',
-    'Next.js expert',
-    'UI/UX specialist',
-    'software architect',
-    'Indian tech entrepreneur',
-    'web application developer',
-    'startup founder',
+    'React Native developer',
+    'Figma to Next.js',
+    'SaaS dashboard development',
     'TypeScript developer',
-    'performance optimization',
-    'Haryana tech',
-    'digital solutions',
+    'web developer in Hisar',
+    'web developer in Haryana',
     'Innovaft co-founder',
   ],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Sharukh Khan | Frontend Engineer & Tech Entrepreneur',
-    description:
-      'Co-founder at Innovaft, delivering scalable web solutions and digital experiences. Based in Hisar, Haryana.',
-    url: 'https://www.iamsharukh.com',
-    siteName: 'Sharukh Khan Portfolio',
-    images: [
-      {
-        url: 'https://www.iamsharukh.com/sharukh-image.jpeg',
-        width: 1200,
-        height: 630,
-        alt: 'Sharukh Khan - Frontend Engineer & Tech Entrepreneur',
-      },
-    ],
-    locale: 'en-IN',
+    title: SITE.title,
+    description: SITE.description,
+    url: SITE.url,
+    siteName: SITE.siteName,
+    images: [SITE.ogImage],
+    locale: SITE.locale,
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sharukh Khan | Frontend Engineer & Tech Entrepreneur',
-    description:
-      'Building exceptional digital experiences and leading tech innovation at Innovaft.',
-    creator: '@sharukhk08',
-    images: ['https://www.iamsharukh.com/sharukh-image.jpeg'],
+    title: SITE.title,
+    description: SITE.description,
+    creator: SITE.twitterHandle,
+    images: [SITE.ogImage.url],
   },
   robots: {
     index: true,
@@ -95,6 +93,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={`${syne.className} scroll-smooth scrollbar-thin scrollbar-track-primary scrollbar-thumb-secondary`}
       >
+        <JsonLd data={personJsonLd} />
+        <JsonLd data={websiteJsonLd} />
         <GoogleAnalytics />
         {children}
       </body>
