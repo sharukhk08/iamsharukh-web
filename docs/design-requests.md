@@ -39,7 +39,7 @@ Include: progress indicator, error states, loading state, success state, and the
 ## 5. Location pages (step 6)
 
 One hero image per page, 1600x900: Hisar, Haryana, Hansi, Bhiwani, Rohtak. Real photos are best. Avoid stock images that look generic.
-Path: `public/locations/<slug>.webp`.
+Path: `public/locations/<slug>.webp`. Slugs: `hisar`, `hansi`, `bhiwani`, `rohtak`, `haryana`. The code has no image field for locations yet; ask the developer to wire it in when the files exist.
 
 ## 6. Learn / mentoring page (step 7)
 
