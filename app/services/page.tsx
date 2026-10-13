@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Reveal from '../components/Reveal'
 import { JsonLd } from '../lib/jsonLd'
 import { services } from '../lib/services'
 import { SITE } from '../lib/site'
@@ -38,8 +39,9 @@ export default function ServicesPage() {
       </p>
 
       <ul className="mt-12 grid gap-6 md:grid-cols-2">
-        {services.map((service) => (
+        {services.map((service, index) => (
           <li key={service.slug}>
+            <Reveal delay={(index % 2) * 80}>
             <Link
               href={`/services/${service.slug}`}
               className="flex h-full flex-col rounded-3xl bg-secondary p-6 transition hover:bg-[#23262e] md:p-8"
@@ -52,6 +54,7 @@ export default function ServicesPage() {
                 Learn more
               </span>
             </Link>
+            </Reveal>
           </li>
         ))}
       </ul>

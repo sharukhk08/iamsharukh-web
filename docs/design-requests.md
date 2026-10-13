@@ -1,6 +1,8 @@
 # Design requests (for the designer)
 
-Everything here is currently a **placeholder**: the pages work without these assets, and nothing broken or empty shows on the site. When a file is ready, put it in the path shown and tell the developer (or fill in the `image` field / path noted below). Last updated: 2026-10-13.
+Status update: service, location and learn pages now show animated **SVG illustrations** (code in `app/components/Illustrations.tsx`). They are placeholders: a designer can replace any of them. For the `image` field on a service in `app/lib/services.ts`, a real image takes priority over the illustration. See `docs/image-prompts.md` for prompts to generate richer images with an AI image tool.
+
+Everything below is currently a **placeholder**: the pages work without these assets, and nothing broken or empty shows on the site. When a file is ready, put it in the path shown and tell the developer (or fill in the `image` field / path noted below). Last updated: 2026-10-13.
 
 General: dark theme (background `#08090d`, cards `#1b1d23`, text `#e4ded7`, muted `#95979D`). Export images as **WebP** (JPEG for photos), under 300 KB each. Provide **2x** versions for small images. Include readable alt-text ideas where useful.
 

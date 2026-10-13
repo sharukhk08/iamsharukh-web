@@ -26,6 +26,9 @@ export default function SiteShell({ children }: { children: ReactNode }) {
           <Link href="/learn" className="hidden hover:underline sm:inline">
             Learn
           </Link>
+          <Link href="/blog" className="hidden hover:underline md:inline">
+            Blog
+          </Link>
           <a
             href={BOOKING_URL}
             target="_blank"
@@ -62,6 +65,14 @@ export default function SiteShell({ children }: { children: ReactNode }) {
               ))}
             </ul>
             <ul className="space-y-2 text-[14px]">
+              <li>
+                <Link
+                  href="/blog"
+                  className="text-[#95979D] hover:text-[#e4ded7] hover:underline"
+                >
+                  Blog
+                </Link>
+              </li>
               <li>
                 <Link
                   href="/learn"

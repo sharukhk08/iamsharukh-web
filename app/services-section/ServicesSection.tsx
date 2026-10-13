@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Reveal from '../components/Reveal'
 import { locations } from '../lib/locations'
 import { services } from '../lib/services'
 
@@ -18,8 +19,9 @@ const ServicesSection = () => {
         </p>
 
         <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <li key={service.slug}>
+              <Reveal delay={(index % 3) * 80} className="h-full">
               <Link
                 href={`/services/${service.slug}`}
                 className="flex h-full flex-col rounded-3xl bg-secondary p-6 transition hover:bg-[#23262e]"
@@ -29,6 +31,7 @@ const ServicesSection = () => {
                   {service.tagline}
                 </p>
               </Link>
+              </Reveal>
             </li>
           ))}
         </ul>

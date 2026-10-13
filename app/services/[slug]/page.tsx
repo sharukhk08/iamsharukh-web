@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import Reveal from '../../components/Reveal'
+import { ServiceIllustration } from '../../components/Illustrations'
 import { BOOKING_URL, contactHref } from '../../lib/contact'
 import { JsonLd } from '../../lib/jsonLd'
 import { getService, services } from '../../lib/services'
@@ -83,44 +85,50 @@ export default async function ServicePage({ params }: PageProps) {
         </Link>{' '}
         / {service.title}
       </p>
-      <h1 className="mt-4 max-w-[900px] text-[36px] leading-tight md:text-[56px]">
-        {service.title}
-      </h1>
-      <p className="mt-4 max-w-[720px] text-[18px] md:text-[22px]">
-        {service.tagline}
-      </p>
-      <div className="mt-8 flex flex-wrap gap-4">
-        <Link
-          href={contactHref(service.slug)}
-          className="rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
-        >
-          Tell me about your project
-        </Link>
-        <a
-          href={BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full border border-[#e4ded7]/40 px-6 py-3 font-semibold"
-        >
-          Book a free 30-minute call
-        </a>
+      <div className="mt-4 grid items-center gap-10 lg:grid-cols-2">
+        <div>
+          <h1 className="text-[36px] leading-tight md:text-[52px]">
+            {service.title}
+          </h1>
+          <p className="mt-4 text-[18px] md:text-[22px]">{service.tagline}</p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link
+              href={contactHref(service.slug)}
+              className="rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+            >
+              Tell me about your project
+            </Link>
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-[#e4ded7]/40 px-6 py-3 font-semibold"
+            >
+              Book a free 30-minute call
+            </a>
+          </div>
+        </div>
+        <div>
+          {service.image ? (
+            <Image
+              src={service.image}
+              alt={`${service.title} illustration`}
+              width={1200}
+              height={675}
+              className="w-full rounded-3xl"
+              priority
+            />
+          ) : (
+            <ServiceIllustration slug={service.slug} />
+          )}
+        </div>
       </div>
-
-      {service.image && (
-        <Image
-          src={service.image}
-          alt={`${service.title} illustration`}
-          width={1200}
-          height={675}
-          className="mt-12 w-full rounded-3xl"
-          priority
-        />
-      )}
 
       <p className="mt-14 max-w-[820px] text-[16px] leading-relaxed text-[#c9c4bd] md:text-[18px]">
         {service.summary}
       </p>
 
+      <Reveal>
       <section className="mt-14 grid gap-10 md:grid-cols-2">
         <div className="rounded-3xl bg-secondary p-6 md:p-8">
           <h2 className="text-[22px]">Who this is for</h2>
@@ -139,7 +147,9 @@ export default async function ServicePage({ params }: PageProps) {
           </ul>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="mt-14">
         <h2 className="text-[26px] md:text-[32px]">How it works</h2>
         <ol className="mt-6 grid gap-6 md:grid-cols-4">
@@ -152,7 +162,9 @@ export default async function ServicePage({ params }: PageProps) {
           ))}
         </ol>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="mt-14">
         <h2 className="text-[26px] md:text-[32px]">Tech stack</h2>
         <ul className="mt-4 flex flex-wrap gap-3">
@@ -166,7 +178,9 @@ export default async function ServicePage({ params }: PageProps) {
           ))}
         </ul>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="mt-14">
         <h2 className="text-[26px] md:text-[32px]">Questions</h2>
         <dl className="mt-6 space-y-6">
@@ -180,7 +194,9 @@ export default async function ServicePage({ params }: PageProps) {
           ))}
         </dl>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="mt-16 rounded-3xl bg-secondary p-8 md:p-12">
         <h2 className="text-[26px] md:text-[32px]">
           Ready to talk about your project?
@@ -196,7 +212,9 @@ export default async function ServicePage({ params }: PageProps) {
           Send an enquiry
         </Link>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="mt-16">
         <h2 className="text-[22px]">Other services</h2>
         <ul className="mt-4 flex flex-wrap gap-3">
@@ -212,6 +230,7 @@ export default async function ServicePage({ params }: PageProps) {
           ))}
         </ul>
       </section>
+      </Reveal>
     </main>
   )
 }

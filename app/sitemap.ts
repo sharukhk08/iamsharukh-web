@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next'
+import { getPosts } from './lib/blog'
 import { locations } from './lib/locations'
 import { services } from './lib/services'
 import { SITE_URL } from './lib/site'
@@ -25,6 +26,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    {
+      url: `${SITE_URL}/blog`,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+    ...getPosts().map((post) => ({
+      url: `${SITE_URL}/blog/${post.slug}`,
+      lastModified: post.date,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    })),
     ...locations.map((location) => ({
       url: `${SITE_URL}/locations/${location.slug}`,
       changeFrequency: 'monthly' as const,

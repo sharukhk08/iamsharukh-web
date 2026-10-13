@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Reveal from '../components/Reveal'
+import { LearnIllustration } from '../components/Illustrations'
 import { contactHref } from '../lib/contact'
 import { WHATSAPP_URL, courses } from '../lib/courses'
 import { JsonLd } from '../lib/jsonLd'
@@ -65,33 +67,41 @@ export default function LearnPage() {
     <main className="mx-auto w-[90%] max-w-[1200px] pt-10 md:pt-16">
       <JsonLd data={jsonLd} />
 
-      <h1 className="max-w-[900px] text-[36px] leading-tight md:text-[56px]">
-        Learn web and app development with real mentoring
-      </h1>
-      <p className="mt-6 max-w-[780px] text-[16px] leading-relaxed text-[#c9c4bd] md:text-[18px]">
-        I am a full-stack developer with 7 years of experience, and I handle
-        the classes and mentoring at Innovaft in Hisar. I have trained 50+
-        students, and 10 of them have been placed in jobs. Whether you are
-        starting from zero or changing direction, the goal is a clear path and
-        real projects you can show.
-      </p>
-      <div className="mt-8 flex flex-wrap gap-4">
-        <Link
-          href={contactHref('learning')}
-          className="rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
-        >
-          Ask about a course
-        </Link>
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full border border-[#e4ded7]/40 px-6 py-3 font-semibold"
-        >
-          Message on WhatsApp
-        </a>
+      <div className="mt-4 grid items-center gap-10 lg:grid-cols-2">
+        <div>
+          <h1 className="max-w-[900px] text-[36px] leading-tight md:text-[56px]">
+            Learn web and app development with real mentoring
+          </h1>
+          <p className="mt-6 max-w-[780px] text-[16px] leading-relaxed text-[#c9c4bd] md:text-[18px]">
+            I am a full-stack developer with 7 years of experience, and I handle
+            the classes and mentoring at Innovaft in Hisar. I have trained 50+
+            students, and 10 of them have been placed in jobs. Whether you are
+            starting from zero or changing direction, the goal is a clear path and
+            real projects you can show.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link
+              href={contactHref('learning')}
+              className="rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+            >
+              Ask about a course
+            </Link>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-[#e4ded7]/40 px-6 py-3 font-semibold"
+            >
+              Message on WhatsApp
+            </a>
+          </div>
+        </div>
+        <div>
+          <LearnIllustration />
+        </div>
       </div>
 
+      <Reveal>
       <section className="mt-16">
         <h2 className="text-[26px] md:text-[32px]">Courses</h2>
         <ul className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -118,7 +128,9 @@ export default function LearnPage() {
           Ask for the current syllabus, schedule and fees for each course.
         </p>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="mt-16 grid gap-6 md:grid-cols-2">
         <div className="rounded-3xl bg-secondary p-6 md:p-8">
           <h2 className="text-[22px]">How learning works</h2>
@@ -144,7 +156,9 @@ export default function LearnPage() {
           </p>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="mt-16">
         <h2 className="text-[26px] md:text-[32px]">Questions</h2>
         <dl className="mt-6 space-y-6">
@@ -158,7 +172,9 @@ export default function LearnPage() {
           ))}
         </dl>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="mt-16 rounded-3xl bg-secondary p-8 md:p-12">
         <h2 className="text-[26px] md:text-[32px]">Visit or get in touch</h2>
         <p className="mt-3 text-[16px] text-[#c9c4bd]">
@@ -182,6 +198,7 @@ export default function LearnPage() {
           </a>
         </div>
       </section>
+      </Reveal>
     </main>
   )
 }

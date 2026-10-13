@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import Reveal from '../../components/Reveal'
+import { LocationIllustration } from '../../components/Illustrations'
 import { BOOKING_URL, contactHref } from '../../lib/contact'
 import { JsonLd } from '../../lib/jsonLd'
 import {
@@ -102,29 +104,37 @@ export default async function LocationPage({ params }: PageProps) {
         </Link>{' '}
         / {location.name}
       </p>
-      <h1 className="mt-4 max-w-[900px] text-[36px] leading-tight md:text-[56px]">
-        {location.h1}
-      </h1>
-      <p className="mt-6 max-w-[800px] text-[16px] leading-relaxed text-[#c9c4bd] md:text-[18px]">
-        {location.intro}
-      </p>
-      <div className="mt-8 flex flex-wrap gap-4">
-        <Link
-          href={contactHref()}
-          className="rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
-        >
-          Tell me about your project
-        </Link>
-        <a
-          href={BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-full border border-[#e4ded7]/40 px-6 py-3 font-semibold"
-        >
-          Book a free 30-minute call
-        </a>
+      <div className="mt-4 grid items-center gap-10 lg:grid-cols-2">
+        <div>
+          <h1 className="mt-4 max-w-[900px] text-[36px] leading-tight md:text-[56px]">
+            {location.h1}
+          </h1>
+          <p className="mt-6 max-w-[800px] text-[16px] leading-relaxed text-[#c9c4bd] md:text-[18px]">
+            {location.intro}
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link
+              href={contactHref()}
+              className="rounded-full bg-[#e4ded7] px-6 py-3 font-semibold text-primary"
+            >
+              Tell me about your project
+            </Link>
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-[#e4ded7]/40 px-6 py-3 font-semibold"
+            >
+              Book a free 30-minute call
+            </a>
+          </div>
+        </div>
+        <div>
+          <LocationIllustration />
+        </div>
       </div>
 
+      <Reveal>
       <section className="mt-14">
         <h2 className="text-[26px] md:text-[32px]">
           Working with clients in {location.name}
@@ -135,7 +145,9 @@ export default async function LocationPage({ params }: PageProps) {
           ))}
         </div>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="mt-14">
         <h2 className="text-[26px] md:text-[32px]">What I can build for you</h2>
         <ul className="mt-6 grid gap-6 md:grid-cols-2">
@@ -159,6 +171,7 @@ export default async function LocationPage({ params }: PageProps) {
           </Link>
         </p>
       </section>
+      </Reveal>
 
       {location.slug === 'hisar' && (
         <section className="mt-14 rounded-3xl bg-secondary p-6 md:p-8">
@@ -172,6 +185,7 @@ export default async function LocationPage({ params }: PageProps) {
         </section>
       )}
 
+      <Reveal>
       <section className="mt-14">
         <h2 className="text-[26px] md:text-[32px]">Questions</h2>
         <dl className="mt-6 space-y-6">
@@ -185,7 +199,9 @@ export default async function LocationPage({ params }: PageProps) {
           ))}
         </dl>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="mt-16 rounded-3xl bg-secondary p-8 md:p-12">
         <h2 className="text-[26px] md:text-[32px]">
           Ready to talk about your project?
@@ -200,7 +216,9 @@ export default async function LocationPage({ params }: PageProps) {
           Send an enquiry
         </Link>
       </section>
+      </Reveal>
 
+      <Reveal>
       <section className="mt-16">
         <h2 className="text-[22px]">Other locations</h2>
         <ul className="mt-4 flex flex-wrap gap-3">
@@ -216,6 +234,7 @@ export default async function LocationPage({ params }: PageProps) {
           ))}
         </ul>
       </section>
+      </Reveal>
     </main>
   )
 }

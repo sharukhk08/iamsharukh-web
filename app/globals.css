@@ -42,3 +42,132 @@ body {
 body:has(.scroll-page) {
   overflow-y: auto;
 }
+
+/* Scroll reveal: content is visible by default; the Reveal component hides
+   below-the-fold items after load and fades them in when they scroll into view. */
+.reveal {
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* Illustration animations */
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes blink-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes grow-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 400;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+@keyframes scan-y {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(150px);
+  }
+}
+.anim-float {
+  animation: float-y 6s ease-in-out infinite;
+}
+.anim-float-b {
+  animation: float-y 7s ease-in-out -3s infinite;
+}
+.anim-blink {
+  animation: blink-soft 2.4s ease-in-out infinite;
+}
+.anim-grow-x {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: grow-x 1.2s ease-out both;
+}
+.anim-grow-y {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: grow-y 1s ease-out both;
+}
+.anim-draw {
+  stroke-dasharray: 400;
+  animation: draw-line 2.2s ease-out both;
+}
+.anim-pulse-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse-ring 2.6s ease-out infinite;
+}
+.anim-scan {
+  animation: scan-y 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+  }
+  .reveal-hidden {
+    opacity: 1;
+    transform: none;
+  }
+  .anim-float,
+  .anim-float-b,
+  .anim-blink,
+  .anim-grow-x,
+  .anim-grow-y,
+  .anim-draw,
+  .anim-pulse-ring,
+  .anim-scan {
+    animation: none;
+  }
+}
