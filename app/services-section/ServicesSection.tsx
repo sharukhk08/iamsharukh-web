@@ -3,6 +3,7 @@ import Marquee from '../components/effects/Marquee'
 import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
 import ServiceCard from '../components/ServiceCard'
+import ServiceCtaCard from '../components/ServiceCtaCard'
 import { services } from '../lib/services'
 import { STACK } from '../lib/stack'
 
@@ -43,6 +44,11 @@ const ServicesSection = () => {
               </Reveal>
             </li>
           ))}
+          <li>
+            <Reveal delay={(services.length % 3) * 80} className="h-full">
+              <ServiceCtaCard />
+            </Reveal>
+          </li>
         </ul>
 
         <p className="mt-8 text-center text-[14px] font-semibold uppercase text-[#c9c4bd]">

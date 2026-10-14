@@ -116,6 +116,14 @@ export default function SiteShell({ children }: { children: ReactNode }) {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href="/international"
+                  className="text-[#95979D] hover:text-[#e4ded7] hover:underline"
+                >
+                  International clients
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

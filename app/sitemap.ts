@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...locations.map((location) => page(`/locations/${location.slug}`)),
     page('/blog'),
     ...getPosts().map((post) => page(`/blog/${post.slug}`, post.date)),
+    page('/international'),
     page('/about'),
     page('/contact'),
     page('/links'),
