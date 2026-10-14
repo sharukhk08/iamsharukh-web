@@ -32,8 +32,335 @@
 html,
 body {
   overscroll-behavior: none;
+  background-color: #08090d;
 }
 
 body {
   overflow-y: hidden;
+}
+
+/* Content pages have no preloader to unlock scrolling, so they opt in with .scroll-page */
+body:has(.scroll-page) {
+  overflow-y: auto;
+}
+
+/* Scroll reveal: content is visible by default; the Reveal component hides
+   below-the-fold items after load and fades them in when they scroll into view. */
+.reveal {
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* Illustration animations */
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes blink-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+@keyframes grow-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes grow-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 400;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+@keyframes scan-y {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(150px);
+  }
+}
+.anim-float {
+  animation: float-y 6s ease-in-out infinite;
+}
+.anim-float-b {
+  animation: float-y 7s ease-in-out -3s infinite;
+}
+.anim-blink {
+  animation: blink-soft 2.4s ease-in-out infinite;
+}
+.anim-grow-x {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: grow-x 1.2s ease-out both;
+}
+.anim-grow-y {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: grow-y 1s ease-out both;
+}
+.anim-draw {
+  stroke-dasharray: 400;
+  animation: draw-line 2.2s ease-out both;
+}
+.anim-pulse-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse-ring 2.6s ease-out infinite;
+}
+.anim-scan {
+  animation: scan-y 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+  }
+  .reveal-hidden {
+    opacity: 1;
+    transform: none;
+  }
+  .anim-float,
+  .anim-float-b,
+  .anim-blink,
+  .anim-grow-x,
+  .anim-grow-y,
+  .anim-draw,
+  .anim-pulse-ring,
+  .anim-scan {
+    animation: none;
+  }
+}
+
+/* ---- Effects: spotlight, tilt, magnet, marquee, aurora, word reveal ---- */
+.spotlight {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    380px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(228, 222, 215, 0.14),
+    transparent 70%
+  );
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+
+.tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease;
+  will-change: transform;
+}
+
+.marquee {
+  display: flex;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+.marquee-track {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.75rem;
+  padding-right: 0.75rem;
+  animation: marquee 32s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.aurora {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora span {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.22;
+  animation: aurora-drift 18s ease-in-out infinite alternate;
+}
+.aurora span:nth-child(1) {
+  width: 420px;
+  height: 420px;
+  top: -140px;
+  left: 8%;
+  background: #e4ded7;
+  opacity: 0.1;
+}
+.aurora span:nth-child(2) {
+  width: 360px;
+  height: 360px;
+  top: 40px;
+  right: 6%;
+  background: #95979d;
+  opacity: 0.1;
+  animation-delay: -6s;
+}
+@keyframes aurora-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(40px, 30px, 0) scale(1.15);
+  }
+}
+
+@keyframes word-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5em);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+.word-in {
+  display: inline-block;
+  animation: word-in 0.7s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .aurora span,
+  .word-in {
+    animation: none;
+  }
+  .tilt {
+    transition: none;
+  }
+}
+
+/* Shimmering text */
+.shiny-text {
+  background: linear-gradient(110deg, #95979d 35%, #ffffff 50%, #95979d 65%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 3.2s linear infinite;
+}
+@keyframes shine {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shiny-text {
+    animation: none;
+    background: none;
+    color: #c9c4bd;
+  }
+}
+
+
+/* ---- Content pages: follow the home page's type scale and look ---- */
+.site-page h1,
+.site-page h2[class*='md:text-[32px]'] {
+  font-family: var(--font-mona), sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: -0.005em;
+  color: #e4ded7;
+}
+/* One scale for every page title, so none is oversized. */
+.site-page h1 {
+  font-size: clamp(42px, 7vw, 88px);
+}
+.site-page h2[class*='md:text-[32px]'] {
+  font-size: clamp(30px, 4.2vw, 52px);
+}
+/* Long titles (blog posts, location pages) use a smaller step of the scale. */
+.site-page h1.h1-compact {
+  font-size: clamp(34px, 5vw, 60px);
+}
+.site-page .page-hero {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 680px;
+  z-index: -20;
+  opacity: 0.7;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent);
+  mask-image: linear-gradient(to bottom, #000 30%, transparent);
+}
+.site-page .page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/hero.webp') center / cover no-repeat;
+}
+.site-page .page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #08090d;
+  mix-blend-mode: color;
 }

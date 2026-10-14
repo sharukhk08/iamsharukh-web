@@ -25,6 +25,10 @@ const SongCard = ({ title, artist, image, initials, link }: SongProps) => {
               fill
               className="rounded-xl object-cover transition-transform duration-300 group-hover:scale-110"
               sizes="(max-width: 768px) 195px, (max-width: 1024px) 250px, 270px"
+              // Spotify covers are loaded by the browser directly. Going through Next's
+              // optimizer logs a server error for every cover Spotify has removed;
+              // the onError fallback below already handles those.
+              unoptimized
               onError={() => setImageError(true)}
             />
           </div>

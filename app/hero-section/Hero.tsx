@@ -13,7 +13,7 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
   return (
     <motion.section
-      className="relative z-10 flex h-[85vh] w-full items-stretch justify-center bg-[url('.//../public/hero.jpg')] bg-cover  bg-center py-0 sm:h-[90vh]  md:h-[100vh] 3xl:h-[85vh]"
+      className="relative z-10 flex h-[85vh] w-full items-stretch justify-center bg-[url('/hero.webp')] bg-cover  bg-center py-0 sm:h-[90vh]  md:h-[100vh] 3xl:h-[85vh]"
       id="home"
       initial="initial"
       animate="animate"
@@ -98,6 +98,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
             <Image
               src={profile}
               priority
+              sizes="(min-width: 1024px) 245px, (min-width: 768px) 200px, 150px"
               alt="Sharukh Khan"
               data-blobity-tooltip="I AM SRK"
               data-blobity-invert="false"
@@ -113,7 +114,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
           variants={bodyAnimation}
         >
           <p className="z-50 text-center text-[16px] font-medium text-[#e4ded7] md:text-[20px] lg:text-left">
-            Frontend Engineer and Tech Entrepreneur, Co-founder at{' '}
+            Full-Stack Developer & Software Engineer, Co-founder & CTO at{' '}
             <Link
               href="https://www.innovaft.com"
               target="_blank"
@@ -122,7 +123,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
             >
               Innovaft
             </Link>
-            , crafting exceptional digital experiences.
+            , building web and mobile products with Next.js, React and React Native.
           </p>
         </motion.div>
 
@@ -131,8 +132,8 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
           variants={bodyAnimation}
         >
           <p className="text-right text-[16px] font-semibold text-[#e4ded7] md:text-[20px]">
-            Transforming ideas into seamless interfaces, working remotely from
-            Hisar, Haryana.
+            Websites, web apps and mobile apps for clients across Haryana and
+            around the world, working from Hisar.
           </p>
         </motion.div>
       </div>

@@ -54,13 +54,12 @@ const Contact: React.FC<ContactProps> = ({ onContactClick }) => {
             </div>
             <div className="mt-5 flex w-[298px] items-center gap-1 md:w-[335px] md:gap-2.5">
               <Link
-                href="mailto:iamsharukh08@gmail.com"
-                target="_blank"
-                aria-label="Send me an email"
+                href="/contact"
+                aria-label="Send me a message"
                 className="mt-1 w-[147px] flex-1 underline underline-offset-2 hover:no-underline sm:mt-2 sm:w-[170px] md:mt-3 lg:mt-4"
               >
                 <AnimatedBody
-                  text="Send me an email"
+                  text="Send me a message"
                   className="w-[190px] pr-[40px] md:w-[170px] md:pr-0"
                 />
               </Link>

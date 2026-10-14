@@ -1,63 +1,61 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Syne } from 'next/font/google'
 import { ReactNode } from 'react'
 import './globals.css'
 import GoogleAnalytics from './GoogleAnalytics'
+import AnalyticsEvents from './components/AnalyticsEvents'
+import { JsonLd, organizationJsonLd, personJsonLd, websiteJsonLd } from './lib/jsonLd'
+import { SITE } from './lib/site'
 
 const syne = Syne({
   subsets: ['latin'],
-  display: 'block',
+  display: 'swap',
   weight: ['400', '500', '600', '700', '800'],
 })
 
 export const metadata: Metadata = {
-  title: 'Sharukh Khan | Frontend Engineer & Tech Entrepreneur',
-  description:
-    'Co-founder at Innovaft, specializing in scalable web applications and high-performance digital solutions. Based in Hisar, Haryana.',
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: SITE.title,
+    template: `%s | ${SITE.name}`,
+  },
+  description: SITE.description,
   generator: 'Next.js',
-  applicationName: 'Sharukh Khan Portfolio',
+  manifest: '/site.webmanifest',
+  applicationName: SITE.siteName,
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
   keywords: [
-    'frontend engineer',
-    'tech entrepreneur',
-    'web developer',
+    'full-stack developer',
+    'software engineer',
+    'Next.js developer',
     'React developer',
-    'Next.js expert',
-    'UI/UX specialist',
-    'software architect',
-    'Indian tech entrepreneur',
-    'web application developer',
-    'startup founder',
+    'React Native developer',
+    'Figma to Next.js',
+    'AI automation',
+    'n8n developer',
+    'SaaS dashboard development',
     'TypeScript developer',
-    'performance optimization',
-    'Haryana tech',
-    'digital solutions',
+    'web developer in Hisar',
+    'web developer in Haryana',
     'Innovaft co-founder',
   ],
-  colorScheme: 'dark',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'Sharukh Khan | Frontend Engineer & Tech Entrepreneur',
-    description:
-      'Co-founder at Innovaft, delivering scalable web solutions and digital experiences. Based in Hisar, Haryana.',
-    url: 'https://www.iamsharukh.com',
-    siteName: 'Sharukh Khan Portfolio',
-    images: [
-      {
-        url: 'https://www.iamsharukh.com/sharukh-image.jpeg',
-        width: 1200,
-        height: 630,
-        alt: 'Sharukh Khan - Frontend Engineer & Tech Entrepreneur',
-      },
-    ],
-    locale: 'en-IN',
+    title: SITE.title,
+    description: SITE.description,
+    url: SITE.url,
+    siteName: SITE.siteName,
+    locale: SITE.locale,
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sharukh Khan | Frontend Engineer & Tech Entrepreneur',
-    description:
-      'Building exceptional digital experiences and leading tech innovation at Innovaft.',
-    creator: '@sharukhk08',
-    images: ['https://www.iamsharukh.com/sharukh-image.jpeg'],
+    title: SITE.title,
+    description: SITE.description,
+    creator: SITE.twitterHandle,
   },
   robots: {
     index: true,
@@ -72,6 +70,15 @@ export const metadata: Metadata = {
     },
   },
   category: 'technology',
+  // Set GOOGLE_SITE_VERIFICATION in the host's environment to verify the site in Google
+  // Search Console without editing code. Skipped when not set.
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
+}
+
+export const viewport: Viewport = {
+  colorScheme: 'dark',
 }
 
 type RootLayoutProps = {
@@ -81,18 +88,14 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin=""
-        />
-      </head>
       <body
         className={`${syne.className} scroll-smooth scrollbar-thin scrollbar-track-primary scrollbar-thumb-secondary`}
       >
+        <JsonLd data={personJsonLd} />
+        <JsonLd data={websiteJsonLd} />
+        <JsonLd data={organizationJsonLd} />
         <GoogleAnalytics />
+        <AnalyticsEvents />
         {children}
       </body>
     </html>
