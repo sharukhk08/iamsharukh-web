@@ -6,6 +6,7 @@ import PageBackdrop from '../components/PageBackdrop'
 import RevealWords from '../components/effects/RevealWords'
 import Reveal from '../components/Reveal'
 import ServiceCard from '../components/ServiceCard'
+import ServiceCtaCard from '../components/ServiceCtaCard'
 import { JsonLd, itemListJsonLd } from '../lib/jsonLd'
 import { services } from '../lib/services'
 import { SITE } from '../lib/site'
@@ -84,6 +85,11 @@ export default function ServicesPage() {
             </Reveal>
           </li>
         ))}
+        <li>
+          <Reveal delay={(services.length % 2) * 80} className="h-full">
+            <ServiceCtaCard as="h2" />
+          </Reveal>
+        </li>
       </ul>
     </main>
   )
