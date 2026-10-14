@@ -68,6 +68,7 @@ export const sendEnquiry = async (raw: EnquiryData): Promise<void> => {
   // The admin notification is the one that matters: if it fails, show an error.
   await emailjs.send(serviceId, process.env.NEXT_PUBLIC_EMAILJS_ADMIN_TEMPLATE_ID!, {
     subject: buildSubject(data),
+    audience: data.audience === "student" ? "Student" : "Client",
     from_name: data.name,
     from_email: data.email,
     phone: data.phone,

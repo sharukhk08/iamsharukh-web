@@ -16,7 +16,7 @@ Both templates work for clients and students. The type (Client or Student) is in
 3. Settings tab, Reply To: `{{from_email}}`, so replying goes to the person who enquired.
 4. To Email: `{{to_email}}`.
 
-Variables the site sends to the admin template: `subject`, `from_name`, `from_email`, `phone`, `country`, `work_type`, `timeline`, `source`, `contact_method`, `message`, `to_email`.
+Variables the site sends to the admin template: `subject`, `audience`, `from_name`, `from_email`, `phone`, `country`, `work_type`, `timeline`, `source`, `contact_method`, `message`, `to_email`.
 `message` already contains the details, timing and contact method in readable blocks, so no extra rows are required.
 
 Variable sent to the auto-reply: `to_email` only. In the User template set To Email to `{{to_email}}`.

@@ -6,7 +6,7 @@
     <title>{{subject}}</title>
 </head>
 <body style="font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 0; background-color: #f4f4f4;">
-    <div style="max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <div style="font-family: Arial, Helvetica, sans-serif; max-width: 600px; margin: 20px auto; background: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
         <div style="background: #0E1016; color: #e4ded7; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
             <h1 style="margin: 0; font-size: 22px;">New enquiry</h1>
             <p style="margin: 6px 0 0; font-size: 14px;">{{subject}}</p>
@@ -27,8 +27,20 @@
             <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
                 <strong style="color: #333;">Interested in</strong><br>{{work_type}}
             </div>
+            <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                <strong style="color: #333;">Type (Client or Student)</strong><br>{{audience}}
+            </div>
+            <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                <strong style="color: #333;">Timeline</strong><br>{{timeline}}
+            </div>
+            <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                <strong style="color: #333;">Preferred contact</strong><br>{{contact_method}}
+            </div>
+            <div style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
+                <strong style="color: #333;">Found me via</strong><br>{{source}}
+            </div>
             <div style="background: #f9f9f9; padding: 15px; border-radius: 4px; margin-top: 20px;">
-                <strong style="color: #333;">Full enquiry</strong>
+                <strong style="color: #333;">Full enquiry (all answers)</strong>
                 <p style="white-space: pre-wrap; margin: 8px 0 0;">{{message}}</p>
             </div>
         </div>
