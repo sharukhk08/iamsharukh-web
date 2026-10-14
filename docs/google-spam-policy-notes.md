@@ -38,3 +38,22 @@ Other policies worth remembering: no keyword stuffing, no hidden text, no fake r
 - **Hansi, Bhiwani, Rohtak** are kept short and honest. Do not clone them for more towns.
 - **Delhi, Rajasthan, Punjab** learn or service pages: only add one if there is a real reason for that audience, for example an online batch, a partner centre, or a project done there. Until then, one page about online learning that mentions these regions in a sentence is safer than three near-identical pages.
 - Before adding any city or state page, write down the one thing that makes it different. If you cannot, do not add it.
+
+## Questions that came up, in plain words
+
+**Can we reword each city page so they look different?** No. Rewording the same idea is what the policy calls out: the page lists "automated transformations like synonymizing" under scaled content abuse. Google judges whether a page helps a visitor, not whether the words differ. Five pages with one idea are still one page.
+
+**Checked 2026-10-14 against the live policy page.** Doorway abuse includes "multiple domain names or pages targeted at specific regions or cities that funnel users to one page" and "substantially similar pages that are closer to search results than a clearly defined, browseable hierarchy". Scaled content abuse includes using generative AI "to generate many pages without adding value for users", and it applies "no matter how it's created".
+
+**What happens if Google decides pages are spam.** Either an automatic demotion (traffic quietly drops) or a manual action (a message in Search Console). Thin pages can be dropped from results, and the effect can spread to the whole site, including the good pages. Recovery means fixing or removing the pages, and for a manual action sending a reconsideration request and waiting weeks. Set up Search Console, because that is where a warning would appear.
+
+**The honest way to reach more places.**
+- One strong page per real place; Haryana covers the rest.
+- Each local page needs facts that are true only for that place: a real client or project (with permission), a real meeting point or travel route, questions people there actually ask.
+- Shared pages that help everyone (price guide, how to choose a developer, case studies) beat several thin city pages.
+- If a place has nothing real yet, point it to the Haryana page or keep it `noindex`.
+- Reach people without more pages: Google Business Profile, real reviews, local directories, LinkedIn and Instagram posts that name the cities, blog posts with real stories.
+
+**Why the student page exists.** The owner confirmed that students come to Hisar from Rajasthan, Hansi, Rohtak and nearby villages, and want practical skills next to a degree. That is a real audience with real questions, so `/learn/skills-alongside-college` was written for them. It makes no job or income promises. Still needed from the owner: which places students come from, how to get to and stay in Hisar, whether any classes are online, and one student willing to be named.
+
+**Page status (2026-10-14).** Fine: services, blog, About, Links, Privacy, Learn, Hisar, Haryana, share previews, schema, sitemap, robots and llms.txt. Thinnest: Hansi, Bhiwani and Rohtak (same template, only the distance is local). Add one confirmed local detail to each or set `noindex`. Not built, on purpose: Delhi, Rajasthan and Punjab pages.

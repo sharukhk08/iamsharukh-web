@@ -85,3 +85,9 @@ Publish one post every two weeks and share each on LinkedIn.
 1. Add the site to **Google Search Console**, submit the sitemap, and watch Queries and Pages weekly.
 2. In Google Analytics mark **`generate_lead`** as a Key event.
 3. Re-run the audit after any large change (the scripts are described in report 05).
+
+## Update, 2026-10-14
+
+- A new page, `/learn/skills-alongside-college`, targets students who want practical skills next to a degree, including those from Rajasthan, Hansi, Rohtak and nearby villages. It uses only owner-confirmed facts.
+- The spam policy was checked against Google's live page; the rules for new place pages, the page status and the consequences of a penalty are in `docs/google-spam-policy-notes.md`. Do not add near-identical city or state pages.
+- Every page now has its own link preview (`pageMeta`); `audit-scripts/ogaudit.mjs` checks all sitemap URLs.

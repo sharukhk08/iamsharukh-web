@@ -37,3 +37,7 @@ Five reviews of iamsharukh.com, written 14 October 2026, each from a different s
 8. **Check the Vercel Hobby plan's terms.** It is described as for non-commercial use, and a site that advertises paid services may not qualify. Details in report 02.
 9. Fix the issues on the Innovaft sites (blog returns an error, email link, FAQ answers, client-count numbers) because this site now links to them.
 10. Replace the drawn illustrations with real photos and screenshots when you have them (`docs/image-prompts.md`).
+
+## Later changes
+
+Each report ends with an "Update, 2026-10-14" section. The current overall record is `docs/expansion-plan.md`; security decisions are in `docs/security-and-abuse-notes.md` and page-policy rules in `docs/google-spam-policy-notes.md`.

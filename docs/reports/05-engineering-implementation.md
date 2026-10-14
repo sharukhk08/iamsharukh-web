@@ -63,3 +63,10 @@ npm run build       # look for any "ƒ" in the route list: there should be none
 ## Rollback
 
 Every change is its own commit on `dev`. To undo one, `git revert <commit>`. The originals of compressed images are in `content/originals/`.
+
+## Update, 2026-10-14
+
+- Contact form moved to a server route (`/api/enquiry`): origin check, size cap, field validation, per-IP and daily limits, private `EMAILJS_*` variables, auto-reply without visitor text. Tested with direct requests (403, 400, 500, 405, 429); a real send needs the owner's keys. See `docs/security-and-abuse-notes.md`.
+- `@emailjs/browser` is no longer imported and can be removed from `package.json`.
+- Added `pageMeta`, `ShareButtons`, `.env.example` and the `ogaudit.mjs` audit script.
+- Added the student learn page and reordered the home page.

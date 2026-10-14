@@ -78,3 +78,10 @@ No personal data is sent in any event. The privacy page says so.
 - **Weeks 1 to 2:** set Vercel variables and deploy; Search Console; Google Business Profile; put the site on every profile; mark `generate_lead` as a Key event.
 - **Weeks 3 to 6:** fill in case study text for all four projects; add fees and timings to learn pages; publish two posts; ask three past clients and two students for reviews.
 - **Weeks 7 to 12:** read Search Console and Analytics; double down on the pages and channels that produce enquiries; add one new page only where there is real demand (for example an online batch, or a service with many impressions).
+
+## Update, 2026-10-14
+
+- Home page order now follows land, trust, act: Hero, Services, Work, Reviews, About, Innovaft band, Learn, Latest writing, Explore, Contact.
+- New student page `/learn/skills-alongside-college` for the second audience. Add a named student story and travel details when confirmed.
+- Enquiry emails: the admin email now shows every field (type, timeline, preferred contact, source) and uses the form's own subject. Templates are in `docs/emailjs/`.
+- Share buttons are on blog, service, learn and case study pages.
