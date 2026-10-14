@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '../lib/seo'
 import Link from 'next/link'
 import { MapPin } from 'lucide-react'
 import IconBadge from '../components/IconBadge'
@@ -9,12 +10,12 @@ import { JsonLd } from '../lib/jsonLd'
 import { locations } from '../lib/locations'
 import { SITE } from '../lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Locations',
   description:
     'Web and app development for clients in Hisar, Hansi, Bhiwani, Rohtak and across Haryana, plus remote clients worldwide.',
-  alternates: { canonical: '/locations' },
-}
+  path: '/locations',
+})
 
 const breadcrumb = {
   '@context': 'https://schema.org',

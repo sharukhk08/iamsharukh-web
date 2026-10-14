@@ -3,9 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Reveal from '../../components/Reveal'
+import ShareButtons from '../../components/ShareButtons'
 import { BOOKING_URL, contactHref } from '../../lib/contact'
 import { getProject, getProjects, hasFullDetails } from '../../lib/projects'
 import { JsonLd } from '../../lib/jsonLd'
+import { pageMeta } from '../../lib/seo'
 import { SITE } from '../../lib/site'
 
 type PageProps = { params: Promise<{ slug: string }> }
@@ -29,17 +31,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!study) return {}
 
   return {
-    title: `${study.name} case study`,
-    description: metaDescription(study.summary),
-    alternates: { canonical: `/work/${study.slug}` },
+    ...pageMeta({
+      ownImage: true,
+      title: `${study.name} case study`,
+      description: metaDescription(study.summary),
+      path: `/work/${study.slug}`,
+    }),
     // Pages without a confirmed challenge, solution and outcome stay out of Google.
     robots: hasFullDetails(study) ? undefined : { index: false, follow: true },
-    openGraph: {
-      title: `${study.name} | ${SITE.name}`,
-      description: metaDescription(study.summary),
-      url: `${SITE.url}/work/${study.slug}`,
-      type: 'article',
-    },
   }
 }
 
@@ -162,6 +161,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
             </Reveal>
           ),
       )}
+
+      <ShareButtons url={url} title={study.name} text={study.summary} />
 
       <Reveal className="mt-16">
         <section className="rounded-3xl bg-secondary p-8 md:p-12">

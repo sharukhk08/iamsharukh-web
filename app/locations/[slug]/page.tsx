@@ -16,6 +16,7 @@ import {
   locations,
 } from '../../lib/locations'
 import { getService } from '../../lib/services'
+import { pageMeta } from '../../lib/seo'
 import { SITE } from '../../lib/site'
 
 type PageProps = { params: Promise<{ slug: string }> }
@@ -33,17 +34,12 @@ export async function generateMetadata({
   const location = getLocation(slug)
   if (!location) return {}
 
-  return {
+  return pageMeta({
+    ownImage: true,
     title: location.shortTitle,
     description: location.metaDescription,
-    alternates: { canonical: `/locations/${location.slug}` },
-    openGraph: {
-      title: `${location.shortTitle} | ${SITE.name}`,
-      description: location.metaDescription,
-      url: `${SITE.url}/locations/${location.slug}`,
-      type: 'website',
-    },
-  }
+    path: `/locations/${location.slug}`,
+  })
 }
 
 export default async function LocationPage({ params }: PageProps) {

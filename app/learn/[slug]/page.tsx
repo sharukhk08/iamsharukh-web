@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import InnovaftBand from '../../components/InnovaftBand'
 import PageBackdrop from '../../components/PageBackdrop'
+import ShareButtons from '../../components/ShareButtons'
 import Reveal from '../../components/Reveal'
 import RevealWords from '../../components/effects/RevealWords'
 import { contactHref } from '../../lib/contact'
@@ -10,6 +11,7 @@ import { courses } from '../../lib/courses'
 import { JsonLd } from '../../lib/jsonLd'
 import { getLearnPage, learnPages } from '../../lib/learnPages'
 import { HISAR_OFFICE } from '../../lib/locations'
+import { pageMeta } from '../../lib/seo'
 import { SITE } from '../../lib/site'
 
 type PageProps = { params: Promise<{ slug: string }> }
@@ -24,17 +26,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const page = getLearnPage(slug)
   if (!page) return {}
-  return {
+  return pageMeta({
+    ownImage: true,
     title: page.metaTitle,
     description: page.metaDescription,
-    alternates: { canonical: `/learn/${page.slug}` },
-    openGraph: {
-      title: `${page.metaTitle} | ${SITE.name}`,
-      description: page.metaDescription,
-      url: `${SITE.url}/learn/${page.slug}`,
-      type: 'website',
-    },
-  }
+    path: `/learn/${page.slug}`,
+  })
 }
 
 export default async function LearnLocationPage({ params }: PageProps) {
@@ -148,6 +145,8 @@ export default async function LearnLocationPage({ params }: PageProps) {
           </Link>
         </section>
       </Reveal>
+
+      <ShareButtons url={`${SITE.url}/learn/${page.slug}`} title={page.metaTitle} text={page.metaDescription} />
 
       <InnovaftBand className="mt-8" />
 

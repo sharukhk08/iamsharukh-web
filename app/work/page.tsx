@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '../lib/seo'
 import Image from 'next/image'
 import Link from 'next/link'
 import RevealWords from '../components/effects/RevealWords'
@@ -9,12 +10,12 @@ import { getProjects } from '../lib/projects'
 import { JsonLd, itemListJsonLd } from '../lib/jsonLd'
 import { SITE } from '../lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Work',
   description:
     'Selected projects by Sharukh Khan: a Web3 marketplace, landing pages, an e-commerce platform and a creator platform, built with Next.js, React and Node.js.',
-  alternates: { canonical: '/work' },
-}
+  path: '/work',
+})
 
 const breadcrumb = {
   '@context': 'https://schema.org',

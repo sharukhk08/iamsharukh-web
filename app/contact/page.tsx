@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '../lib/seo'
 import { CalendarDays, Mail, MapPin } from 'lucide-react'
 import ContactForm from '../contact-section/ContactForm'
 import RevealWords from '../components/effects/RevealWords'
@@ -11,12 +12,12 @@ import { JsonLd } from '../lib/jsonLd'
 import { HISAR_OFFICE } from '../lib/locations'
 import { SITE } from '../lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Contact',
   description:
     'Contact Sharukh Khan about a web or app project, or about learning with Innovaft. Send an enquiry, book a free call or send an email.',
-  alternates: { canonical: '/contact' },
-}
+  path: '/contact',
+})
 
 const jsonLd = {
   '@context': 'https://schema.org',

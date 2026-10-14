@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Check } from 'lucide-react'
 import IconBadge from '../../components/IconBadge'
+import ShareButtons from '../../components/ShareButtons'
 import Magnet from '../../components/effects/Magnet'
 import RevealWords from '../../components/effects/RevealWords'
 import SpotlightCard from '../../components/effects/SpotlightCard'
@@ -13,6 +14,7 @@ import { ServiceIllustration } from '../../components/Illustrations'
 import { BOOKING_URL, contactHref } from '../../lib/contact'
 import { JsonLd } from '../../lib/jsonLd'
 import { getService, services } from '../../lib/services'
+import { pageMeta } from '../../lib/seo'
 import { SITE } from '../../lib/site'
 
 type PageProps = { params: Promise<{ slug: string }> }
@@ -30,17 +32,12 @@ export async function generateMetadata({
   const service = getService(slug)
   if (!service) return {}
 
-  return {
+  return pageMeta({
+    ownImage: true,
     title: service.title,
     description: service.metaDescription,
-    alternates: { canonical: `/services/${service.slug}` },
-    openGraph: {
-      title: `${service.title} | ${SITE.name}`,
-      description: service.metaDescription,
-      url: `${SITE.url}/services/${service.slug}`,
-      type: 'website',
-    },
-  }
+    path: `/services/${service.slug}`,
+  })
 }
 
 export default async function ServicePage({ params }: PageProps) {
@@ -237,6 +234,8 @@ export default async function ServicePage({ params }: PageProps) {
         </div>
       </section>
       </Reveal>
+
+      <ShareButtons url={url} title={service.title} text={service.metaDescription} />
 
       <Reveal>
       <section className="mt-16">

@@ -1,16 +1,17 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '../lib/seo'
 import Link from 'next/link'
 import PageBackdrop from '../components/PageBackdrop'
 import RevealWords from '../components/effects/RevealWords'
 import { BOOKING_URL } from '../lib/contact'
 import { SITE } from '../lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Links',
   description:
     'All official links for Sharukh Khan: website sections, GitHub, LinkedIn, Contra, Instagram, X, and Innovaft.',
-  alternates: { canonical: '/links' },
-}
+  path: '/links',
+})
 
 const groups = [
   {

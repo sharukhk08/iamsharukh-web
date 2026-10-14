@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '../lib/seo'
 import Link from 'next/link'
 import RevealWords from '../components/effects/RevealWords'
 import PageBackdrop from '../components/PageBackdrop'
@@ -7,12 +8,12 @@ import { formatDate, getPosts } from '../lib/blog'
 import { JsonLd, itemListJsonLd } from '../lib/jsonLd'
 import { SITE } from '../lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Blog',
   description:
     'Practical notes on Next.js, React, Figma to code and getting AI-built apps ready for launch.',
-  alternates: { canonical: '/blog' },
-}
+  path: '/blog',
+})
 
 const breadcrumb = {
   '@context': 'https://schema.org',

@@ -5,7 +5,9 @@ import { formatDate, getPost, getPosts } from '../../lib/blog'
 import { contactHref } from '../../lib/contact'
 import { JsonLd } from '../../lib/jsonLd'
 import AuthorBox from '../../components/AuthorBox'
+import ShareButtons from '../../components/ShareButtons'
 import { Markdown } from '../../lib/markdown'
+import { pageMeta } from '../../lib/seo'
 import { SITE } from '../../lib/site'
 
 type PageProps = { params: Promise<{ slug: string }> }
@@ -21,19 +23,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const post = getPost(slug)
   if (!post) return {}
 
-  return {
+  return pageMeta({
+    ownImage: true,
     title: post.title,
     description: post.description,
-    alternates: { canonical: `/blog/${post.slug}` },
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      url: `${SITE.url}/blog/${post.slug}`,
-      type: 'article',
-      publishedTime: post.date,
-      authors: [SITE.name],
-    },
-  }
+    path: `/blog/${post.slug}`,
+    type: 'article',
+    publishedTime: post.date,
+  })
 }
 
 export default async function PostPage({ params }: PageProps) {
@@ -83,6 +80,8 @@ export default async function PostPage({ params }: PageProps) {
       <div className="mt-10">
         <Markdown source={post.content} />
       </div>
+
+      <ShareButtons url={url} title={post.title} text={post.description} />
 
       <AuthorBox />
 

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '../lib/seo'
 import Marquee from '../components/effects/Marquee'
 import RotatingWords from '../components/effects/RotatingWords'
 import PageBackdrop from '../components/PageBackdrop'
@@ -10,12 +11,12 @@ import { services } from '../lib/services'
 import { SITE } from '../lib/site'
 import { STACK } from '../lib/stack'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Services',
   description:
     'Figma to Next.js, SaaS dashboards, full-stack web apps, React Native apps, CRM and e-commerce software, and AI-built app cleanup by a full-stack developer.',
-  alternates: { canonical: '/services' },
-}
+  path: '/services',
+})
 
 const breadcrumb = {
   '@context': 'https://schema.org',

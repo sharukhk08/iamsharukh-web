@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '../lib/seo'
 import Link from 'next/link'
 import { Check } from 'lucide-react'
 import CountUp from '../components/effects/CountUp'
@@ -17,12 +18,12 @@ import { JsonLd } from '../lib/jsonLd'
 import { HISAR_OFFICE } from '../lib/locations'
 import { SITE } from '../lib/site'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Learn: Mentoring & Innovaft Courses in Hisar',
   description:
     'Learn web and app development in Hisar with Innovaft: UI/UX, frontend, backend, full stack, mobile and WordPress, with mentoring from a 7-year developer.',
-  alternates: { canonical: '/learn' },
-}
+  path: '/learn',
+})
 
 const jsonLd = {
   '@context': 'https://schema.org',

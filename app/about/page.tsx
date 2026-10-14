@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '../lib/seo'
 import Image from 'next/image'
 import Link from 'next/link'
 import InnovaftBand from '../components/InnovaftBand'
@@ -12,12 +13,12 @@ import { SITE } from '../lib/site'
 import { STACK } from '../lib/stack'
 import profile from '../../public/sharukh-image.jpeg'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'About Sharukh Khan',
   description:
     'Sharukh Khan is a full-stack developer in Hisar, Haryana with 7 years of experience, co-founder and CTO of Innovaft, and a mentor who has trained 50+ students.',
-  alternates: { canonical: '/about' },
-}
+  path: '/about',
+})
 
 const jsonLd = {
   '@context': 'https://schema.org',

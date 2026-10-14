@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
+import { pageMeta } from '../lib/seo'
 import Link from 'next/link'
 import PageBackdrop from '../components/PageBackdrop'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: 'Privacy Policy',
   description:
     'How iamsharukh.com handles the information you send through the contact form and the analytics it uses.',
-  alternates: { canonical: '/privacy' },
-}
+  path: '/privacy',
+})
 
 // A plain-language policy for what this site actually does. It is not legal advice:
 // have it checked if the business grows or handles more personal data.
