@@ -74,9 +74,8 @@ export default function HomeClient({ projects, posts }: HomeClientProps) {
 
       <main className="flex flex-col items-center justify-center">
         <Hero onContactClick={() => setIsModalOpen(true)} />
-        <Work projects={projects} />
         <ServicesSection />
-        <LearnTeaser />
+        <Work projects={projects} />
         <Reviews />
         <About />
         <section className="w-full bg-primary pb-16 pt-4 md:pb-24">
@@ -84,6 +83,7 @@ export default function HomeClient({ projects, posts }: HomeClientProps) {
             <InnovaftBand />
           </div>
         </section>
+        <LearnTeaser />
         <LatestPosts posts={posts} />
         <ExploreSection />
         <Contact onContactClick={() => setIsModalOpen(true)} />
