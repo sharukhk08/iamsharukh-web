@@ -83,13 +83,10 @@ export const sendEnquiry = async (raw: EnquiryData): Promise<void> => {
   // The auto-reply is a courtesy. If it fails the enquiry was still delivered,
   // so do not tell the visitor their message failed.
   try {
+    // Only the recipient is sent: no visitor-written text, so the auto-reply
+    // cannot be abused to deliver someone else's message to a third party.
     await emailjs.send(serviceId, process.env.NEXT_PUBLIC_EMAILJS_USER_TEMPLATE_ID!, {
-      to_name: data.name,
-      from_email: process.env.NEXT_PUBLIC_EMAILJS_TO_EMAIL,
       to_email: data.email,
-      phone: data.phone,
-      work_type: data.services.join(", "),
-      message,
     });
   } catch (error) {
     console.error("Auto-reply failed:", error);

@@ -5,7 +5,7 @@ The site sends two emails per enquiry (see `app/services/emailService.ts`).
 | Template | Env var | File |
 | --- | --- | --- |
 | Admin (to you) | `NEXT_PUBLIC_EMAILJS_ADMIN_TEMPLATE_ID` | `admin-template.html` |
-| User (auto-reply) | `NEXT_PUBLIC_EMAILJS_USER_TEMPLATE_ID` | keep your current one; only change the year in the footer |
+| User (auto-reply) | `NEXT_PUBLIC_EMAILJS_USER_TEMPLATE_ID` | `user-template.html` (no visitor text, so it cannot be abused to send someone else's message) |
 
 Both templates work for clients and students. The type (Client or Student) is inside `{{message}}` and in the subject.
 
@@ -19,4 +19,4 @@ Both templates work for clients and students. The type (Client or Student) is in
 Variables the site sends to the admin template: `subject`, `from_name`, `from_email`, `phone`, `country`, `work_type`, `timeline`, `source`, `contact_method`, `message`, `to_email`.
 `message` already contains the details, timing and contact method in readable blocks, so no extra rows are required.
 
-Variables sent to the auto-reply: `to_name`, `from_email`, `to_email`, `phone`, `work_type`, `message`.
+Variable sent to the auto-reply: `to_email` only. In the User template set To Email to `{{to_email}}`.
