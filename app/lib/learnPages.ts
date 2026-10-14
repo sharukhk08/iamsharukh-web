@@ -121,6 +121,63 @@ export const learnPages: LearnPage[] = [
       },
     ],
   },
+  {
+    slug: 'skills-alongside-college',
+    metaTitle: 'Learn Coding Skills Alongside College in Hisar',
+    metaDescription:
+      'Studying a degree and want practical coding skills too? Innovaft in Hisar teaches web and app development through real projects, for students and career changers from Hisar, Rajasthan and nearby towns and villages.',
+    h1: 'Learn practical coding skills alongside your degree',
+    intro:
+      'Many students finish a degree and still feel they have not built anything real. This page is for students and career changers who want practical skills, whether for freelancing, a job or a startup of their own. Students already join Innovaft in Hisar from Hansi, Rohtak, Rajasthan and nearby villages for this reason.',
+    sections: [
+      {
+        heading: 'Who this is for',
+        paragraphs: [
+          'College students who want hands-on skills next to their degree, recent graduates looking for a way in, and anyone who wants to start freelancing or grow towards a tech career. You do not need experience; the courses start from the basics.',
+          'A degree and practical skills work well together. A degree gives you the theory and the qualification; building real projects shows what you can actually do.',
+        ],
+      },
+      {
+        heading: 'What you learn by building',
+        paragraphs: [
+          'You choose from UI/UX Design, Frontend, Backend, Full Stack, Mobile App Development, and CMS and WordPress. Each is taught through real projects with a mentor, so you finish with a portfolio you can show to employers or clients.',
+          'I teach and mentor the classes myself. I work on client projects as a full-stack developer, so what you learn is what is used on real work.',
+        ],
+      },
+      {
+        heading: 'Fitting it around college',
+        paragraphs: [
+          'Classes are in person at the Innovaft centre on Railway Road, Hisar, with online support in between. Batch timings depend on the course, so tell us your college timetable when you enquire and we will explain what is possible.',
+          'If you are coming from outside Hisar, visit for the free first class first, so you can check travel and timings before you commit.',
+        ],
+      },
+      {
+        heading: 'Freelancing, jobs and startups',
+        paragraphs: [
+          'The aim is that you can show real work. Job assistance covers resume, LinkedIn, mock interviews and portfolio, and a portfolio is also what clients look at when you start freelancing. None of this is a promise of a job or income; it depends on your effort.',
+          'If you want to work towards a startup, talk to the mentors about what you want to build and they will tell you honestly what to learn first.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Can I learn coding while I am still in college?',
+        a: 'Yes. Tell us your college timetable when you enquire and we will explain which batch timings are possible.',
+      },
+      {
+        q: 'I am from Rajasthan or a village near Hisar. Can I join?',
+        a: 'Yes, if you can attend in person in Hisar. Visit for the free first class to check that travel and timings suit you.',
+      },
+      {
+        q: 'Will I get a job or freelance work after the course?',
+        a: 'No one can promise that. You get a completion certificate, projects for your portfolio and job assistance (resume, LinkedIn, mock interviews). Results depend on your effort.',
+      },
+      {
+        q: 'What are the fees and how long is the course?',
+        a: 'This depends on the course. Ask for the current details when you enquire or at the free first class.',
+      },
+    ],
+  },
 ]
 
 export const getLearnPage = (slug: string) => learnPages.find((page) => page.slug === slug)
