@@ -24,3 +24,7 @@ Written 2026-10-14. Plan limits change often and could not be checked from the b
 - **Hobby plan terms.** Vercel's Hobby plan is described as for personal, non-commercial use. A portfolio that advertises paid services may count as commercial, so read Vercel's Fair Use Guidelines. If it does, the options are Vercel Pro or another host with a free tier that allows commercial sites.
 - **Environment variables** `NEXT_PUBLIC_EMAILJS_*` must be set in the Vercel project settings, or the contact form will fail.
 - **EmailJS** has its own monthly email limit on the free plan.
+
+## Environment variables
+
+All variables are `NEXT_PUBLIC_*`: they are compiled into the JavaScript every visitor downloads, so they are **public by design**. This repository has no private secrets. See the table in `docs/reports/02-architecture-review.md` for which variable is what, and which accounts to rotate after the earlier malware.

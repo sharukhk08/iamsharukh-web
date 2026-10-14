@@ -36,7 +36,8 @@ const BlogCard = ({
     >
       <Image
         src={slash}
-        alt={'title'}
+        alt=""
+        aria-hidden="true"
         className="absolute top-[34px] left-[28px] w-[51px]"
       />
 
@@ -47,9 +48,9 @@ const BlogCard = ({
       <div className="flex gap-3 sm:absolute sm:bottom-[28px] sm:left-[28px]">
         <Image
           src={profileImg}
-          alt={'title'}
-          width={1600}
-          height={840}
+          alt={`${name}, ${role} at ${company}`}
+          width={82}
+          height={82}
           className="h-[41px] w-[41px] rounded-full bg-contain bg-center object-cover grayscale"
         />
         <div className="flex flex-col gap-1 pr-7">

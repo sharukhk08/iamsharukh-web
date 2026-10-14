@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Check, GraduationCap, Rocket } from 'lucide-react'
 import { sendEnquiry } from '../services/emailService'
 import { BOOKING_URL } from '../lib/contact'
+import { track } from '../lib/analytics'
 import PlaceInput from './PlaceInput'
 import {
   Audience,
@@ -77,7 +78,12 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
 
   useEffect(() => {
     openedAt.current = Date.now()
+    track('form_start', { page: window.location.pathname })
   }, [])
+
+  useEffect(() => {
+    if (step > 0) track('form_step', { step: step + 1 })
+  }, [step])
 
   useEffect(() => {
     if (!onClose) return
@@ -192,9 +198,11 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
         contactMethod: prefs.contactMethod,
       })
       setStatus('success')
+      track('generate_lead', { audience, service: selected[0] })
     } catch (error) {
       console.error('Error submitting form:', error)
       setStatus('error')
+      track('form_error', { audience })
     } finally {
       setIsSubmitting(false)
     }
@@ -314,6 +322,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
       <div
         className="mb-6 h-1.5 w-full rounded bg-[#1b1d23]"
         role="progressbar"
+        aria-label="Enquiry progress"
         aria-valuemin={1}
         aria-valuemax={STEPS.length}
         aria-valuenow={step + 1}

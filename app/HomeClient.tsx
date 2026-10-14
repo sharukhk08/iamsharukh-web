@@ -15,6 +15,7 @@ import ServicesSection from './services-section/ServicesSection'
 import LearnTeaser from './services-section/LearnTeaser'
 import LatestPosts from './services-section/LatestPosts'
 import ExploreSection from './services-section/ExploreSection'
+import InnovaftBand from './components/InnovaftBand'
 const Work = dynamic(() => import('./work-section/Work'))
 const About = dynamic(() => import('./about-section/About'))
 const Contact = dynamic(() => import('./contact-section/Contact'))
@@ -78,6 +79,11 @@ export default function HomeClient({ projects, posts }: HomeClientProps) {
         <LearnTeaser />
         <Reviews />
         <About />
+        <section className="w-full bg-primary pb-16 pt-4 md:pb-24">
+          <div className="mx-auto w-[90%] lg:max-w-[1440px]">
+            <InnovaftBand />
+          </div>
+        </section>
         <LatestPosts posts={posts} />
         <ExploreSection />
         <Contact onContactClick={() => setIsModalOpen(true)} />

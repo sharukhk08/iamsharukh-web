@@ -1,6 +1,9 @@
 import Link from 'next/link'
 import { monaSans } from '../fonts/monaSans'
 import Aurora from './effects/Aurora'
+import MobileCta from './MobileCta'
+import MobileMenu from './MobileMenu'
+import { NAV_LINKS } from '../lib/nav'
 import SocialLinks from './SocialLinks'
 import { ReactNode } from 'react'
 import { locations } from '../lib/locations'
@@ -11,7 +14,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
 
   return (
     <div
-      className={`scroll-page site-page ${monaSans.variable} relative isolate min-h-screen overflow-x-clip bg-primary text-[#e4ded7]`}
+      className={`scroll-page site-page ${monaSans.variable} relative isolate min-h-screen overflow-x-clip bg-primary pb-20 lg:pb-0 text-[#e4ded7]`}
     >
       <div className="page-hero" aria-hidden="true" />
       <Aurora />
@@ -22,35 +25,29 @@ export default function SiteShell({ children }: { children: ReactNode }) {
         >
           Sharukh Khan
         </Link>
-        <nav className="flex items-center gap-4 text-[13px] font-semibold uppercase tracking-wide md:gap-6 md:text-[14px]">
-          <Link href="/" className="hover:underline">
-            Home
-          </Link>
-          <Link href="/services" className="hover:underline">
-            Services
-          </Link>
-          <Link href="/work" className="hidden hover:underline sm:inline">
-            Work
-          </Link>
-          <Link href="/locations" className="hidden hover:underline sm:inline">
-            Locations
-          </Link>
-          <Link href="/learn" className="hidden hover:underline sm:inline">
-            Learn
-          </Link>
-          <Link href="/blog" className="hidden hover:underline md:inline">
-            Blog
-          </Link>
+        <div className="flex items-center gap-3">
+          <nav
+            aria-label="Main"
+            className="hidden items-center gap-5 text-[13px] font-semibold uppercase tracking-wide lg:flex xl:gap-6 xl:text-[14px]"
+          >
+            {NAV_LINKS.filter((link) => link.href !== '/').map((link) => (
+              <Link key={link.href} href={link.href} className="hover:underline">
+                {link.label}
+              </Link>
+            ))}
+          </nav>
           <Link
             href="/contact"
             className="rounded-md border-2 border-[#e4ded7] px-4 py-2 text-[13px] font-semibold uppercase text-[#e4ded7] transition-colors hover:bg-[#e4ded7] hover:text-[#0E1016] md:text-[14px]"
           >
             Contact
           </Link>
-        </nav>
+          <MobileMenu />
+        </div>
       </header>
 
       {children}
+      <MobileCta />
 
       <footer className="mt-24 border-t-[3px] border-[#e4ded7]/30 py-10">
         <div className="mx-auto grid w-[90%] max-w-[1440px] gap-8 md:grid-cols-2">
@@ -125,8 +122,11 @@ export default function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto mt-8 w-[90%] max-w-[1440px]">
           <SocialLinks />
         </div>
-        <p className="mx-auto mt-8 w-[90%] max-w-[1440px] text-[12px] uppercase text-[#95979D]">
-          Copyright {year}
+        <p className="mx-auto mt-8 flex w-[90%] max-w-[1440px] flex-wrap gap-x-6 gap-y-2 text-[12px] uppercase text-[#95979D]">
+          <span>Copyright {year}</span>
+          <Link href="/about" className="hover:text-[#e4ded7] hover:underline">About</Link>
+          <Link href="/links" className="hover:text-[#e4ded7] hover:underline">Links</Link>
+          <Link href="/privacy" className="hover:text-[#e4ded7] hover:underline">Privacy</Link>
         </p>
       </footer>
     </div>

@@ -430,3 +430,57 @@ export const services: Service[] = [
 
 export const getService = (slug: string) =>
   services.find((service) => service.slug === slug)
+
+// Extra questions written around how people actually search for these services
+// (see docs/reports/03-seo-keyword-review.md). Appended here so the long service
+// definitions above stay readable. No prices are quoted: they depend on scope.
+const EXTRA_FAQS: Record<string, Service['faqs']> = {
+  'figma-to-nextjs': [
+    {
+      q: 'How do you convert a Figma design to Next.js?',
+      a: 'I review the Figma file, break the design into reusable React components and style them with Tailwind CSS so they match on every screen size. Then I add routing, SEO metadata and performance work, and deploy. You follow progress on a live preview link.',
+    },
+    {
+      q: 'Should I choose React or Next.js for my Figma design?',
+      a: 'For a website that needs to be found on Google, Next.js is usually the better choice because pages can be prepared ahead of time, which helps speed and search visibility. For a logged-in app where search matters less, plain React can be enough. I recommend one after seeing the design.',
+    },
+    {
+      q: 'How much does it cost to turn Figma into a website?',
+      a: 'It depends on the number of pages, how complex the animations are and whether you need forms or a CMS. Send me the Figma link and I will reply with a quote.',
+    },
+  ],
+  'react-native-app-development': [
+    {
+      q: 'Can one React Native app run on both iPhone and Android?',
+      a: 'Yes. Most of the code is shared, so you build and maintain one app for both platforms. A few features may need platform-specific work, and I will tell you which up front.',
+    },
+    {
+      q: 'How much does it cost to build a mobile app?',
+      a: 'It depends on the number of screens, the features, and whether a backend already exists. I scope the first version with you and quote before starting.',
+    },
+  ],
+  'ai-automation-n8n': [
+    {
+      q: 'What can n8n automate for a small business?',
+      a: 'Common examples are sending new form enquiries to your CRM and email, replying to or sorting messages with AI, syncing data between tools, producing weekly reports and extracting details from documents. If you do the same task more than a few times a week, it is a candidate.',
+    },
+    {
+      q: 'Is n8n free?',
+      a: 'n8n can be self-hosted on your own server, and it also has a paid cloud version. I explain the costs of each for your volume before we choose.',
+    },
+  ],
+  'saas-dashboard-development': [
+    {
+      q: 'How long does it take to build a SaaS MVP?',
+      a: 'It depends on the scope. We start by choosing the smallest version that real users can test, build the core workflow first, and I give a timeline once the scope is agreed.',
+    },
+  ],
+  'ai-built-app-cleanup': [
+    {
+      q: 'Is my Lovable or Bolt app safe to launch?',
+      a: 'Not until it has been checked for exposed keys, open database rules and missing login checks. These are the most common problems in AI-built prototypes. I review the app and send a list of what is fine and what to fix first.',
+    },
+  ],
+}
+
+services.forEach((service) => service.faqs.push(...(EXTRA_FAQS[service.slug] ?? [])))

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Check } from 'lucide-react'
 import CountUp from '../components/effects/CountUp'
+import InnovaftBand from '../components/InnovaftBand'
 import Magnet from '../components/effects/Magnet'
 import ShapeWaves from '../components/effects/ShapeWaves'
 import RevealWords from '../components/effects/RevealWords'
@@ -42,10 +43,15 @@ const jsonLd = {
       '@type': 'Course',
       name: course.name,
       description: course.summary,
-      provider: {
-        '@type': 'Organization',
-        name: SITE.company.name,
-        url: SITE.company.url,
+      provider: { '@type': 'Organization', '@id': `${SITE.url}/#innovaft`, name: SITE.company.name, url: SITE.company.url },
+      hasCourseInstance: {
+        '@type': 'CourseInstance',
+        courseMode: 'onsite',
+        location: {
+          '@type': 'Place',
+          name: 'Innovaft, Hisar',
+          address: { '@type': 'PostalAddress', addressLocality: 'Hisar', addressRegion: 'Haryana', addressCountry: 'IN' },
+        },
       },
     })),
   ],
@@ -229,6 +235,23 @@ export default function LearnPage() {
         </div>
       </section>
       </Reveal>
+      <section className="mt-12 rounded-3xl bg-secondary p-6 md:p-8">
+        <h2 className="text-[22px]">Find a course near you</h2>
+        <ul className="mt-4 space-y-2 text-[15px]">
+          <li>
+            <Link href="/learn/hisar" className="underline underline-offset-2">
+              Web development and coding courses in Hisar
+            </Link>
+          </li>
+          <li>
+            <Link href="/learn/haryana" className="underline underline-offset-2">
+              Learn web development from Hansi, Bhiwani, Rohtak and across Haryana
+            </Link>
+          </li>
+        </ul>
+      </section>
+
+      <InnovaftBand className="mt-8" />
     </main>
   )
 }

@@ -1,0 +1,66 @@
+import { chromium } from 'playwright-core'
+const out = process.argv[2]
+const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', args: ['--no-sandbox'] })
+const B = 'http://localhost:3180'
+async function run(name, url, script) {
+  const page = await browser.newPage({ viewport: { width: 1100, height: 900 } })
+  const sent = []
+  await page.route('**/api.emailjs.com/**', async (route) => { sent.push(JSON.parse(route.request().postData() || '{}').template_params); await route.fulfill({ status: 200, body: 'OK' }) })
+  page.on('pageerror', (e) => console.log(name, 'PAGEERROR', e.message.slice(0, 150)))
+  await page.goto(B + url, { waitUntil: 'load' })
+  await page.waitForSelector('form')
+  console.log('---', name)
+  await script(page, sent)
+  await page.close()
+}
+const next = (p) => p.getByRole('button', { name: 'Next', exact: true }).click()
+const stepText = (p) => p.locator('text=/Step \\d of 4/').innerText()
+
+await run('client path', '/contact', async (page, sent) => {
+  console.log(await stepText(page))
+  await page.getByRole('button', { name: /Client with a project/ }).click()
+  console.log(await stepText(page), '| chips:', (await page.locator('fieldset button').allInnerTexts()).length)
+  await next(page)
+  console.log('error shown without choice:', await page.locator('[role=alert]').allInnerTexts())
+  await page.getByRole('button', { name: 'Custom SaaS Dashboard Development' }).click()
+  await next(page)
+  console.log(await stepText(page), '| fields:', await page.locator('form label').allInnerTexts().then(a => a.filter(x => !x.startsWith('Leave'))))
+  await page.selectOption('#projectType', 'New project'); await page.fill('#description', 'Admin dashboard'); await page.selectOption('#timeline', 'Within a month')
+  await next(page)
+  console.log(await stepText(page))
+  await page.fill('#name', 'Anna'); await page.fill('#email', 'anna@example.com')
+  await page.fill('#phone', 'abc+49 (170) 123-4567xyz')
+  console.log('phone after typing letters:', JSON.stringify(await page.inputValue('#phone')))
+  await page.fill('#place', 'Ger')
+  console.log('suggestions in datalist:', await page.locator('#place-suggestions option').count())
+  await page.fill('#place', 'Germany')
+  await page.waitForTimeout(4300)
+  await page.getByRole('button', { name: 'Send message' }).click()
+  await page.waitForSelector('text=Thank you, message sent.')
+  console.log('emails:', sent.length, '| subject:', sent[0].subject)
+  console.log(sent[0].message.replace(/\n/g, ' / '))
+})
+
+await run('student path via ?service=learning', '/contact?service=learning', async (page, sent) => {
+  console.log(await stepText(page), '| starts on:', await page.locator('legend').innerText())
+  console.log('options:', await page.locator('fieldset button').allInnerTexts())
+  await page.getByRole('button', { name: 'Frontend Development' }).click()
+  await page.getByRole('button', { name: 'Not sure yet' }).click()
+  console.log('single select pressed:', await page.locator('fieldset button[aria-pressed=true]').allInnerTexts())
+  await next(page)
+  console.log('fields:', await page.locator('form label').allInnerTexts().then(a => a.filter(x => !x.startsWith('Leave'))))
+  await page.selectOption('#level', 'Complete beginner'); await page.selectOption('#goal', 'Get a job'); await page.selectOption('#mode', 'In person in Hisar')
+  await next(page)
+  await page.fill('#name', 'Ravi'); await page.fill('#email', 'ravi@example.com'); await page.fill('#phone', '9876543210'); await page.fill('#place', 'Bhiwani, Haryana')
+  await page.waitForTimeout(4300)
+  await page.getByRole('button', { name: 'Send message' }).click()
+  await page.waitForSelector('text=Thank you, message sent.')
+  console.log('subject:', sent[0].subject)
+  console.log(sent[0].message.replace(/\n/g, ' / '))
+})
+
+await run('service deep link', '/contact?service=react-native-app-development', async (page) => {
+  console.log(await stepText(page), '| pressed:', await page.locator('fieldset button[aria-pressed=true]').allInnerTexts())
+  await page.screenshot({ path: out + '/contact-page.png' })
+})
+await browser.close()

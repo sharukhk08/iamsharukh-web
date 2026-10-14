@@ -44,6 +44,12 @@ const LearnTeaser = () => (
           See the courses
         </Link>
         <Link
+          href="/learn/hisar"
+          className="rounded-md border-2 border-[#e4ded7]/40 px-6 py-3 text-[14px] font-semibold uppercase transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
+        >
+          Courses in Hisar
+        </Link>
+        <Link
           href={contactHref('learning')}
           className="rounded-md border-2 border-[#e4ded7]/40 px-6 py-3 text-[14px] font-semibold uppercase transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
         >

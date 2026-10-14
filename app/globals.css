@@ -32,6 +32,7 @@
 html,
 body {
   overscroll-behavior: none;
+  background-color: #08090d;
 }
 
 body {
@@ -354,7 +355,7 @@ body:has(.scroll-page) {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('/hero.jpg') center / cover no-repeat;
+  background: url('/hero.webp') center / cover no-repeat;
 }
 .site-page .page-hero::after {
   content: '';

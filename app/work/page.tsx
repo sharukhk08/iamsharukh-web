@@ -6,7 +6,7 @@ import PageBackdrop from '../components/PageBackdrop'
 import TiltCard from '../components/effects/TiltCard'
 import Reveal from '../components/Reveal'
 import { getProjects } from '../lib/projects'
-import { JsonLd } from '../lib/jsonLd'
+import { JsonLd, itemListJsonLd } from '../lib/jsonLd'
 import { SITE } from '../lib/site'
 
 export const metadata: Metadata = {
@@ -29,6 +29,7 @@ export default function WorkPage() {
   return (
     <main className="mx-auto w-[90%] max-w-[1440px] pt-10 md:pt-16">
       <JsonLd data={breadcrumb} />
+      <JsonLd data={itemListJsonLd(getProjects().map((project) => ({ name: project.name, path: `/work/${project.slug}` })))} />
       <PageBackdrop />
       <h1 className="text-[36px] leading-tight md:text-[56px]">
         <RevealWords text="Selected work" />

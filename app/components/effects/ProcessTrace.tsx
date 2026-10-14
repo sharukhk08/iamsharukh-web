@@ -54,7 +54,7 @@ export default function ProcessTrace({
             <li
               key={step}
               className={`flex items-center gap-3 text-[15px] transition-colors duration-500 ${
-                done ? 'text-[#95979D]' : current ? 'text-[#e4ded7]' : 'text-[#95979D]/50'
+                done ? 'text-[#95979D]' : current ? 'text-[#e4ded7]' : 'text-[#95979D]'
               }`}
             >
               <span className="flex h-5 w-5 shrink-0 items-center justify-center">

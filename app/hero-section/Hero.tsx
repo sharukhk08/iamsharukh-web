@@ -13,7 +13,7 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
   return (
     <motion.section
-      className="relative z-10 flex h-[85vh] w-full items-stretch justify-center bg-[url('.//../public/hero.jpg')] bg-cover  bg-center py-0 sm:h-[90vh]  md:h-[100vh] 3xl:h-[85vh]"
+      className="relative z-10 flex h-[85vh] w-full items-stretch justify-center bg-[url('/hero.webp')] bg-cover  bg-center py-0 sm:h-[90vh]  md:h-[100vh] 3xl:h-[85vh]"
       id="home"
       initial="initial"
       animate="animate"
@@ -98,6 +98,7 @@ const Hero: React.FC<HeroProps> = ({ onContactClick }) => {
             <Image
               src={profile}
               priority
+              sizes="(min-width: 1024px) 245px, (min-width: 768px) 200px, 150px"
               alt="Sharukh Khan"
               data-blobity-tooltip="I AM SRK"
               data-blobity-invert="false"

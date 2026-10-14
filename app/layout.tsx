@@ -3,12 +3,13 @@ import { Syne } from 'next/font/google'
 import { ReactNode } from 'react'
 import './globals.css'
 import GoogleAnalytics from './GoogleAnalytics'
-import { JsonLd, personJsonLd, websiteJsonLd } from './lib/jsonLd'
+import AnalyticsEvents from './components/AnalyticsEvents'
+import { JsonLd, organizationJsonLd, personJsonLd, websiteJsonLd } from './lib/jsonLd'
 import { SITE } from './lib/site'
 
 const syne = Syne({
   subsets: ['latin'],
-  display: 'block',
+  display: 'swap',
   weight: ['400', '500', '600', '700', '800'],
 })
 
@@ -47,7 +48,6 @@ export const metadata: Metadata = {
     description: SITE.description,
     url: SITE.url,
     siteName: SITE.siteName,
-    images: [SITE.ogImage],
     locale: SITE.locale,
     type: 'website',
   },
@@ -56,7 +56,6 @@ export const metadata: Metadata = {
     title: SITE.title,
     description: SITE.description,
     creator: SITE.twitterHandle,
-    images: [SITE.ogImage.url],
   },
   robots: {
     index: true,
@@ -71,6 +70,11 @@ export const metadata: Metadata = {
     },
   },
   category: 'technology',
+  // Set GOOGLE_SITE_VERIFICATION in the host's environment to verify the site in Google
+  // Search Console without editing code. Skipped when not set.
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
 }
 
 export const viewport: Viewport = {
@@ -84,20 +88,14 @@ type RootLayoutProps = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin=""
-        />
-      </head>
       <body
         className={`${syne.className} scroll-smooth scrollbar-thin scrollbar-track-primary scrollbar-thumb-secondary`}
       >
         <JsonLd data={personJsonLd} />
         <JsonLd data={websiteJsonLd} />
+        <JsonLd data={organizationJsonLd} />
         <GoogleAnalytics />
+        <AnalyticsEvents />
         {children}
       </body>
     </html>

@@ -4,7 +4,7 @@ import RevealWords from '../components/effects/RevealWords'
 import PageBackdrop from '../components/PageBackdrop'
 import Reveal from '../components/Reveal'
 import { formatDate, getPosts } from '../lib/blog'
-import { JsonLd } from '../lib/jsonLd'
+import { JsonLd, itemListJsonLd } from '../lib/jsonLd'
 import { SITE } from '../lib/site'
 
 export const metadata: Metadata = {
@@ -29,6 +29,7 @@ export default function BlogPage() {
   return (
     <main className="mx-auto w-[90%] max-w-[1440px] pt-10 md:pt-16">
       <JsonLd data={breadcrumb} />
+      <JsonLd data={itemListJsonLd(posts.map((post) => ({ name: post.title, path: `/blog/${post.slug}` })))} />
       <PageBackdrop />
       <h1 className="text-[36px] leading-tight md:text-[56px]">
         <RevealWords text="Blog" />

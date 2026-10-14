@@ -41,7 +41,10 @@ export const preLoaderAnim = () => {
       ".preloader",
       {
         duration: 1.5,
-        height: "0vh",
+        // transform only: animating "height" re-lays out the page every frame and
+        // counted as a very large layout shift (CLS 0.5) in the audit
+        scaleY: 0,
+        transformOrigin: "bottom center",
         ease: "Power3.easeOut",
         onComplete: mobileLanding(),
       },

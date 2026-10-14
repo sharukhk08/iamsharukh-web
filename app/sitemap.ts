@@ -1,68 +1,36 @@
 import type { MetadataRoute } from 'next'
 import { getPosts } from './lib/blog'
-import { getProjects, hasFullDetails } from './lib/projects'
+import { learnPages } from './lib/learnPages'
 import { locations } from './lib/locations'
+import { getProjects, hasFullDetails } from './lib/projects'
 import { services } from './lib/services'
 import { SITE_URL } from './lib/site'
 
+// Google ignores priority and changeFrequency, so they are left out. lastModified
+// is only set where a real date exists (blog posts), because a made-up date is
+// worse than none. Pages marked noindex (case studies without full details) are
+// not listed.
 export default function sitemap(): MetadataRoute.Sitemap {
+  const page = (path: string, lastModified?: string) => ({
+    url: path === '/' ? SITE_URL : `${SITE_URL}${path}`,
+    ...(lastModified ? { lastModified } : {}),
+  })
+
   return [
-    {
-      url: SITE_URL,
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: `${SITE_URL}/services`,
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${SITE_URL}/locations`,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/learn`,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/blog`,
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    },
-    ...getPosts().map((post) => ({
-      url: `${SITE_URL}/blog/${post.slug}`,
-      lastModified: post.date,
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    })),
-    {
-      url: `${SITE_URL}/work`,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    // Only case studies with a confirmed challenge, solution and outcome.
-    ...getProjects().filter(hasFullDetails).map((study) => ({
-      url: `${SITE_URL}/work/${study.slug}`,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    })),
-    {
-      url: `${SITE_URL}/contact`,
-      changeFrequency: 'yearly',
-      priority: 0.8,
-    },
-    ...locations.map((location) => ({
-      url: `${SITE_URL}/locations/${location.slug}`,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    })),
-    ...services.map((service) => ({
-      url: `${SITE_URL}/services/${service.slug}`,
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    })),
+    page('/'),
+    page('/services'),
+    ...services.map((service) => page(`/services/${service.slug}`)),
+    page('/work'),
+    ...getProjects().filter(hasFullDetails).map((project) => page(`/work/${project.slug}`)),
+    page('/learn'),
+    ...learnPages.map((item) => page(`/learn/${item.slug}`)),
+    page('/locations'),
+    ...locations.map((location) => page(`/locations/${location.slug}`)),
+    page('/blog'),
+    ...getPosts().map((post) => page(`/blog/${post.slug}`, post.date)),
+    page('/about'),
+    page('/contact'),
+    page('/links'),
+    page('/privacy'),
   ]
 }

@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { formatDate, getPost, getPosts } from '../../lib/blog'
 import { contactHref } from '../../lib/contact'
 import { JsonLd } from '../../lib/jsonLd'
+import AuthorBox from '../../components/AuthorBox'
 import { Markdown } from '../../lib/markdown'
 import { SITE } from '../../lib/site'
 
@@ -47,8 +48,12 @@ export default async function PostPage({ params }: PageProps) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
+    dateModified: post.date,
+    inLanguage: 'en',
+    wordCount: post.content.split(/\s+/).length,
+    image: `${url}/opengraph-image`,
     mainEntityOfPage: url,
-    author: { '@id': `${SITE.url}/#person` },
+    author: { '@type': 'Person', '@id': `${SITE.url}/#person`, name: SITE.name, url: `${SITE.url}/about` },
     publisher: { '@id': `${SITE.url}/#person` },
   }
   const breadcrumb = {
@@ -78,6 +83,8 @@ export default async function PostPage({ params }: PageProps) {
       <div className="mt-10">
         <Markdown source={post.content} />
       </div>
+
+      <AuthorBox />
 
       <section className="mt-16 rounded-3xl bg-secondary p-8">
         <h2 className="text-[24px]">Need a hand with your project?</h2>

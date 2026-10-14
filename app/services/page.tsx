@@ -5,7 +5,7 @@ import PageBackdrop from '../components/PageBackdrop'
 import RevealWords from '../components/effects/RevealWords'
 import Reveal from '../components/Reveal'
 import ServiceCard from '../components/ServiceCard'
-import { JsonLd } from '../lib/jsonLd'
+import { JsonLd, itemListJsonLd } from '../lib/jsonLd'
 import { services } from '../lib/services'
 import { SITE } from '../lib/site'
 import { STACK } from '../lib/stack'
@@ -35,6 +35,7 @@ export default function ServicesPage() {
   return (
     <main className="mx-auto w-[90%] max-w-[1440px] pt-10 md:pt-16">
       <JsonLd data={breadcrumb} />
+      <JsonLd data={itemListJsonLd(services.map((s) => ({ name: s.title, path: `/services/${s.slug}` })))} />
       <PageBackdrop />
       <h1 className="text-[36px] leading-tight md:text-[56px]">
         <RevealWords text="Web and mobile development services" />

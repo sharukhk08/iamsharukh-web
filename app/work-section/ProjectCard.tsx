@@ -35,7 +35,8 @@ const ProjectCard = ({
     >
       <Image
         src={image}
-        alt={name}
+        alt={`${name} screenshot`}
+        sizes="(max-width: 640px) 70vw, (max-width: 1024px) 60vw, 660px"
         className={`absolute -bottom-2 w-[70%] sm:w-[85%] md:w-[60%] lg:max-w-[55%] ${
           id % 2 === 0 ? 'right-0' : 'left-0'
         }`}

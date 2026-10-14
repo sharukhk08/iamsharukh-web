@@ -42,7 +42,7 @@ const AnimatedWords2: React.FC<AnimatedWords2Props> = ({ title, style }) => {
   };
 
   return (
-    <h2 aria-label={title} role="heading">
+    <h2 aria-label={title}>
       <motion.span className={style} ref={ref}>
         {title.split(" ").map((word, index) => (
           <motion.div
