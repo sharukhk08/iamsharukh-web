@@ -1,7 +1,8 @@
 'use client'
+import LottiePlayer from '../components/LottiePlayer'
 import React, { useEffect, useRef, useState, FormEvent } from 'react'
 import { motion } from 'framer-motion'
-import { Check, GraduationCap, Rocket } from 'lucide-react'
+import { GraduationCap, Rocket } from 'lucide-react'
 import { sendEnquiry } from '../services/emailService'
 import { BOOKING_URL } from '../lib/contact'
 import { track } from '../lib/analytics'
@@ -270,7 +271,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
         animate={{ opacity: 1, y: 0 }}
         className="py-8 text-center"
       >
-        <Check className="mx-auto mb-4 text-green-500" size={44} />
+        <LottiePlayer src="/lottie/success-check.json" loop={false} staticFrame={119} className="mx-auto mb-2 h-28 w-28" />
         <p className="text-xl font-semibold">Thank you, message sent.</p>
         <p className="mt-2 text-sm text-[#95979D]">
           I will reply with next steps. If you would rather talk now, you can

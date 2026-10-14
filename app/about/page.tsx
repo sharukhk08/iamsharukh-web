@@ -3,6 +3,7 @@ import { pageMeta } from '../lib/seo'
 import Image from 'next/image'
 import Link from 'next/link'
 import InnovaftBand from '../components/InnovaftBand'
+import Journey from '../components/Journey'
 import PageBackdrop from '../components/PageBackdrop'
 import RevealWords from '../components/effects/RevealWords'
 import SocialLinks from '../components/SocialLinks'
@@ -67,6 +68,8 @@ export default function AboutPage() {
           className="mx-auto w-[70%] max-w-[380px] rounded-3xl object-cover grayscale lg:w-full"
         />
       </div>
+
+      <Journey />
 
       <section className="mt-16 grid gap-8 md:grid-cols-2">
         <div className="rounded-3xl bg-secondary p-6 md:p-8">

@@ -12,4 +12,4 @@ Three simple animations written as plain Lottie JSON, 400 x 400, 30 fps, 4 secon
 
 To watch them move, drop a `.json` file onto any Lottie previewer, for example the LottieFiles web previewer.
 
-They are not wired into the site. Using Lottie needs a player library (a new dependency, which needs approval), loaded only where an animation appears, and honouring `prefers-reduced-motion`. Any Lottie file taken from elsewhere should be checked for "expressions" (script code) and for its licence before use.
+Copies are in `public/lottie/` and play through `app/components/LottiePlayer.tsx`: form success message, Learn hero (growth bars), AI Automation service hero (automation flow). The player is `lottie-web` 5.12.2 (the one dependency added for this), loaded as its "light" build (SVG only, no expressions) and only when an animation scrolls into view; with reduced motion it shows one still frame. To use another animation, add its JSON to `public/lottie/` and render `<LottiePlayer src="/lottie/name.json" />`. Any Lottie file taken from elsewhere should be checked for "expressions" (script code) and for its licence before use.

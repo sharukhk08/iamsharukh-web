@@ -6,12 +6,12 @@ import CountUp from '../components/effects/CountUp'
 import InnovaftBand from '../components/InnovaftBand'
 import Magnet from '../components/effects/Magnet'
 import ShapeWaves from '../components/effects/ShapeWaves'
+import LottiePlayer from '../components/LottiePlayer'
 import RevealWords from '../components/effects/RevealWords'
 import SpotlightCard from '../components/effects/SpotlightCard'
 import IconBadge from '../components/IconBadge'
 import Reveal from '../components/Reveal'
 import { COURSE_ICONS } from '../lib/icons'
-import { LearnIllustration } from '../components/Illustrations'
 import { contactHref } from '../lib/contact'
 import { courses } from '../lib/courses'
 import { JsonLd } from '../lib/jsonLd'
@@ -113,7 +113,7 @@ export default function LearnPage() {
           </div>
         </div>
         <div>
-          <LearnIllustration />
+          <LottiePlayer src="/lottie/growth-bars.json" staticFrame={119} className="mx-auto aspect-square w-full max-w-[420px] rounded-3xl bg-secondary p-6" />
         </div>
       </div>
 
