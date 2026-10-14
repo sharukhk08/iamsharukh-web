@@ -62,15 +62,15 @@ Email subject: `[Service] Lead - Country`. Auto-reply to the client. Spam protec
 
 | # | Step | Status |
 | --- | --- | --- |
-| 1 | Upgrade Next.js to 16.4.0, update and clean dependencies | Done, pushed |
-| 2 | SEO foundation (metadataBase, canonical, sitemap, robots, JSON-LD) | Done, committed locally |
-| 3 | Services data file and pages | Done, committed locally |
-| 4 | Multi-step contact form | Done, committed locally |
-| 5 | Case studies (`/work/[slug]`) | Done for the 4 existing projects, committed locally. Pages stay `noindex` until challenge, solution and outcome are added in `app/lib/caseStudies.ts` |
-| 6 | Location pages | Done, committed locally |
-| 7 | Learn / mentoring page | Done, committed locally |
-| 8 | Blog (markdown) | Done, committed locally |
-| 9 | Home page updates (services section, nav, footer) | Partly done: nav link, services section, footer links. Hero and About copy still to update |
+| 1 | Upgrade Next.js to 16.4.0, update and clean dependencies | Done |
+| 2 | SEO foundation (metadataBase, canonical, sitemap, robots, JSON-LD) | Done |
+| 3 | Services data file and pages | Done |
+| 4 | Multi-step contact form | Done |
+| 5 | Case studies (`/work/[slug]`) | Done for the 4 existing projects. Pages stay `noindex` until challenge, solution and outcome are filled in `content/projects/<slug>.md` |
+| 6 | Location pages | Done |
+| 7 | Learn / mentoring page | Done |
+| 8 | Blog (markdown) | Done |
+| 9 | Home page updates (services section, nav, footer) | Done |
 
 Before each commit: `node scripts/dev-guard.mjs .`, `npx tsc --noEmit`, `npx eslint .`.
 
@@ -97,3 +97,6 @@ Before each commit: `node scripts/dev-guard.mjs .`, `npx tsc --noEmit`, `npx esl
 19. **WhatsApp removed** from the whole site (contact page, learn page, enquiry form, copy). The form's contact methods are now Email and Phone call.
 20. **Visual language.** Content pages now follow the home page: the grainy `hero.jpg` texture behind the top of each page (`.page-hero`), Mona Sans Narrow uppercase headings (`.site-page h1` and section `h2`), uppercase nav and buttons, monochrome palette (no indigo accent), 1440px container. One heading scale: h1 `clamp(42px, 7vw, 88px)`, long titles use `.h1-compact`. See `app/globals.css`.
 21. **More effects:** RotatingWords (services intro), ProcessTrace (contact page, no timings), DotGrid via PageBackdrop (list pages and contact). ShinyText component was removed; its CSS class `.shiny-text` is used by RotatingWords.
+22. **Projects** now live in `content/projects/<slug>.md` with images in `public/projects/<slug>/` (see `docs/adding-projects.md`). The old `projectDetails.ts` only holds a type now.
+23. **Home page** gained Learn, Latest writing and Explore sections so every page is linked from it; the Services heading uses the same big uppercase style as the other sections. `app/page.tsx` is a server component that reads content at build time and passes plain data to `app/HomeClient.tsx`.
+24. **Hosting:** all routes are static (no `ƒ`). `/contact` reads `?service=` in the browser, and the old `[...not_found]` catch-all was removed. See `docs/hosting-vercel.md`.

@@ -17,11 +17,12 @@ export type Audience = 'client' | 'student'
 export type EnquiryOption = {
   value: string
   label: string
-  group: 'project' | 'mobile' | 'cleanup' | 'learning' | 'other'
+  group: 'project' | 'mobile' | 'cleanup' | 'automation' | 'learning' | 'other'
 }
 
 const groupFor = (slug: string): EnquiryOption['group'] => {
   if (slug === 'react-native-app-development') return 'mobile'
+  if (slug === 'ai-automation-n8n') return 'automation'
   if (slug === 'claude-code-export-cleanup' || slug === 'ai-built-app-cleanup')
     return 'cleanup'
   return 'project'
@@ -134,6 +135,27 @@ export const DETAIL_FIELDS: Record<EnquiryOption['group'], Field[]> = {
       label: 'What is not working or what do you need before launch?',
       type: 'textarea',
       required: true,
+    },
+  ],
+  automation: [
+    {
+      name: 'task',
+      label: 'What would you like to automate?',
+      type: 'textarea',
+      required: true,
+    },
+    {
+      name: 'tools',
+      label: 'Which tools do you use today? (optional)',
+      type: 'text',
+      placeholder: 'For example Gmail, Google Sheets, a CRM, Shopify',
+    },
+    {
+      name: 'frequency',
+      label: 'How often does this task happen?',
+      type: 'select',
+      required: true,
+      options: ['Many times a day', 'Daily', 'Weekly', 'Occasionally', 'Not sure'],
     },
   ],
   learning: [

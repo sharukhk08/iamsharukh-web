@@ -5,7 +5,7 @@ import RevealWords from '../components/effects/RevealWords'
 import PageBackdrop from '../components/PageBackdrop'
 import TiltCard from '../components/effects/TiltCard'
 import Reveal from '../components/Reveal'
-import { caseStudies } from '../lib/caseStudies'
+import { getProjects } from '../lib/projects'
 import { JsonLd } from '../lib/jsonLd'
 import { SITE } from '../lib/site'
 
@@ -48,7 +48,7 @@ export default function WorkPage() {
       </p>
 
       <ul className="mt-12 grid gap-6 md:grid-cols-2">
-        {caseStudies.map((study, index) => (
+        {getProjects().map((study, index) => (
           <li key={study.slug}>
             <Reveal delay={(index % 2) * 80} className="h-full">
               <TiltCard className="h-full">
@@ -57,7 +57,7 @@ export default function WorkPage() {
                 className="flex h-full flex-col overflow-hidden rounded-3xl bg-secondary transition hover:bg-[#23262e]"
               >
                 <Image
-                  src={study.image}
+                  src={study.cover}
                   alt={`${study.name} screenshot`}
                   className="h-[220px] w-full object-cover object-top"
                   sizes="(max-width: 768px) 90vw, 560px"

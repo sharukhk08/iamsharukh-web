@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { monaSans } from '../fonts/monaSans'
 import Aurora from './effects/Aurora'
+import SocialLinks from './SocialLinks'
 import { ReactNode } from 'react'
 import { locations } from '../lib/locations'
 import { services } from '../lib/services'
@@ -120,6 +121,9 @@ export default function SiteShell({ children }: { children: ReactNode }) {
               ))}
             </ul>
           </div>
+        </div>
+        <div className="mx-auto mt-8 w-[90%] max-w-[1440px]">
+          <SocialLinks />
         </div>
         <p className="mx-auto mt-8 w-[90%] max-w-[1440px] text-[12px] uppercase text-[#95979D]">
           Copyright {year}

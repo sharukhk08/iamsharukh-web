@@ -4,11 +4,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Reveal from '../../components/Reveal'
 import { BOOKING_URL, contactHref } from '../../lib/contact'
-import {
-  caseStudies,
-  getCaseStudy,
-  hasFullDetails,
-} from '../../lib/caseStudies'
+import { getProject, getProjects, hasFullDetails } from '../../lib/projects'
 import { JsonLd } from '../../lib/jsonLd'
 import { SITE } from '../../lib/site'
 
@@ -17,7 +13,7 @@ type PageProps = { params: Promise<{ slug: string }> }
 export const dynamicParams = false
 
 export function generateStaticParams() {
-  return caseStudies.map((study) => ({ slug: study.slug }))
+  return getProjects().map((study) => ({ slug: study.slug }))
 }
 
 // Keep meta descriptions short enough for Google to show in full.
@@ -29,7 +25,7 @@ const metaDescription = (text: string, max = 155) => {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
-  const study = getCaseStudy(slug)
+  const study = getProject(slug)
   if (!study) return {}
 
   return {
@@ -49,7 +45,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function CaseStudyPage({ params }: PageProps) {
   const { slug } = await params
-  const study = getCaseStudy(slug)
+  const study = getProject(slug)
   if (!study) notFound()
 
   const url = `${SITE.url}/work/${study.slug}`
@@ -130,13 +126,30 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
       <Reveal className="mt-10">
         <Image
-          src={study.image}
+          src={study.cover}
           alt={`${study.name} screenshot`}
           className="w-full rounded-3xl"
           sizes="(max-width: 1000px) 90vw, 1000px"
           priority
         />
       </Reveal>
+
+      {study.shots.length > 0 && (
+        <Reveal className="mt-10">
+          <ul className="grid gap-4 md:grid-cols-2">
+            {study.shots.map((shot, index) => (
+              <li key={shot.src}>
+                <Image
+                  src={shot}
+                  alt={`${study.name} screenshot ${index + 2}`}
+                  className="w-full rounded-3xl"
+                  sizes="(max-width: 768px) 90vw, 500px"
+                />
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      )}
 
       {sections.map(
         ([heading, text]) =>

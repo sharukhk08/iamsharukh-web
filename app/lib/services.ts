@@ -171,6 +171,46 @@ export const services: Service[] = [
     ],
   },
   {
+    slug: 'ai-automation-n8n',
+    title: 'AI Automation & n8n Workflows',
+    tagline: 'Automate repetitive work with n8n and AI, so your team can spend its time on the work that matters.',
+    metaDescription:
+      'AI automation and n8n workflow development: connect your apps, automate leads, support and reports, and add AI agents with OpenAI or Claude. Hisar and worldwide.',
+    summary:
+      'I design and build automations that connect the tools your business already uses and add AI where it genuinely helps: sorting enquiries, drafting replies, pulling data out of documents, producing reports. Workflows are built with n8n, Make or custom code, and include error handling and a human check wherever a mistake would matter.',
+    forWho: [
+      'Small businesses and teams doing the same manual tasks every day',
+      'Founders and agencies who want leads, follow-ups and reports to run on their own',
+      'Teams that want an AI assistant that answers from their own documents',
+    ],
+    deliverables: [
+      'Workflows in n8n (self-hosted or cloud), or in Make or Zapier if they fit better',
+      'Connections to your CRM, email, forms, spreadsheets, databases and other tools through their APIs and webhooks',
+      'AI steps with OpenAI or Claude: sorting, summaries, drafting replies, data extraction',
+      'AI assistants and agents that answer from your documents (retrieval, often called RAG)',
+      'Error alerts, retries and logs, plus documentation so your team can edit the workflows',
+    ],
+    process: commonProcess(
+      'We list the tasks that eat the most time, who does them today and what "done" looks like, then pick the one with the biggest payoff to automate first.',
+      'I build the workflow in small steps, test it with real examples and add error handling before it touches live data.',
+    ),
+    stack: ['n8n', 'Make', 'Zapier', 'OpenAI API', 'Claude API', 'MCP', 'Webhooks and REST APIs', 'RAG', 'Node.js'],
+    faqs: [
+      {
+        q: 'n8n, Make or Zapier: which should I use?',
+        a: 'n8n can be self-hosted, which can lower running costs at high volume and keeps data on your own server. Make and Zapier are quicker to start with. I recommend the one that fits your volume, budget and privacy needs.',
+      },
+      {
+        q: 'Is it safe to send my business data to an AI model?',
+        a: 'We decide together which data is sent, remove or mask sensitive fields, and I explain the privacy options of each provider before anything is built.',
+      },
+      {
+        q: 'What if the AI makes a mistake?',
+        a: 'Important steps get a human approval before they act, and every workflow logs what it did, so mistakes can be caught and fixed.',
+      },
+    ],
+  },
+  {
     slug: 'crm-custom-software-development',
     title: 'CRM & Custom Software Development',
     tagline: 'Software shaped around how your business actually works.',

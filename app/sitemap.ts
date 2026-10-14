@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { getPosts } from './lib/blog'
-import { caseStudies, hasFullDetails } from './lib/caseStudies'
+import { getProjects, hasFullDetails } from './lib/projects'
 import { locations } from './lib/locations'
 import { services } from './lib/services'
 import { SITE_URL } from './lib/site'
@@ -44,7 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     // Only case studies with a confirmed challenge, solution and outcome.
-    ...caseStudies.filter(hasFullDetails).map((study) => ({
+    ...getProjects().filter(hasFullDetails).map((study) => ({
       url: `${SITE_URL}/work/${study.slug}`,
       changeFrequency: 'monthly' as const,
       priority: 0.7,

@@ -8,6 +8,8 @@ export const STACK = [
   'Tailwind CSS',
   'MongoDB',
   'Firebase',
+  'n8n',
+  'OpenAI and Claude APIs',
   'Figma',
   'Framer Motion',
   'GSAP',

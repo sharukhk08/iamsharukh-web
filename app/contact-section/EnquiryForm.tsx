@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { Check, GraduationCap, Rocket } from 'lucide-react'
 import { sendEnquiry } from '../services/emailService'
 import { BOOKING_URL } from '../lib/contact'
-import { PLACES } from './places'
+import PlaceInput from './PlaceInput'
 import {
   Audience,
   CLIENT_OPTIONS,
@@ -398,11 +398,6 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
 
         {step === 3 && (
           <>
-            <datalist id="place-suggestions">
-              {PLACES.map((place) => (
-                <option key={place} value={place} />
-              ))}
-            </datalist>
 
             <div>
               <label htmlFor="name" className="mb-2 block text-sm font-medium">
@@ -470,18 +465,13 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
               <label htmlFor="place" className="mb-2 block text-sm font-medium">
                 City or country
               </label>
-              <input
+              <PlaceInput
                 id="place"
-                type="text"
-                list="place-suggestions"
-                autoComplete="off"
-                placeholder="Start typing, for example Hisar"
-                maxLength={100}
                 value={info.place}
-                aria-invalid={Boolean(errors.place)}
-                aria-describedby={errors.place ? 'place-error' : undefined}
-                onChange={(e) => setInfo({ ...info, place: e.target.value })}
+                onChange={(place) => setInfo({ ...info, place })}
                 className={inputClass}
+                invalid={Boolean(errors.place)}
+                describedBy={errors.place ? 'place-error' : undefined}
               />
               {fieldError('place')}
             </div>
@@ -562,6 +552,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
           {step > 0 &&
             (step < STEPS.length - 1 ? (
               <button
+                key="next"
                 type="button"
                 onClick={goNext}
                 className="flex-1 rounded-xl border-2 border-[#e4ded7] px-5 py-3 text-[14px] font-semibold transition-colors hover:bg-[#e4ded7] hover:text-[#0E1016]"
@@ -570,6 +561,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
               </button>
             ) : (
               <button
+                key="send"
                 type="submit"
                 disabled={isSubmitting}
                 className="flex-1 rounded-xl border-2 border-[#e4ded7] px-5 py-3 text-[14px] font-semibold transition-colors hover:bg-[#e4ded7] hover:text-[#0E1016] disabled:opacity-50"

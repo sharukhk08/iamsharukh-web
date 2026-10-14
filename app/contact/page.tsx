@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import { CalendarDays, Mail, MapPin } from 'lucide-react'
-import EnquiryForm from '../contact-section/EnquiryForm'
+import ContactForm from '../contact-section/ContactForm'
 import RevealWords from '../components/effects/RevealWords'
 import PageBackdrop from '../components/PageBackdrop'
 import ProcessTrace from '../components/effects/ProcessTrace'
-import { BOOKING_URL, CONTACT_EMAIL } from '../lib/contact'
+import RevealEmail from '../components/RevealEmail'
+import SocialLinks from '../components/SocialLinks'
+import { BOOKING_URL } from '../lib/contact'
 import { JsonLd } from '../lib/jsonLd'
 import { HISAR_OFFICE } from '../lib/locations'
 import { SITE } from '../lib/site'
@@ -15,8 +17,6 @@ export const metadata: Metadata = {
     'Contact Sharukh Khan about a web or app project, or about learning with Innovaft. Send an enquiry, book a free call or send an email.',
   alternates: { canonical: '/contact' },
 }
-
-type PageProps = { searchParams: Promise<{ service?: string | string[] }> }
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -51,20 +51,9 @@ const ways = [
     label: 'Open calendar',
     external: true,
   },
-  {
-    icon: Mail,
-    title: 'Email',
-    text: CONTACT_EMAIL,
-    href: `mailto:${CONTACT_EMAIL}`,
-    label: 'Send an email',
-    external: false,
-  },
 ]
 
-export default async function ContactPage({ searchParams }: PageProps) {
-  const { service } = await searchParams
-  const initialService = Array.isArray(service) ? service[0] : service
-
+export default function ContactPage() {
   return (
     <main className="mx-auto w-[90%] max-w-[1440px] pt-10 md:pt-16">
       <JsonLd data={jsonLd} />
@@ -87,7 +76,7 @@ export default async function ContactPage({ searchParams }: PageProps) {
           <h2 id="enquiry-title" className="mb-4 text-[24px]">
             Send an enquiry
           </h2>
-          <EnquiryForm initialService={initialService} />
+          <ContactForm />
         </section>
 
         <aside className="space-y-4">
@@ -122,6 +111,24 @@ export default async function ContactPage({ searchParams }: PageProps) {
               </span>
             </a>
           ))}
+
+          <div className="flex items-start gap-4 rounded-3xl bg-secondary p-5">
+            <span className="rounded-2xl bg-[#e4ded7]/10 p-3 text-[#e4ded7]">
+              <Mail size={22} />
+            </span>
+            <span>
+              <span className="block text-[18px] font-semibold">Email</span>
+              <span className="mt-1 block text-[14px] text-[#95979D]">
+                The form above is the fastest way to reach me.
+              </span>
+              <RevealEmail className="mt-2 block text-[13px]" />
+            </span>
+          </div>
+
+          <div className="rounded-3xl bg-secondary p-5">
+            <p className="text-[18px] font-semibold">Find me online</p>
+            <SocialLinks className="mt-3" />
+          </div>
 
           <div className="flex items-start gap-4 rounded-3xl bg-secondary p-5">
             <span className="rounded-2xl bg-[#e4ded7]/10 p-3 text-[#e4ded7]">

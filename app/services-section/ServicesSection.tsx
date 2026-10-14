@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Marquee from '../components/effects/Marquee'
 import Reveal from '../components/Reveal'
+import SectionHeading from '../components/SectionHeading'
 import ServiceCard from '../components/ServiceCard'
-import { locations } from '../lib/locations'
 import { services } from '../lib/services'
 import { STACK } from '../lib/stack'
 
@@ -13,15 +13,12 @@ const ServicesSection = () => {
       id="services"
     >
       <div className="mx-auto w-[90%] lg:max-w-[1440px]">
-        <h2 className="text-[36px] leading-tight md:text-[48px] lg:text-[64px]">
-          What I can build for you
-        </h2>
-        <p className="mt-4 max-w-[680px] text-[16px] text-[#c9c4bd] md:text-[18px]">
-          Websites, web apps and mobile apps with Next.js, React and React
-          Native. Choose a service to see what is included.
-        </p>
+        <SectionHeading
+          title="What I can build for you"
+          intro="Websites, web apps and mobile apps with Next.js, React and React Native. Choose a service to see what is included."
+        />
 
-        <div className="mt-8">
+        <div className="mt-10">
           <Marquee
             items={STACK.map((tech) => (
               <span
@@ -48,30 +45,10 @@ const ServicesSection = () => {
           ))}
         </ul>
 
-        <p className="mt-8 text-[14px] text-[#95979D]">
-          Want to learn instead?{' '}
-          <Link
-            href="/learn"
-            className="underline underline-offset-2 hover:no-underline"
-          >
-            See mentoring and Innovaft courses
+        <p className="mt-8 text-center text-[14px] font-semibold uppercase text-[#c9c4bd]">
+          <Link href="/services" className="underline underline-offset-2 hover:no-underline">
+            See all services
           </Link>
-          .
-        </p>
-
-        <p className="mt-3 text-[14px] text-[#95979D]">
-          Based in Hisar, Haryana, working with clients worldwide:{' '}
-          {locations.map((location, index) => (
-            <span key={location.slug}>
-              <Link
-                href={`/locations/${location.slug}`}
-                className="underline underline-offset-2 hover:no-underline"
-              >
-                {location.name}
-              </Link>
-              {index < locations.length - 1 ? ', ' : '.'}
-            </span>
-          ))}
         </p>
       </div>
     </section>

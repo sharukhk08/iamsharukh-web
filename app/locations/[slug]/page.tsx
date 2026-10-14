@@ -68,10 +68,30 @@ export default async function LocationPage({ params }: PageProps) {
     provider: { '@id': `${SITE.url}/#person` },
     address: {
       '@type': 'PostalAddress',
+      ...(location.slug === 'hisar' ? { streetAddress: HISAR_OFFICE.street, postalCode: HISAR_OFFICE.postalCode } : {}),
       addressLocality: SITE.address.locality,
       addressRegion: SITE.address.region,
       addressCountry: SITE.address.country,
     },
+    // Full local business details only where they are true: the Hisar page.
+    ...(location.slug === 'hisar'
+      ? {
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: HISAR_OFFICE.latitude,
+            longitude: HISAR_OFFICE.longitude,
+          },
+          hasMap: HISAR_OFFICE.mapUrl,
+          openingHoursSpecification: [
+            {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+              opens: '09:00',
+              closes: '18:00',
+            },
+          ],
+        }
+      : {}),
     areaServed:
       location.kind === 'state'
         ? { '@type': 'AdministrativeArea', name: 'Haryana, India' }

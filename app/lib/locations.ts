@@ -23,7 +23,14 @@ export type Location = {
 export const HISAR_OFFICE = {
   name: 'Innovaft',
   address: '2nd Floor, SCF-2, Red Square Market, Railway Road, Hisar 125001',
+  street: '2nd Floor, SCF-2, Red Square Market, Railway Road',
+  postalCode: '125001',
   hours: 'Monday to Saturday, 9:00 AM to 6:00 PM',
+  // From Innovaft's Google Maps listing. Keep this identical to the address on
+  // Google Business Profile, Innovaft's site and every directory (consistency matters).
+  latitude: 29.1558542,
+  longitude: 75.7184353,
+  mapUrl: 'https://www.google.com/maps/place/Innovaft+Private+Limited/@29.1558542,75.7184353,17z',
 }
 
 export const locations: Location[] = [

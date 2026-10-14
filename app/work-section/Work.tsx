@@ -1,6 +1,7 @@
+import type { Project } from '../lib/projects'
 import ProjectGrid from './ProjectGrid'
 
-const Work = () => {
+const Work = ({ projects }: { projects: Project[] }) => {
   return (
     <section
       className="relative z-10 flex w-full flex-col items-center justify-center bg-primary bg-cover bg-center py-16 md:py-20 lg:py-20"
@@ -10,7 +11,7 @@ const Work = () => {
         Featured Work
       </h2>
 
-      <ProjectGrid />
+      <ProjectGrid projects={projects} />
     </section>
   )
 }

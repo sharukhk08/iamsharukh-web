@@ -17,6 +17,7 @@ import {
   Smartphone,
   TerminalSquare,
   Users,
+  Workflow,
 } from 'lucide-react'
 
 export const SERVICE_ICONS: Record<string, LucideIcon> = {
@@ -24,6 +25,7 @@ export const SERVICE_ICONS: Record<string, LucideIcon> = {
   'figma-ui-ux-design': PenTool,
   'saas-dashboard-development': LayoutDashboard,
   'full-stack-web-app-development': Layers,
+  'ai-automation-n8n': Workflow,
   'crm-custom-software-development': Users,
   'ecommerce-app-development': ShoppingCart,
   'react-native-app-development': Smartphone,

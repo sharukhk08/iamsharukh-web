@@ -52,7 +52,8 @@ export default function ServicesPage() {
             'AI-built apps',
           ]}
         />
-        . Pick a service to see what is included and how I work.
+        <br />
+        Pick a service to see what is included and how I work.
       </p>
 
       <div className="mt-10">

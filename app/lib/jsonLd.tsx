@@ -42,6 +42,8 @@ export const personJsonLd = {
     'Tailwind CSS',
     'SaaS development',
     'Figma to code',
+    'AI automation',
+    'n8n',
   ],
   sameAs: SITE.sameAs,
 }

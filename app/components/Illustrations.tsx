@@ -306,7 +306,38 @@ export function LocationIllustration() {
   )
 }
 
+// AI automation: a trigger flows through an AI step into several actions
+export function AutomationIllustration() {
+  const node = (x: number, y: number, w = 96, accent = false) => (
+    <g>
+      <rect x={x} y={y} width={w} height="52" rx="12" fill="#13151a" stroke={accent ? ACCENT : LINE} strokeWidth={accent ? 2 : 1} />
+      <circle cx={x + 20} cy={y + 26} r="8" fill={accent ? ACCENT : MUTED} opacity="0.85" />
+      <rect x={x + 36} y={y + 17} width={w - 52} height="7" rx="3.5" fill={CREAM} opacity="0.8" />
+      <rect x={x + 36} y={y + 30} width={(w - 52) * 0.6} height="5" rx="2.5" fill={MUTED} opacity="0.6" />
+    </g>
+  )
+  const link = (d: string, delay = 0) => (
+    <path d={d} fill="none" stroke={MUTED} strokeWidth="2" strokeDasharray="5 6" className="anim-blink" style={{ animationDelay: `${delay}s` }} />
+  )
+  return (
+    <Frame>
+      {link('M126 160 C150 160 150 160 172 160')}
+      {link('M268 160 C300 160 300 90 330 90', 0.4)}
+      {link('M268 160 C300 160 300 160 330 160', 0.8)}
+      {link('M268 160 C300 160 300 230 330 230', 1.2)}
+      <g className="anim-float">{node(30, 134)}</g>
+      <g className="anim-float-b">{node(172, 126, 112, true)}</g>
+      <g className="anim-float">{node(330, 64)}</g>
+      <g className="anim-float-b">{node(330, 134)}</g>
+      <g className="anim-float">{node(330, 204)}</g>
+      <circle cx="228" cy="126" r="6" fill={ACCENT} className="anim-pulse-ring" />
+      <path d="M232 100 l4 10 l10 4 l-10 4 l-4 10 l-4 -10 l-10 -4 l10 -4 Z" fill={ACCENT} className="anim-blink" />
+    </Frame>
+  )
+}
+
 const BY_SLUG: Record<string, () => ReactNode> = {
+  'ai-automation-n8n': AutomationIllustration,
   'figma-to-nextjs': WebsiteIllustration,
   'figma-ui-ux-design': DesignIllustration,
   'saas-dashboard-development': DashboardIllustration,

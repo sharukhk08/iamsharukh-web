@@ -17,6 +17,9 @@ const Footer = () => {
           <Link href="/services" className="underline underline-offset-2 hover:no-underline">
             Services
           </Link>
+          <Link href="/locations/hisar" className="underline underline-offset-2 hover:no-underline">
+            Hisar
+          </Link>
           <Link href="/locations" className="underline underline-offset-2 hover:no-underline">
             Locations
           </Link>

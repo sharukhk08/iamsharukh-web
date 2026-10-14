@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { parseFrontmatter } from './frontmatter'
 
 export type Post = {
   slug: string
@@ -11,24 +12,13 @@ export type Post = {
 
 const POSTS_DIR = path.join(process.cwd(), 'content', 'blog')
 
-// Frontmatter is a simple "key: value" block between two --- lines.
 function parse(slug: string, raw: string): Post | null {
-  const match = raw.replace(/\r\n/g, '\n').match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/)
-  if (!match) return null
-  const meta: Record<string, string> = {}
-  for (const line of match[1].split('\n')) {
-    const index = line.indexOf(':')
-    if (index > 0) meta[line.slice(0, index).trim()] = line.slice(index + 1).trim()
-  }
+  const parsed = parseFrontmatter(raw)
+  if (!parsed) return null
+  const { meta, body } = parsed
   if (!meta.title || !meta.description || !meta.date) return null
   if (meta.draft === 'true') return null
-  return {
-    slug,
-    title: meta.title,
-    description: meta.description,
-    date: meta.date,
-    content: match[2].trim(),
-  }
+  return { slug, title: meta.title, description: meta.description, date: meta.date, content: body }
 }
 
 export function getPosts(): Post[] {

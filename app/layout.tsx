@@ -31,6 +31,8 @@ export const metadata: Metadata = {
     'React developer',
     'React Native developer',
     'Figma to Next.js',
+    'AI automation',
+    'n8n developer',
     'SaaS dashboard development',
     'TypeScript developer',
     'web developer in Hisar',
