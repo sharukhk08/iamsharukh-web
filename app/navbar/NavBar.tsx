@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import ThemeToggle from "../components/ThemeToggle";
 import { faFilePdf } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -17,7 +18,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="fixed bottom-10 left-0 right-0 z-50 my-0  mx-auto  flex w-[340px] items-center justify-center gap-0 rounded-lg bg-[#07070a]/90 px-1 py-1 text-[#e4ded7] backdrop-blur-md sm:w-[460px] sm:gap-1 md:p-2 lg:w-[480px]">
+    <nav className="fixed bottom-10 left-0 right-0 z-50 my-0  mx-auto  flex w-[392px] items-center justify-center gap-0 rounded-lg bg-nav/90 px-1 py-1 text-ink backdrop-blur-md sm:w-[512px] sm:gap-1 md:p-2 lg:w-[532px]">
       {/* <Link
         href="https://drive.google.com/file/d/1Mmwl-FRGPm5QVe3AjtukJr_Jpc366Ear/view"
         target="_blank"
@@ -84,6 +85,7 @@ const NavBar = () => {
           Contact
         </h4>
       </Link>
+      <ThemeToggle className="ml-1 !border-0 !p-2" />
     </nav>
   );
 };

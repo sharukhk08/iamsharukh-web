@@ -17,11 +17,11 @@ export default function ServiceCard({
 }) {
   const Icon = SERVICE_ICONS[slug] ?? LayoutTemplate
   return (
-    <SpotlightCard className="h-full rounded-3xl bg-secondary transition-colors hover:bg-[#23262e]">
+    <SpotlightCard className="h-full rounded-3xl bg-secondary transition-colors hover:bg-raised">
       <Link href={`/services/${slug}`} className="group flex h-full flex-col p-6">
         <IconBadge icon={Icon} className="self-start" />
         <Heading className="mt-4 text-[20px] leading-snug">{title}</Heading>
-        <p className="mt-2 text-[14px] text-[#95979D]">{tagline}</p>
+        <p className="mt-2 text-[14px] text-ink-mute">{tagline}</p>
         <span className="mt-4 inline-flex items-center gap-1 text-[14px] font-semibold">
           Learn more
           <ArrowRight

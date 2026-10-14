@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef } from 'react'
+import { readColor, THEME_EVENT } from '../../lib/theme'
 
 // A grid of dots that swell and brighten near the pointer and ripple gently on
 // their own, so it also moves on touch screens. Decorative only: pauses
@@ -27,10 +28,11 @@ export default function DotGrid({
     let height = 0
     let pointer = { x: -9999, y: -9999 }
     const started = performance.now()
+    let ink = readColor('--c-ink')
 
     const draw = (seconds: number) => {
       ctx.clearRect(0, 0, width, height)
-      ctx.fillStyle = '#e4ded7'
+      ctx.fillStyle = ink
       const cols = Math.ceil(width / gap) + 1
       const rows = Math.ceil(height / gap) + 1
       for (let gy = 0; gy < rows; gy++) {
@@ -76,6 +78,11 @@ export default function DotGrid({
       visible = entry.isIntersecting
     })
     visibility.observe(canvas)
+    const onTheme = () => {
+      ink = readColor('--c-ink')
+      draw((performance.now() - started) / 1000)
+    }
+    window.addEventListener(THEME_EVENT, onTheme)
     window.addEventListener('pointermove', onMove)
     if (!reduced) frame = requestAnimationFrame(loop)
 
@@ -84,6 +91,7 @@ export default function DotGrid({
       resizeObserver.disconnect()
       visibility.disconnect()
       window.removeEventListener('pointermove', onMove)
+      window.removeEventListener(THEME_EVENT, onTheme)
     }
   }, [gap])
 

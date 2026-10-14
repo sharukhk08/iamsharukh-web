@@ -17,7 +17,7 @@ interface ContactProps {
 const Contact: React.FC<ContactProps> = ({ onContactClick }) => {
   return (
     <motion.section
-      className="relative z-10 flex h-[95vh] w-full items-center justify-center overflow-hidden bg-[#0E1016] bg-cover bg-center py-16 md:h-[80vh] md:py-20 lg:h-[90vh] lg:pt-0 lg:pb-28 3xl:h-[75vh]"
+      className="relative z-10 flex h-[95vh] w-full items-center justify-center overflow-hidden bg-paper bg-cover bg-center py-16 md:h-[80vh] md:py-20 lg:h-[90vh] lg:pt-0 lg:pb-28 3xl:h-[75vh]"
       id="contact"
       initial="initial"
       animate="animate"
@@ -28,7 +28,7 @@ const Contact: React.FC<ContactProps> = ({ onContactClick }) => {
         >
           <AnimatedWords2
             title={"Let's Talk"}
-            style="flex max-w-[500px] flex-col items-start text-left text-[150px] font-extrabold uppercase leading-[0.9em] text-[#e4ded7] sm:max-w-full sm:flex-row sm:items-center sm:justify-center sm:text-center sm:text-[170px] md:text-[200px] lg:text-center lg:text-[270px] xl:text-[390px]"
+            style="flex max-w-[500px] flex-col items-start text-left text-[150px] font-extrabold uppercase leading-[0.9em] text-ink sm:max-w-full sm:flex-row sm:items-center sm:justify-center sm:text-center sm:text-[170px] md:text-[200px] lg:text-center lg:text-[270px] xl:text-[390px]"
           />
           {/* <Image
             src={heartIcon}
@@ -38,7 +38,7 @@ const Contact: React.FC<ContactProps> = ({ onContactClick }) => {
         </div>
 
         <div className="mt-20 flex w-full flex-col items-end justify-center gap-16 sm:mt-32 sm:gap-12 md:mt-40 md:flex-row md:items-start md:justify-between lg:mt-12 lg:max-w-[1440px]">
-          <div className="flex w-[350px] max-w-[90%] flex-col items-end text-right text-[14px] font-semibold uppercase text-[#e4ded7] sm:w-[350px] sm:text-[14px] md:w-[310px] md:items-start md:text-left md:text-[16px] lg:w-[420px] lg:text-[16px]">
+          <div className="flex w-[350px] max-w-[90%] flex-col items-end text-right text-[14px] font-semibold uppercase text-ink sm:w-[350px] sm:text-[14px] md:w-[310px] md:items-start md:text-left md:text-[16px] lg:w-[420px] lg:text-[16px]">
             <AnimatedBody
               text="Got a question, proposal, project, or want to work together on something?"
               className="-mb-1 inline-block overflow-hidden pt-1 sm:-mb-2 md:-mb-3 lg:-mb-4"
@@ -46,7 +46,7 @@ const Contact: React.FC<ContactProps> = ({ onContactClick }) => {
             <div>
               <motion.button
                 onClick={onContactClick}
-                className="rounded-md border-2 mt-10 border-[#e4ded7] py-2 px-4 text-[14px] font-semibold text-[#e4ded7] sm:block md:text-[16px] lg:block hover:bg-[#e4ded7] hover:text-[#0E1016] transition-colors"
+                className="rounded-md border-2 mt-10 border-ink py-2 px-4 text-[14px] font-semibold text-ink sm:block md:text-[16px] lg:block hover:bg-ink hover:text-paper transition-colors"
                 variants={bodyAnimation}
               >
                 CONTACT ME
@@ -81,7 +81,7 @@ const Contact: React.FC<ContactProps> = ({ onContactClick }) => {
             </div>
           </div>
 
-          <div className="flex gap-10 text-[16px] font-bold text-[#e4ded7] sm:gap-14 sm:text-[24px] md:gap-10 md:text-[16px] lg:gap-20 lg:text-[28px]">
+          <div className="flex gap-10 text-[16px] font-bold text-ink sm:gap-14 sm:text-[24px] md:gap-10 md:text-[16px] lg:gap-20 lg:text-[28px]">
             <Link
               href="https://github.com/sharukhk08"
               target="_blank"
@@ -89,7 +89,7 @@ const Contact: React.FC<ContactProps> = ({ onContactClick }) => {
             >
               <AnimatedTitle
                 text="GH"
-                className="text-[16px] font-bold text-[#e4ded7] sm:text-[20px] md:text-[16px] lg:text-[28px]"
+                className="text-[16px] font-bold text-ink sm:text-[20px] md:text-[16px] lg:text-[28px]"
                 wordSpace="mr-[0.25em]"
                 charSpace="mr-[0.01em]"
               />
@@ -101,7 +101,7 @@ const Contact: React.FC<ContactProps> = ({ onContactClick }) => {
             >
               <AnimatedTitle
                 text="LN"
-                className="text-[16px] font-bold text-[#e4ded7] sm:text-[20px] md:text-[16px] lg:text-[28px]"
+                className="text-[16px] font-bold text-ink sm:text-[20px] md:text-[16px] lg:text-[28px]"
                 wordSpace="mr-[0.25em]"
                 charSpace="mr-[0.01em]"
               />
@@ -113,7 +113,7 @@ const Contact: React.FC<ContactProps> = ({ onContactClick }) => {
             >
               <AnimatedTitle
                 text="TW"
-                className="text-[16px] font-bold text-[#e4ded7] sm:text-[20px] md:text-[16px] lg:text-[28px]"
+                className="text-[16px] font-bold text-ink sm:text-[20px] md:text-[16px] lg:text-[28px]"
                 wordSpace="mr-[0.25em]"
                 charSpace="mr-[0.01em]"
               />
@@ -125,7 +125,7 @@ const Contact: React.FC<ContactProps> = ({ onContactClick }) => {
             >
               <AnimatedTitle
                 text="CO"
-                className="text-[16px] font-bold text-[#e4ded7] sm:text-[20px] md:text-[16px] lg:text-[28px]"
+                className="text-[16px] font-bold text-ink sm:text-[20px] md:text-[16px] lg:text-[28px]"
                 wordSpace="mr-[0.25em]"
                 charSpace="mr-[0.01em]"
               />

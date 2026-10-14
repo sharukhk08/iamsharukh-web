@@ -32,13 +32,13 @@ const ContactFormModal: React.FC<ContactFormModalProps> = ({
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
-          className="relative max-h-[calc(100vh-10px)] w-full max-w-lg overflow-auto rounded-lg bg-[#0E1016] p-6 text-[#e4ded7]"
+          className="relative max-h-[calc(100vh-10px)] w-full max-w-lg overflow-auto rounded-lg bg-paper p-6 text-ink"
         >
           <button
             type="button"
             onClick={onClose}
             aria-label="Close"
-            className="absolute right-4 top-4 text-[#e4ded7] hover:text-white"
+            className="absolute right-4 top-4 text-ink hover:opacity-70"
           >
             <X size={24} />
           </button>

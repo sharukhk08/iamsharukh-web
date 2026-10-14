@@ -68,7 +68,7 @@ export default async function LearnLocationPage({ params }: PageProps) {
       <JsonLd data={jsonLd} />
       <PageBackdrop />
 
-      <p className="text-[14px] text-[#c9c4bd]">
+      <p className="text-[14px] text-ink-soft">
         <Link href="/learn" className="hover:underline">
           Learn
         </Link>{' '}
@@ -77,17 +77,17 @@ export default async function LearnLocationPage({ params }: PageProps) {
       <h1 className="h1-compact mt-4 text-[36px] leading-tight md:text-[56px]">
         <RevealWords text={page.h1} />
       </h1>
-      <p className="mt-6 max-w-[800px] text-[18px] leading-relaxed text-[#c9c4bd]">{page.intro}</p>
+      <p className="mt-6 max-w-[800px] text-[18px] leading-relaxed text-ink-soft">{page.intro}</p>
       <div className="mt-8 flex flex-wrap gap-4">
         <Link
           href={contactHref('learning')}
-          className="rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
+          className="rounded-md border-2 border-ink bg-ink px-6 py-3 text-[14px] font-semibold uppercase text-paper transition-colors hover:bg-transparent hover:text-ink"
         >
           Book a free first class
         </Link>
         <Link
           href="/learn"
-          className="rounded-md border-2 border-[#e4ded7]/40 px-6 py-3 text-[14px] font-semibold uppercase transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
+          className="rounded-md border-2 border-ink/40 px-6 py-3 text-[14px] font-semibold uppercase transition-colors hover:border-ink hover:bg-ink hover:text-paper"
         >
           See all courses
         </Link>
@@ -97,7 +97,7 @@ export default async function LearnLocationPage({ params }: PageProps) {
         <Reveal key={section.heading} className="mt-14">
           <section>
             <h2 className="text-[26px] md:text-[32px]">{section.heading}</h2>
-            <div className="mt-4 max-w-[800px] space-y-4 text-[16px] leading-relaxed text-[#c9c4bd]">
+            <div className="mt-4 max-w-[800px] space-y-4 text-[16px] leading-relaxed text-ink-soft">
               {section.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -111,7 +111,7 @@ export default async function LearnLocationPage({ params }: PageProps) {
           {courses.map((course) => (
             <li key={course.slug} className="rounded-3xl bg-secondary p-5">
               <h3 className="text-[18px]">{course.name}</h3>
-              <p className="mt-2 text-[14px] text-[#c9c4bd]">{course.summary}</p>
+              <p className="mt-2 text-[14px] text-ink-soft">{course.summary}</p>
             </li>
           ))}
         </ul>
@@ -124,7 +124,7 @@ export default async function LearnLocationPage({ params }: PageProps) {
             {page.faqs.map((faq) => (
               <div key={faq.q}>
                 <dt className="text-[18px] font-semibold">{faq.q}</dt>
-                <dd className="mt-2 max-w-[760px] text-[15px] text-[#c9c4bd]">{faq.a}</dd>
+                <dd className="mt-2 max-w-[760px] text-[15px] text-ink-soft">{faq.a}</dd>
               </div>
             ))}
           </dl>
@@ -134,12 +134,12 @@ export default async function LearnLocationPage({ params }: PageProps) {
       <Reveal className="mt-14">
         <section className="rounded-3xl bg-secondary p-8 md:p-12">
           <h2 className="text-[26px] md:text-[32px]">Visit or get in touch</h2>
-          <p className="mt-3 text-[16px] text-[#c9c4bd]">
+          <p className="mt-3 text-[16px] text-ink-soft">
             {HISAR_OFFICE.name}, {HISAR_OFFICE.address}. {HISAR_OFFICE.hours}.
           </p>
           <Link
             href={contactHref('learning')}
-            className="mt-6 inline-block rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
+            className="mt-6 inline-block rounded-md border-2 border-ink bg-ink px-6 py-3 text-[14px] font-semibold uppercase text-paper transition-colors hover:bg-transparent hover:text-ink"
           >
             Send an enquiry
           </Link>
@@ -157,7 +157,7 @@ export default async function LearnLocationPage({ params }: PageProps) {
             <li key={item.slug}>
               <Link
                 href={`/learn/${item.slug}`}
-                className="inline-block rounded-full border border-[#e4ded7]/30 px-4 py-2 text-[14px] hover:bg-secondary"
+                className="inline-block rounded-full border border-ink/30 px-4 py-2 text-[14px] hover:bg-secondary"
               >
                 {item.metaTitle}
               </Link>

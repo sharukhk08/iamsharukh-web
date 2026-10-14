@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef } from 'react'
+import { readColor, THEME_EVENT } from '../../lib/theme'
 
 // Text that vibrates like a bad signal: each pixel row is shifted sideways by a
 // random amount every frame. The shake gets stronger while the pointer is over it.
@@ -56,7 +57,7 @@ export default function FuzzyText({
       const sctx = source.getContext('2d')
       if (!sctx) return
       sctx.font = font
-      sctx.fillStyle = '#e4ded7'
+      sctx.fillStyle = readColor('--c-ink')
       sctx.textBaseline = 'middle'
       sctx.fillText(text, pad, height / 2)
 
@@ -103,11 +104,17 @@ export default function FuzzyText({
     } else {
       loop()
     }
+    const onTheme = () => {
+      build()
+      if (reduced) draw(0)
+    }
+    window.addEventListener(THEME_EVENT, onTheme)
     window.addEventListener('resize', onResize)
     window.addEventListener('pointermove', onMove)
     window.addEventListener('pointerleave', onLeave)
     return () => {
       cancelAnimationFrame(frame)
+      window.removeEventListener(THEME_EVENT, onTheme)
       window.removeEventListener('resize', onResize)
       window.removeEventListener('pointermove', onMove)
       window.removeEventListener('pointerleave', onLeave)

@@ -83,7 +83,7 @@ export default async function ServicePage({ params }: PageProps) {
       <JsonLd data={serviceJsonLd} />
       <JsonLd data={breadcrumb} />
 
-      <p className="text-[14px] text-[#c9c4bd]">
+      <p className="text-[14px] text-ink-soft">
         <Link href="/services" className="hover:underline">
           Services
         </Link>{' '}
@@ -100,7 +100,7 @@ export default async function ServicePage({ params }: PageProps) {
             <Magnet>
               <Link
                 href={contactHref(service.slug)}
-                className="inline-block rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
+                className="inline-block rounded-md border-2 border-ink bg-ink px-6 py-3 text-[14px] font-semibold uppercase text-paper transition-colors hover:bg-transparent hover:text-ink"
               >
                 Tell me about your project
               </Link>
@@ -109,7 +109,7 @@ export default async function ServicePage({ params }: PageProps) {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md border-2 border-[#e4ded7]/40 px-6 py-3 text-[14px] font-semibold uppercase text-[#e4ded7] transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
+              className="rounded-md border-2 border-ink/40 px-6 py-3 text-[14px] font-semibold uppercase text-ink transition-colors hover:border-ink hover:bg-ink hover:text-paper"
             >
               Book a free 30-minute call
             </a>
@@ -133,7 +133,7 @@ export default async function ServicePage({ params }: PageProps) {
         </div>
       </div>
 
-      <p className="mt-14 max-w-[820px] text-[16px] leading-relaxed text-[#c9c4bd] md:text-[18px]">
+      <p className="mt-14 max-w-[820px] text-[16px] leading-relaxed text-ink-soft md:text-[18px]">
         {service.summary}
       </p>
 
@@ -141,10 +141,10 @@ export default async function ServicePage({ params }: PageProps) {
       <section className="mt-14 grid gap-10 md:grid-cols-2">
         <SpotlightCard className="rounded-3xl bg-secondary p-6 md:p-8">
           <h2 className="text-[22px]">Who this is for</h2>
-          <ul className="mt-4 space-y-3 text-[15px] text-[#c9c4bd]">
+          <ul className="mt-4 space-y-3 text-[15px] text-ink-soft">
             {service.forWho.map((item) => (
               <li key={item} className="flex gap-3">
-                <Check size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-[#e4ded7]" />
+                <Check size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-ink" />
                 {item}
               </li>
             ))}
@@ -152,10 +152,10 @@ export default async function ServicePage({ params }: PageProps) {
         </SpotlightCard>
         <SpotlightCard className="rounded-3xl bg-secondary p-6 md:p-8">
           <h2 className="text-[22px]">What you get</h2>
-          <ul className="mt-4 space-y-3 text-[15px] text-[#c9c4bd]">
+          <ul className="mt-4 space-y-3 text-[15px] text-ink-soft">
             {service.deliverables.map((item) => (
               <li key={item} className="flex gap-3">
-                <Check size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-[#c9c4bd]" />
+                <Check size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-ink-soft" />
                 {item}
               </li>
             ))}
@@ -173,10 +173,10 @@ export default async function ServicePage({ params }: PageProps) {
               <SpotlightCard className="h-full rounded-3xl bg-secondary p-6">
                 <div className="flex items-center justify-between">
                   <IconBadge icon={PROCESS_ICONS[index % PROCESS_ICONS.length]} size={20} />
-                  <span className="text-[14px] text-[#95979D]">Step {index + 1}</span>
+                  <span className="text-[14px] text-ink-mute">Step {index + 1}</span>
                 </div>
                 <h3 className="mt-4 text-[20px]">{step.title}</h3>
-                <p className="mt-3 text-[14px] text-[#c9c4bd]">{step.text}</p>
+                <p className="mt-3 text-[14px] text-ink-soft">{step.text}</p>
               </SpotlightCard>
             </li>
           ))}
@@ -191,7 +191,7 @@ export default async function ServicePage({ params }: PageProps) {
           {service.stack.map((tech) => (
             <li
               key={tech}
-              className="rounded-full border border-[#e4ded7]/30 px-4 py-2 text-[14px]"
+              className="rounded-full border border-ink/30 px-4 py-2 text-[14px]"
             >
               {tech}
             </li>
@@ -207,7 +207,7 @@ export default async function ServicePage({ params }: PageProps) {
           {service.faqs.map((faq) => (
             <div key={faq.q}>
               <dt className="text-[18px] font-semibold">{faq.q}</dt>
-              <dd className="mt-2 max-w-[760px] text-[15px] text-[#c9c4bd]">
+              <dd className="mt-2 max-w-[760px] text-[15px] text-ink-soft">
                 {faq.a}
               </dd>
             </div>
@@ -221,7 +221,7 @@ export default async function ServicePage({ params }: PageProps) {
         <h2 className="text-[26px] md:text-[32px]">
           Ready to talk about your project?
         </h2>
-        <p className="mt-3 max-w-[600px] text-[16px] text-[#c9c4bd]">
+        <p className="mt-3 max-w-[600px] text-[16px] text-ink-soft">
           Tell me what you need and I will reply with next steps. Based in
           Hisar, Haryana, working with clients worldwide.
         </p>
@@ -229,7 +229,7 @@ export default async function ServicePage({ params }: PageProps) {
           <Magnet>
             <Link
               href={contactHref(service.slug)}
-              className="inline-block rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
+              className="inline-block rounded-md border-2 border-ink bg-ink px-6 py-3 text-[14px] font-semibold uppercase text-paper transition-colors hover:bg-transparent hover:text-ink"
             >
               Send an enquiry
             </Link>
@@ -248,11 +248,11 @@ export default async function ServicePage({ params }: PageProps) {
             <li key={item.slug}>
               <Link
                 href={`/services/${item.slug}`}
-                className="inline-flex items-center gap-2 rounded-full border border-[#e4ded7]/30 px-4 py-2 text-[14px] hover:bg-secondary"
+                className="inline-flex items-center gap-2 rounded-full border border-ink/30 px-4 py-2 text-[14px] hover:bg-secondary"
               >
                 {(() => {
                   const Icon = SERVICE_ICONS[item.slug]
-                  return Icon ? <Icon size={16} aria-hidden="true" className="text-[#e4ded7]" /> : null
+                  return Icon ? <Icon size={16} aria-hidden="true" className="text-ink" /> : null
                 })()}
                 {item.title}
               </Link>

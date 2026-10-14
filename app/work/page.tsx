@@ -35,7 +35,7 @@ export default function WorkPage() {
       <h1 className="text-[36px] leading-tight md:text-[56px]">
         <RevealWords text="Selected work" />
       </h1>
-      <p className="mt-4 max-w-[680px] text-[16px] text-[#c9c4bd] md:text-[18px]">
+      <p className="mt-4 max-w-[680px] text-[16px] text-ink-soft md:text-[18px]">
         A few projects built with Next.js, React and Node.js. More work from my
         company is on the{' '}
         <a
@@ -56,7 +56,7 @@ export default function WorkPage() {
               <TiltCard className="h-full">
               <Link
                 href={`/work/${study.slug}`}
-                className="flex h-full flex-col overflow-hidden rounded-3xl bg-secondary transition hover:bg-[#23262e]"
+                className="flex h-full flex-col overflow-hidden rounded-3xl bg-secondary transition hover:bg-raised"
               >
                 <Image
                   src={study.cover}
@@ -66,14 +66,14 @@ export default function WorkPage() {
                 />
                 <div className="p-6">
                   <h2 className="text-[22px] md:text-[26px]">{study.name}</h2>
-                  <p className="mt-2 line-clamp-3 text-[15px] text-[#95979D]">
+                  <p className="mt-2 line-clamp-3 text-[15px] text-ink-mute">
                     {study.summary}
                   </p>
                   <ul className="mt-4 flex flex-wrap gap-2">
                     {study.technologies.map((tech) => (
                       <li
                         key={tech}
-                        className="rounded-full border border-[#e4ded7]/30 px-3 py-1 text-[13px]"
+                        className="rounded-full border border-ink/30 px-3 py-1 text-[13px]"
                       >
                         {tech}
                       </li>

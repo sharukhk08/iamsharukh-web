@@ -11,11 +11,11 @@ const Reviews = () => {
   return (
     <section className="z-10 flex w-full flex-col items-center justify-center overflow-hidden bg-primary bg-cover bg-center pt-20 md:pb-16 lg:pb-24">
       <div
-        className={`relative mb-16 flex w-full flex-col items-center justify-center gap-10  text-[#e4ded7] sm:items-center lg:max-w-[1440px]`}
+        className={`relative mb-16 flex w-full flex-col items-center justify-center gap-10  text-ink sm:items-center lg:max-w-[1440px]`}
       >
         <AnimatedWords2
           title={'Testimonials'}
-          style={`flex max-w-[500px] flex-col items-start text-left pr-5 ${monaSans.className} font-extrabold uppercase leading-[0.9em] text-[#e4ded7] sm:max-w-full sm:flex-row sm:items-center sm:justify-center sm:text-center lg:text-center text-[clamp(70px,14vw,155.04px)]`}
+          style={`flex max-w-[500px] flex-col items-start text-left pr-5 ${monaSans.className} font-extrabold uppercase leading-[0.9em] text-ink sm:max-w-full sm:flex-row sm:items-center sm:justify-center sm:text-center lg:text-center text-[clamp(70px,14vw,155.04px)]`}
         />
         <AnimatedBody
           text="Real Stories from Clients and Collaborators Who Have Experienced My Work Firsthand"
@@ -57,7 +57,7 @@ const Reviews = () => {
         target="_blank"
         className="mt-10 mb-5 sm:mb-0 sm:mt-20"
       >
-        <Image src={hireMe} alt={'hire me'} className="w-full" />
+        <Image src={hireMe} alt={'hire me'} className="w-full rounded-xl ring-1 ring-ink/10" />
       </motion.a>
 
   

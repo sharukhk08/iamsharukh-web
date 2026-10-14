@@ -34,7 +34,7 @@ const MIN_FILL_MS = 4000
 const filledTooFast = (openedAt: number) => Date.now() - openedAt < MIN_FILL_MS
 
 const inputClass =
-  'w-full rounded-xl border border-gray-600 bg-[#1b1d23] p-3 text-[16px] text-[#e4ded7] focus:border-[#e4ded7] focus:outline-none'
+  'w-full rounded-xl border border-gray-600 bg-secondary p-3 text-[16px] text-ink focus:border-ink focus:outline-none'
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 // Phone numbers: digits, plus, spaces, dashes and brackets only.
@@ -273,7 +273,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
       >
         <LottiePlayer src="/lottie/success-check.json" loop={false} staticFrame={119} className="mx-auto mb-2 h-28 w-28" />
         <p className="text-xl font-semibold">Thank you, message sent.</p>
-        <p className="mt-2 text-sm text-[#95979D]">
+        <p className="mt-2 text-sm text-ink-mute">
           I will reply with next steps. If you would rather talk now, you can
           book a call.
         </p>
@@ -281,7 +281,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
           href={BOOKING_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-block rounded-md border-2 border-[#e4ded7] px-4 py-2 text-[14px] font-semibold hover:bg-[#e4ded7] hover:text-[#0E1016]"
+          className="mt-6 inline-block rounded-md border-2 border-ink px-4 py-2 text-[14px] font-semibold hover:bg-ink hover:text-paper"
         >
           Book a 30-minute call
         </a>
@@ -303,25 +303,25 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
       onClick={() => chooseAudience(value)}
       className={`flex w-full items-start gap-4 rounded-2xl border p-4 text-left transition-colors ${
         audience === value
-          ? 'border-[#e4ded7] bg-[#e4ded7]/10'
-          : 'border-gray-600 hover:border-[#e4ded7]'
+          ? 'border-ink bg-ink/10'
+          : 'border-gray-600 hover:border-ink'
       }`}
     >
-      <span className="mt-1 text-[#e4ded7]">{icon}</span>
+      <span className="mt-1 text-ink">{icon}</span>
       <span>
         <span className="block text-[18px] font-semibold">{title}</span>
-        <span className="mt-1 block text-[14px] text-[#95979D]">{text}</span>
+        <span className="mt-1 block text-[14px] text-ink-mute">{text}</span>
       </span>
     </button>
   )
 
   return (
     <>
-      <p className="mb-1 text-sm text-[#95979D]">
+      <p className="mb-1 text-sm text-ink-mute">
         Step {step + 1} of {STEPS.length}: {STEPS[step]}
       </p>
       <div
-        className="mb-6 h-1.5 w-full rounded bg-[#1b1d23]"
+        className="mb-6 h-1.5 w-full rounded bg-secondary"
         role="progressbar"
         aria-label="Enquiry progress"
         aria-valuemin={1}
@@ -329,7 +329,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
         aria-valuenow={step + 1}
       >
         <div
-          className="h-1.5 rounded bg-[#e4ded7] transition-all"
+          className="h-1.5 rounded bg-ink transition-all"
           style={{ width: `${((step + 1) / STEPS.length) * 100}%` }}
         />
       </div>
@@ -376,7 +376,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
                 : 'What do you need? Choose one or more.'}
             </legend>
             {audience === 'client' && (
-              <p className="mb-3 text-sm text-[#95979D]">
+              <p className="mb-3 text-sm text-ink-mute">
                 The first one you pick sets the next questions.
               </p>
             )}
@@ -391,8 +391,8 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
                     onClick={() => toggleOption(option.value)}
                     className={`rounded-full border px-4 py-2 text-left text-[14px] transition-colors ${
                       active
-                        ? 'border-[#e4ded7] bg-[#e4ded7] text-[#0E1016]'
-                        : 'border-gray-600 hover:border-[#e4ded7]'
+                        ? 'border-ink bg-ink text-paper'
+                        : 'border-gray-600 hover:border-ink'
                     }`}
                   >
                     {option.label}
@@ -465,7 +465,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
                 }
                 className={inputClass}
               />
-              <p id="phone-hint" className="mt-1 text-xs text-[#95979D]">
+              <p id="phone-hint" className="mt-1 text-xs text-ink-mute">
                 Numbers only. Include your country code, for example +91.
               </p>
               {fieldError('phone')}
@@ -529,8 +529,8 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
               </div>
             </div>
 
-            <div className="rounded-xl bg-[#1b1d23] p-3 text-sm text-[#95979D]">
-              <p className="font-medium text-[#e4ded7]">
+            <div className="rounded-xl bg-secondary p-3 text-sm text-ink-mute">
+              <p className="font-medium text-ink">
                 {audience === 'student' ? 'Student enquiry' : 'Project enquiry'}
               </p>
               <p className="mt-1">
@@ -539,7 +539,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
                   .join(', ')}
               </p>
             </div>
-            <p className="text-xs text-[#95979D]">
+            <p className="text-xs text-ink-mute">
               By sending, you agree that I may contact you about this enquiry
               using the details above.
             </p>
@@ -554,7 +554,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
                 setErrors({})
                 setStep(step - 1)
               }}
-              className="rounded-xl border-2 border-gray-600 px-5 py-3 text-[14px] font-semibold hover:border-[#e4ded7]"
+              className="rounded-xl border-2 border-gray-600 px-5 py-3 text-[14px] font-semibold hover:border-ink"
             >
               Back
             </button>
@@ -565,7 +565,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
                 key="next"
                 type="button"
                 onClick={goNext}
-                className="flex-1 rounded-xl border-2 border-[#e4ded7] px-5 py-3 text-[14px] font-semibold transition-colors hover:bg-[#e4ded7] hover:text-[#0E1016]"
+                className="flex-1 rounded-xl border-2 border-ink px-5 py-3 text-[14px] font-semibold transition-colors hover:bg-ink hover:text-paper"
               >
                 Next
               </button>
@@ -574,7 +574,7 @@ export default function EnquiryForm({ initialService, onClose }: EnquiryFormProp
                 key="send"
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 rounded-xl border-2 border-[#e4ded7] px-5 py-3 text-[14px] font-semibold transition-colors hover:bg-[#e4ded7] hover:text-[#0E1016] disabled:opacity-50"
+                className="flex-1 rounded-xl border-2 border-ink px-5 py-3 text-[14px] font-semibold transition-colors hover:bg-ink hover:text-paper disabled:opacity-50"
               >
                 {isSubmitting ? 'Sending...' : 'Send message'}
               </button>

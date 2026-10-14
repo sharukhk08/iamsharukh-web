@@ -16,7 +16,7 @@ const LatestPosts = ({ posts }: { posts: Post[] }) => {
   if (posts.length === 0) return null
   return (
     <section
-      className="relative z-10 flex w-full flex-col items-center bg-primary py-16 text-[#e4ded7] md:py-24"
+      className="relative z-10 flex w-full flex-col items-center bg-primary py-16 text-ink md:py-24"
       id="writing"
     >
       <div className="mx-auto w-[90%] lg:max-w-[1440px]">
@@ -30,11 +30,11 @@ const LatestPosts = ({ posts }: { posts: Post[] }) => {
               <Reveal delay={index * 80} className="h-full">
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="flex h-full flex-col rounded-3xl bg-secondary p-6 transition-colors hover:bg-[#23262e] md:p-8"
+                  className="flex h-full flex-col rounded-3xl bg-secondary p-6 transition-colors hover:bg-raised md:p-8"
                 >
-                  <p className="text-[13px] uppercase text-[#95979D]">{formatDate(post.date)}</p>
+                  <p className="text-[13px] uppercase text-ink-mute">{formatDate(post.date)}</p>
                   <h3 className="mt-2 text-[22px] md:text-[26px]">{post.title}</h3>
-                  <p className="mt-3 text-[15px] text-[#95979D]">{post.description}</p>
+                  <p className="mt-3 text-[15px] text-ink-mute">{post.description}</p>
                 </Link>
               </Reveal>
             </li>

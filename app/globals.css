@@ -2,6 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---- Theme colours (space-separated RGB so Tailwind opacity classes work) ----
+   Dark is the default. The light theme is switched on by html[data-theme='light'],
+   set before first paint by the inline script in app/layout.tsx. */
+:root {
+  color-scheme: dark;
+  --c-primary: 8 9 13; /* page background */
+  --c-secondary: 27 29 35; /* cards */
+  --c-ink: 228 222 215; /* main text and borders */
+  --c-ink-soft: 201 196 189; /* body text */
+  --c-ink-mute: 149 151 157; /* captions */
+  --c-paper: 14 16 22; /* text on filled buttons, dark panels */
+  --c-raised: 35 38 46; /* hovered cards */
+  --c-panel: 19 21 26; /* screens inside illustrations */
+  --c-nav: 7 7 10; /* floating bottom navigation */
+  --c-line: 44 47 56; /* thin lines in illustrations */
+  --c-accent: 185 188 196; /* secondary strokes in illustrations */
+  --c-ok: 90 209 154;
+  --c-warn: 255 209 102;
+  --c-bad: 255 107 107;
+}
+html[data-theme='light'] {
+  color-scheme: light;
+  --c-primary: 246 243 238;
+  --c-secondary: 235 231 223;
+  --c-ink: 20 22 28;
+  --c-ink-soft: 68 72 82;
+  --c-ink-mute: 95 99 109;
+  --c-paper: 251 249 245;
+  --c-raised: 225 220 210;
+  --c-panel: 255 255 255;
+  --c-nav: 251 249 245;
+  --c-line: 211 206 196;
+  --c-accent: 107 112 128;
+  --c-ok: 28 143 98;
+  --c-warn: 168 112 13;
+  --c-bad: 201 60 60;
+}
+
 @layer base {
   h1 {
     @apply text-4xl;
@@ -32,7 +70,7 @@
 html,
 body {
   overscroll-behavior: none;
-  background-color: #08090d;
+  background-color: rgb(var(--c-primary));
 }
 
 body {
@@ -188,7 +226,7 @@ body:has(.scroll-page) {
   transition: opacity 0.3s ease;
   background: radial-gradient(
     380px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(228, 222, 215, 0.14),
+    rgb(var(--c-ink) / 0.14),
     transparent 70%
   );
 }
@@ -245,7 +283,7 @@ body:has(.scroll-page) {
   height: 420px;
   top: -140px;
   left: 8%;
-  background: #e4ded7;
+  background: rgb(var(--c-ink));
   opacity: 0.1;
 }
 .aurora span:nth-child(2) {
@@ -253,7 +291,7 @@ body:has(.scroll-page) {
   height: 360px;
   top: 40px;
   right: 6%;
-  background: #95979d;
+  background: rgb(var(--c-ink-mute));
   opacity: 0.1;
   animation-delay: -6s;
 }
@@ -296,7 +334,7 @@ body:has(.scroll-page) {
 
 /* Shimmering text */
 .shiny-text {
-  background: linear-gradient(110deg, #95979d 35%, #ffffff 50%, #95979d 65%);
+  background: linear-gradient(110deg, rgb(var(--c-ink-mute)) 35%, rgb(var(--c-ink)) 50%, rgb(var(--c-ink-mute)) 65%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -315,7 +353,7 @@ body:has(.scroll-page) {
   .shiny-text {
     animation: none;
     background: none;
-    color: #c9c4bd;
+    color: rgb(var(--c-ink-soft));
   }
 }
 
@@ -328,7 +366,7 @@ body:has(.scroll-page) {
   text-transform: uppercase;
   line-height: 0.92;
   letter-spacing: -0.005em;
-  color: #e4ded7;
+  color: rgb(var(--c-ink));
 }
 /* One scale for every page title, so none is oversized. */
 .site-page h1 {
@@ -361,6 +399,26 @@ body:has(.scroll-page) {
   content: '';
   position: absolute;
   inset: 0;
-  background: #08090d;
+  background: rgb(var(--c-primary));
   mix-blend-mode: color;
+}
+
+/* Light theme: the page texture is a dark photo, so flip it to a pale grain. */
+html[data-theme='light'] .site-page .page-hero {
+  opacity: 0.35;
+}
+html[data-theme='light'] .site-page .page-hero::before {
+  filter: invert(1);
+}
+
+/* Lottie animations are drawn in the dark theme's cream; darken them in light. */
+html[data-theme='light'] .lottie-themed svg {
+  filter: invert(1);
+}
+
+/* Images drawn for the dark theme: .theme-photo is a dark grain photo, .theme-invert a
+   light-on-transparent graphic. Both are flipped in the light theme. */
+html[data-theme='light'] .theme-photo,
+html[data-theme='light'] .theme-invert {
+  filter: invert(1);
 }

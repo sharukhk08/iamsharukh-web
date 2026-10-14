@@ -86,7 +86,7 @@ export default function InternationalPage() {
       <JsonLd data={jsonLd} />
       <PageBackdrop />
 
-      <p className="text-[14px] text-[#c9c4bd]">
+      <p className="text-[14px] text-ink-soft">
         <Link href="/" className="hover:underline">
           Home
         </Link>{' '}
@@ -95,7 +95,7 @@ export default function InternationalPage() {
       <h1 className="mt-4 max-w-[900px] text-[36px] leading-tight md:text-[56px]">
         <RevealWords text="Working with international clients" />
       </h1>
-      <p className="mt-6 max-w-[780px] text-[18px] leading-relaxed text-[#c9c4bd]">
+      <p className="mt-6 max-w-[780px] text-[18px] leading-relaxed text-ink-soft">
         I am a full-stack developer based in Hisar, Haryana, India, with 7 years of experience building
         websites, web apps, mobile apps and automations. I work with clients outside India, and this
         page explains how a project runs when we are in different countries.
@@ -104,7 +104,7 @@ export default function InternationalPage() {
         <Magnet>
           <Link
             href={contactHref()}
-            className="inline-block rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
+            className="inline-block rounded-md border-2 border-ink bg-ink px-6 py-3 text-[14px] font-semibold uppercase text-paper transition-colors hover:bg-transparent hover:text-ink"
           >
             Tell me about your project
           </Link>
@@ -113,7 +113,7 @@ export default function InternationalPage() {
           href={BOOKING_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-md border-2 border-[#e4ded7]/40 px-6 py-3 text-[14px] font-semibold uppercase text-[#e4ded7] transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
+          className="rounded-md border-2 border-ink/40 px-6 py-3 text-[14px] font-semibold uppercase text-ink transition-colors hover:border-ink hover:bg-ink hover:text-paper"
         >
           Book a free 30-minute call
         </a>
@@ -126,11 +126,11 @@ export default function InternationalPage() {
         <ol className="mt-6 grid gap-4 md:grid-cols-2">
           {steps.map((step, index) => (
             <li key={step.title} className="rounded-3xl bg-secondary p-6 md:p-8">
-              <p className="text-[12px] font-semibold uppercase tracking-wide text-[#c9c4bd]">
+              <p className="text-[12px] font-semibold uppercase tracking-wide text-ink-soft">
                 Step {index + 1}
               </p>
               <h3 className="mt-1 text-[20px] md:text-[24px]">{step.title}</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-[#c9c4bd]">{step.text}</p>
+              <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{step.text}</p>
             </li>
           ))}
         </ol>
@@ -140,15 +140,15 @@ export default function InternationalPage() {
         <h2 id="zones-title" className="text-[28px] md:text-[40px]">
           Time zones
         </h2>
-        <p className="mt-3 max-w-[700px] text-[16px] leading-relaxed text-[#c9c4bd]">
+        <p className="mt-3 max-w-[700px] text-[16px] leading-relaxed text-ink-soft">
           Hisar uses India Standard Time (UTC+5:30), which does not change with the seasons. The gap to
           your city changes by an hour when your clocks change.
         </p>
-        <ul className="mt-6 divide-y divide-[#e4ded7]/15 rounded-3xl bg-secondary px-6 md:px-8">
+        <ul className="mt-6 divide-y divide-ink/15 rounded-3xl bg-secondary px-6 md:px-8">
           {zones.map((zone) => (
             <li key={zone.city} className="flex flex-col gap-1 py-4 sm:flex-row sm:justify-between">
               <span className="font-semibold">{zone.city}</span>
-              <span className="text-[15px] text-[#c9c4bd]">{zone.note}</span>
+              <span className="text-[15px] text-ink-soft">{zone.note}</span>
             </li>
           ))}
         </ul>
@@ -163,7 +163,7 @@ export default function InternationalPage() {
             <li key={service.slug}>
               <Link
                 href={`/services/${service.slug}`}
-                className="block rounded-2xl bg-secondary px-5 py-4 text-[16px] transition-colors hover:bg-[#23262e]"
+                className="block rounded-2xl bg-secondary px-5 py-4 text-[16px] transition-colors hover:bg-raised"
               >
                 {service.title}
               </Link>
@@ -180,7 +180,7 @@ export default function InternationalPage() {
           {faqs.map((faq) => (
             <details key={faq.q} className="group rounded-2xl bg-secondary px-5 py-4">
               <summary className="cursor-pointer text-[17px] font-semibold">{faq.q}</summary>
-              <p className="mt-3 text-[15px] leading-relaxed text-[#c9c4bd]">{faq.a}</p>
+              <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">{faq.a}</p>
             </details>
           ))}
         </div>
@@ -190,13 +190,13 @@ export default function InternationalPage() {
 
       <section className="mt-8 rounded-3xl bg-secondary p-8 md:p-12">
         <h2 className="text-[26px] md:text-[32px]">Ready when you are</h2>
-        <p className="mt-3 max-w-[600px] text-[16px] text-[#c9c4bd]">
+        <p className="mt-3 max-w-[600px] text-[16px] text-ink-soft">
           Send a short message or book a call, and I will reply with next steps.
         </p>
         <div className="mt-6 flex flex-wrap gap-4">
           <Link
             href={contactHref()}
-            className="rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
+            className="rounded-md border-2 border-ink bg-ink px-6 py-3 text-[14px] font-semibold uppercase text-paper transition-colors hover:bg-transparent hover:text-ink"
           >
             Send an enquiry
           </Link>

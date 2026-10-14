@@ -3,6 +3,7 @@ import { monaSans } from '../fonts/monaSans'
 import Aurora from './effects/Aurora'
 import MobileCta from './MobileCta'
 import MobileMenu from './MobileMenu'
+import ThemeToggle from './ThemeToggle'
 import { NAV_LINKS } from '../lib/nav'
 import SocialLinks from './SocialLinks'
 import { ReactNode } from 'react'
@@ -14,7 +15,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
 
   return (
     <div
-      className={`scroll-page site-page ${monaSans.variable} relative isolate min-h-screen overflow-x-clip bg-primary pb-20 lg:pb-0 text-[#e4ded7]`}
+      className={`scroll-page site-page ${monaSans.variable} relative isolate min-h-screen overflow-x-clip bg-primary pb-20 lg:pb-0 text-ink`}
     >
       <div className="page-hero" aria-hidden="true" />
       <Aurora />
@@ -36,9 +37,10 @@ export default function SiteShell({ children }: { children: ReactNode }) {
               </Link>
             ))}
           </nav>
+          <ThemeToggle />
           <Link
             href="/contact"
-            className="rounded-md border-2 border-[#e4ded7] px-4 py-2 text-[13px] font-semibold uppercase text-[#e4ded7] transition-colors hover:bg-[#e4ded7] hover:text-[#0E1016] md:text-[14px]"
+            className="rounded-md border-2 border-ink px-4 py-2 text-[13px] font-semibold uppercase text-ink transition-colors hover:bg-ink hover:text-paper md:text-[14px]"
           >
             Contact
           </Link>
@@ -49,13 +51,13 @@ export default function SiteShell({ children }: { children: ReactNode }) {
       {children}
       <MobileCta />
 
-      <footer className="mt-24 border-t-[3px] border-[#e4ded7]/30 py-10">
+      <footer className="mt-24 border-t-[3px] border-ink/30 py-10">
         <div className="mx-auto grid w-[90%] max-w-[1440px] gap-8 md:grid-cols-2">
           <div>
             <p className="font-[family-name:var(--font-mona)] text-[28px] font-extrabold uppercase leading-none">
               Sharukh Khan
             </p>
-            <p className="mt-3 max-w-[420px] text-[12px] font-semibold uppercase leading-relaxed text-[#95979D] md:text-[14px]">
+            <p className="mt-3 max-w-[420px] text-[12px] font-semibold uppercase leading-relaxed text-ink-mute md:text-[14px]">
               Full-stack developer and software engineer in Hisar, Haryana.
               Co-founder & CTO at Innovaft. Working with clients worldwide.
             </p>
@@ -66,7 +68,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
                 <li key={service.slug}>
                   <Link
                     href={`/services/${service.slug}`}
-                    className="text-[#95979D] hover:text-[#e4ded7] hover:underline"
+                    className="text-ink-mute hover:text-ink hover:underline"
                   >
                     {service.title}
                   </Link>
@@ -77,7 +79,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
               <li>
                 <Link
                   href="/contact"
-                  className="text-[#95979D] hover:text-[#e4ded7] hover:underline"
+                  className="text-ink-mute hover:text-ink hover:underline"
                 >
                   Contact
                 </Link>
@@ -85,7 +87,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
               <li>
                 <Link
                   href="/work"
-                  className="text-[#95979D] hover:text-[#e4ded7] hover:underline"
+                  className="text-ink-mute hover:text-ink hover:underline"
                 >
                   Selected work
                 </Link>
@@ -93,7 +95,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
               <li>
                 <Link
                   href="/blog"
-                  className="text-[#95979D] hover:text-[#e4ded7] hover:underline"
+                  className="text-ink-mute hover:text-ink hover:underline"
                 >
                   Blog
                 </Link>
@@ -101,7 +103,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
               <li>
                 <Link
                   href="/learn"
-                  className="text-[#95979D] hover:text-[#e4ded7] hover:underline"
+                  className="text-ink-mute hover:text-ink hover:underline"
                 >
                   Learn: mentoring and courses
                 </Link>
@@ -110,7 +112,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
                 <li key={location.slug}>
                   <Link
                     href={`/locations/${location.slug}`}
-                    className="text-[#95979D] hover:text-[#e4ded7] hover:underline"
+                    className="text-ink-mute hover:text-ink hover:underline"
                   >
                     {location.shortTitle}
                   </Link>
@@ -119,7 +121,7 @@ export default function SiteShell({ children }: { children: ReactNode }) {
               <li>
                 <Link
                   href="/international"
-                  className="text-[#95979D] hover:text-[#e4ded7] hover:underline"
+                  className="text-ink-mute hover:text-ink hover:underline"
                 >
                   International clients
                 </Link>
@@ -130,11 +132,11 @@ export default function SiteShell({ children }: { children: ReactNode }) {
         <div className="mx-auto mt-8 w-[90%] max-w-[1440px]">
           <SocialLinks />
         </div>
-        <p className="mx-auto mt-8 flex w-[90%] max-w-[1440px] flex-wrap gap-x-6 gap-y-2 text-[12px] uppercase text-[#95979D]">
+        <p className="mx-auto mt-8 flex w-[90%] max-w-[1440px] flex-wrap gap-x-6 gap-y-2 text-[12px] uppercase text-ink-mute">
           <span>Copyright {year}</span>
-          <Link href="/about" className="hover:text-[#e4ded7] hover:underline">About</Link>
-          <Link href="/links" className="hover:text-[#e4ded7] hover:underline">Links</Link>
-          <Link href="/privacy" className="hover:text-[#e4ded7] hover:underline">Privacy</Link>
+          <Link href="/about" className="hover:text-ink hover:underline">About</Link>
+          <Link href="/links" className="hover:text-ink hover:underline">Links</Link>
+          <Link href="/privacy" className="hover:text-ink hover:underline">Privacy</Link>
         </p>
       </footer>
     </div>

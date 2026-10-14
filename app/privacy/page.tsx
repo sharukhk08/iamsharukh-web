@@ -17,11 +17,11 @@ export default function PrivacyPage() {
     <main className="mx-auto w-[90%] max-w-[800px] pt-10 md:pt-16">
       <PageBackdrop />
       <h1 className="text-[40px] leading-tight md:text-[64px]">Privacy Policy</h1>
-      <p className="mt-3 text-[14px] text-[#c9c4bd]">Last updated: 14 October 2026</p>
+      <p className="mt-3 text-[14px] text-ink-soft">Last updated: 14 October 2026</p>
 
-      <div className="mt-8 space-y-8 text-[16px] leading-relaxed text-[#c9c4bd]">
+      <div className="mt-8 space-y-8 text-[16px] leading-relaxed text-ink-soft">
         <section>
-          <h2 className="text-[22px] text-[#e4ded7]">What this site collects</h2>
+          <h2 className="text-[22px] text-ink">What this site collects</h2>
           <p className="mt-2">
             If you use the contact form, I receive what you type: your name, email address, phone number,
             city or country, what you need, the project or learning details you add, and how you found me.
@@ -30,7 +30,7 @@ export default function PrivacyPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-[22px] text-[#e4ded7]">How it is used</h2>
+          <h2 className="text-[22px] text-ink">How it is used</h2>
           <p className="mt-2">
             I use your enquiry only to reply to you and to discuss your project or course. I do not sell
             your information or use it for unrelated marketing. You will get an automatic reply to the
@@ -38,7 +38,7 @@ export default function PrivacyPage() {
           </p>
         </section>
         <section>
-          <h2 className="text-[22px] text-[#e4ded7]">Who else handles it</h2>
+          <h2 className="text-[22px] text-ink">Who else handles it</h2>
           <ul className="mt-2 list-disc space-y-1 pl-6">
             <li>EmailJS delivers the contact form messages to my inbox.</li>
             <li>Google Analytics measures visits to this site and may set cookies.</li>
@@ -48,14 +48,14 @@ export default function PrivacyPage() {
           <p className="mt-2">Each of these services has its own privacy policy.</p>
         </section>
         <section>
-          <h2 className="text-[22px] text-[#e4ded7]">How long it is kept</h2>
+          <h2 className="text-[22px] text-ink">How long it is kept</h2>
           <p className="mt-2">
             Enquiry emails are kept as long as needed to deal with your request and for my business
             records. You can ask me to delete them at any time.
           </p>
         </section>
         <section>
-          <h2 className="text-[22px] text-[#e4ded7]">Your choices</h2>
+          <h2 className="text-[22px] text-ink">Your choices</h2>
           <p className="mt-2">
             You can ask to see, correct or delete what I hold about you, or ask me to stop contacting you.
             Use the{' '}

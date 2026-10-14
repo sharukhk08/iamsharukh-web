@@ -20,7 +20,7 @@ export default function SocialLinks({ className = '' }: { className?: string }) 
             href={link.href}
             target="_blank"
             rel="me noopener noreferrer"
-            className="inline-block rounded-md border-2 border-[#e4ded7]/30 px-3 py-1.5 text-[12px] font-semibold uppercase text-[#e4ded7] transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
+            className="inline-block rounded-md border-2 border-ink/30 px-3 py-1.5 text-[12px] font-semibold uppercase text-ink transition-colors hover:border-ink hover:bg-ink hover:text-paper"
           >
             {link.label}
           </a>

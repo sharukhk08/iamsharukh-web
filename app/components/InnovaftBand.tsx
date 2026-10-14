@@ -16,7 +16,7 @@ export default function InnovaftBand({ className = '' }: { className?: string })
       <h2 id="innovaft-title" className="text-[26px] md:text-[32px]">
         My company: Innovaft
       </h2>
-      <p className="mt-3 max-w-[720px] text-[16px] text-[#c9c4bd]">
+      <p className="mt-3 max-w-[720px] text-[16px] text-ink-soft">
         I am co-founder and CTO of Innovaft, a web development company and training institute in Hisar.
         Come to Innovaft for team projects, hosting and maintenance, or to learn web and app development
         in person. For direct work with me, use this site.
@@ -28,7 +28,7 @@ export default function InnovaftBand({ className = '' }: { className?: string })
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block rounded-md border-2 border-[#e4ded7]/40 px-5 py-3 text-[13px] font-semibold uppercase transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
+              className="inline-block rounded-md border-2 border-ink/40 px-5 py-3 text-[13px] font-semibold uppercase transition-colors hover:border-ink hover:bg-ink hover:text-paper"
             >
               {link.label}
             </a>
@@ -37,7 +37,7 @@ export default function InnovaftBand({ className = '' }: { className?: string })
         <li>
           <Link
             href="/learn"
-            className="inline-block rounded-md border-2 border-[#e4ded7]/40 px-5 py-3 text-[13px] font-semibold uppercase transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
+            className="inline-block rounded-md border-2 border-ink/40 px-5 py-3 text-[13px] font-semibold uppercase transition-colors hover:border-ink hover:bg-ink hover:text-paper"
           >
             Learn with me
           </Link>

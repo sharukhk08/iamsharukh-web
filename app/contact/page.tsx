@@ -63,7 +63,7 @@ export default function ContactPage() {
       <h1 className="text-[36px] leading-tight md:text-[56px]">
         <RevealWords text="Contact" />
       </h1>
-      <p className="mt-4 max-w-[680px] text-[16px] text-[#c9c4bd] md:text-[18px]">
+      <p className="mt-4 max-w-[680px] text-[16px] text-ink-soft md:text-[18px]">
         Have a project, or want to learn? Answer a few quick questions and I
         will reply with next steps. You can also use any of the options on the
         right.
@@ -96,14 +96,14 @@ export default function ContactPage() {
               key={title}
               href={href}
               {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="flex items-start gap-4 rounded-3xl bg-secondary p-5 transition hover:bg-[#23262e]"
+              className="flex items-start gap-4 rounded-3xl bg-secondary p-5 transition hover:bg-raised"
             >
-              <span className="rounded-2xl bg-[#e4ded7]/10 p-3 text-[#e4ded7]">
+              <span className="rounded-2xl bg-ink/10 p-3 text-ink">
                 <Icon size={22} />
               </span>
               <span>
                 <span className="block text-[18px] font-semibold">{title}</span>
-                <span className="mt-1 block break-all text-[14px] text-[#95979D]">
+                <span className="mt-1 block break-all text-[14px] text-ink-mute">
                   {text}
                 </span>
                 <span className="mt-2 block text-[13px] underline underline-offset-2">
@@ -114,12 +114,12 @@ export default function ContactPage() {
           ))}
 
           <div className="flex items-start gap-4 rounded-3xl bg-secondary p-5">
-            <span className="rounded-2xl bg-[#e4ded7]/10 p-3 text-[#e4ded7]">
+            <span className="rounded-2xl bg-ink/10 p-3 text-ink">
               <Mail size={22} />
             </span>
             <span>
               <span className="block text-[18px] font-semibold">Email</span>
-              <span className="mt-1 block text-[14px] text-[#95979D]">
+              <span className="mt-1 block text-[14px] text-ink-mute">
                 The form above is the fastest way to reach me.
               </span>
               <RevealEmail className="mt-2 block text-[13px]" />
@@ -132,15 +132,15 @@ export default function ContactPage() {
           </div>
 
           <div className="flex items-start gap-4 rounded-3xl bg-secondary p-5">
-            <span className="rounded-2xl bg-[#e4ded7]/10 p-3 text-[#e4ded7]">
+            <span className="rounded-2xl bg-ink/10 p-3 text-ink">
               <MapPin size={22} />
             </span>
             <span>
               <span className="block text-[18px] font-semibold">Visit in Hisar</span>
-              <span className="mt-1 block text-[14px] text-[#95979D]">
+              <span className="mt-1 block text-[14px] text-ink-mute">
                 {HISAR_OFFICE.name}, {HISAR_OFFICE.address}
               </span>
-              <span className="mt-1 block text-[14px] text-[#95979D]">
+              <span className="mt-1 block text-[14px] text-ink-mute">
                 {HISAR_OFFICE.hours}
               </span>
             </span>

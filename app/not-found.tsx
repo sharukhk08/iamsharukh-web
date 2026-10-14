@@ -18,7 +18,7 @@ const links = [
 
 export default function NotFound() {
   return (
-    <div className="scroll-page relative isolate flex min-h-screen flex-col items-center justify-center gap-6 overflow-hidden bg-primary px-6 py-12 text-center text-[#e4ded7]">
+    <div className="scroll-page relative isolate flex min-h-screen flex-col items-center justify-center gap-6 overflow-hidden bg-primary px-6 py-12 text-center text-ink">
       <Aurora />
       <h1 className="sr-only">404 - Page not found</h1>
 
@@ -27,7 +27,7 @@ export default function NotFound() {
         <FuzzyText text="not found" scale={0.09} max={90} min={32} fuzzRange={20} />
       </div>
 
-      <p className="max-w-[460px] text-[16px] text-[#95979D] md:text-[18px]">
+      <p className="max-w-[460px] text-[16px] text-ink-mute md:text-[18px]">
         This page does not exist, or it has moved. Try one of these instead.
       </p>
 
@@ -35,7 +35,7 @@ export default function NotFound() {
         <Magnet>
           <Link
             href="/"
-            className="inline-block rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
+            className="inline-block rounded-md border-2 border-ink bg-ink px-6 py-3 text-[14px] font-semibold uppercase text-paper transition-colors hover:bg-transparent hover:text-ink"
           >
             Back to home
           </Link>
@@ -44,7 +44,7 @@ export default function NotFound() {
           <Link
             key={link.href}
             href={link.href}
-            className="rounded-full border border-[#e4ded7]/30 px-5 py-3 text-[15px] hover:bg-secondary"
+            className="rounded-full border border-ink/30 px-5 py-3 text-[15px] hover:bg-secondary"
           >
             {link.label}
           </Link>
