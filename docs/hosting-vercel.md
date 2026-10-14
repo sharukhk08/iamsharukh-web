@@ -7,12 +7,12 @@ Written 2026-10-14. Plan limits change often and could not be checked from the b
 - Every page is **static** (generated once at build, served as files). A build prints `○` or `●` for these.
 - There is **no middleware, no API route and no edge function**.
 - The only server work is **image optimisation** for `next/image` pictures (project covers, profile photo, reviews). Results are cached after the first request.
-- The contact form sends email straight from the visitor's browser through EmailJS, so it needs no server code.
+- The contact form posts to one small serverless route, `/api/enquiry`, which holds the EmailJS keys privately and sends the email. It is the only `ƒ` route and runs only when someone sends an enquiry.
 - Blog posts and projects are Markdown files read at build time. Adding one adds one static page and needs a new deploy.
 
 ## Rules to keep it cheap
 
-1. After every change to routes, run `npm run build` and look at the route list. **Any `ƒ` means a serverless function runs per request.** There should be none.
+1. After every change to routes, run `npm run build` and look at the route list. **Any `ƒ` means a serverless function runs per request.** There should be exactly one: `/api/enquiry`.
 2. Do not read `searchParams`, `cookies()` or `headers()` in a server page. Use `useSearchParams` in a client component inside `<Suspense>` instead (see `app/contact-section/ContactForm.tsx`).
 3. Do not add `app/api` routes, `middleware.ts` or `proxy.ts` unless you need them.
 4. Do not add `export const dynamic = 'force-dynamic'` or `revalidate` timers.
@@ -22,7 +22,7 @@ Written 2026-10-14. Plan limits change often and could not be checked from the b
 ## Things to check
 
 - **Hobby plan terms.** Vercel's Hobby plan is described as for personal, non-commercial use. A portfolio that advertises paid services may count as commercial, so read Vercel's Fair Use Guidelines. If it does, the options are Vercel Pro or another host with a free tier that allows commercial sites.
-- **Environment variables** `NEXT_PUBLIC_EMAILJS_*` must be set in the Vercel project settings, or the contact form will fail.
+- **Environment variables** `EMAILJS_*` (no `NEXT_PUBLIC_`, see `.env.example`) must be set in the Vercel project settings, or the contact form will fail.
 - **EmailJS** has its own monthly email limit on the free plan.
 
 ## Environment variables

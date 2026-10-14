@@ -1,11 +1,13 @@
 # EmailJS templates
 
-The site sends two emails per enquiry (see `app/services/emailService.ts`).
+The site sends two emails per enquiry from the server (`app/api/enquiry/route.ts` and `app/lib/enquiryMail.ts`). The browser never sees the EmailJS keys.
+
+In EmailJS also: Account, Security, allow API calls from non-browser applications (needed because the server calls EmailJS), and set the private key as `EMAILJS_PRIVATE_KEY` in Vercel.
 
 | Template | Env var | File |
 | --- | --- | --- |
-| Admin (to you) | `NEXT_PUBLIC_EMAILJS_ADMIN_TEMPLATE_ID` | `admin-template.html` |
-| User (auto-reply) | `NEXT_PUBLIC_EMAILJS_USER_TEMPLATE_ID` | `user-template.html` (no visitor text, so it cannot be abused to send someone else's message) |
+| Admin (to you) | `EMAILJS_ADMIN_TEMPLATE_ID` | `admin-template.html` |
+| User (auto-reply) | `EMAILJS_USER_TEMPLATE_ID` | `user-template.html` (no visitor text, so it cannot be abused to send someone else's message) |
 
 Both templates work for clients and students. The type (Client or Student) is inside `{{message}}` and in the subject.
 

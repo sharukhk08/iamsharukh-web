@@ -27,7 +27,7 @@ Five reviews of iamsharukh.com, written 14 October 2026, each from a different s
 
 ## What only you can do (highest value first)
 
-1. **Set the environment variables in Vercel** (`NEXT_PUBLIC_EMAILJS_*`) or the contact form will fail in production. See `docs/hosting-vercel.md`.
+1. **Set the environment variables in Vercel** (`EMAILJS_*`, no NEXT_PUBLIC_ prefix; see `.env.example`) or the contact form will fail in production. See `docs/hosting-vercel.md`.
 2. **Claim and complete Google Business Profile** for the Hisar office and add the website. This matters most for Hisar searches.
 3. **Verify the site in Google Search Console** and submit the sitemap. Set `GOOGLE_SITE_VERIFICATION` in Vercel.
 4. **Put the website address on every profile** (GitHub, LinkedIn, Contra, Instagram, X, Fiverr, Upwork, Innovaft). Checklist in `docs/backlinks-and-local-seo.md`.
