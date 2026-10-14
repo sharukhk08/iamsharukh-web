@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { track } from '../lib/analytics'
 import { CONTACT_EMAIL } from '../lib/contact'
 
 // Keeps the address out of the page HTML, where spam bots collect it. It is only
@@ -15,7 +16,10 @@ export default function RevealEmail({ className = '' }: { className?: string }) 
     )
   }
   return (
-    <button type="button" onClick={() => setShown(true)} className={`underline underline-offset-2 ${className}`}>
+    <button type="button" onClick={() => {
+        setShown(true)
+        track('reveal_email', { page: window.location.pathname })
+      }} className={`underline underline-offset-2 ${className}`}>
       Click to show my email address
     </button>
   )
