@@ -6,6 +6,7 @@ import { Check } from 'lucide-react'
 import IconBadge from '../../components/IconBadge'
 import ShareButtons from '../../components/ShareButtons'
 import Magnet from '../../components/effects/Magnet'
+import LottiePlayer from '../../components/LottiePlayer'
 import RevealWords from '../../components/effects/RevealWords'
 import SpotlightCard from '../../components/effects/SpotlightCard'
 import Reveal from '../../components/Reveal'
@@ -124,6 +125,8 @@ export default async function ServicePage({ params }: PageProps) {
               className="w-full rounded-3xl"
               priority
             />
+          ) : service.slug === 'ai-automation-n8n' ? (
+            <LottiePlayer src="/lottie/automation-flow.json" staticFrame={40} className="mx-auto aspect-square w-full max-w-[460px] rounded-3xl bg-secondary p-6" />
           ) : (
             <ServiceIllustration slug={service.slug} />
           )}

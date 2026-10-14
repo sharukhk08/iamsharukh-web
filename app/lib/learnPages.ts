@@ -20,7 +20,7 @@ export const learnPages: LearnPage[] = [
     slug: 'hisar',
     metaTitle: 'Web Development Course in Hisar',
     metaDescription:
-      'In-person web development, UI/UX, frontend, backend, full stack, mobile app and WordPress courses in Hisar, taught by a developer with 7 years of experience.',
+      'In-person web development, UI/UX, frontend, backend, full stack, mobile app and AI automation courses in Hisar, taught by a developer with 7 years of experience.',
     h1: 'Web development and coding courses in Hisar',
     intro:
       'Innovaft trains beginners and career changers in web and app development at its centre on Railway Road, Hisar. I teach and mentor the classes myself: I have 7 years of experience as a developer and have trained 50+ students, 10 of whom have been placed in jobs. You learn by building real projects, with mentor support when you get stuck.',
@@ -28,8 +28,8 @@ export const learnPages: LearnPage[] = [
       {
         heading: 'Courses you can join in Hisar',
         paragraphs: [
-          'There are six courses: UI/UX Design, Frontend Development, Backend Development, Full Stack Development, Mobile App Development, and CMS and WordPress. If you are not sure which fits you, the free first class is the easiest way to find out.',
-          'Choose UI/UX Design if you like designing how websites and apps look and feel. Choose Frontend Development if you want to build websites people see and use. Choose Backend Development if you prefer servers, databases and APIs. Choose Full Stack Development if you want both sides. Choose Mobile App Development for phone apps, and CMS and WordPress to build and manage websites for small businesses.',
+          'There are six courses: UI/UX Design, Frontend Development, Backend Development, Full Stack Development, Mobile App Development, and AI Automation. If you are not sure which fits you, the free first class is the easiest way to find out.',
+          'Choose UI/UX Design if you like designing how websites and apps look and feel. Choose Frontend Development if you want to build websites people see and use. Choose Backend Development if you prefer servers, databases and APIs. Choose Full Stack Development if you want both sides. Choose Mobile App Development for phone apps, and AI Automation to automate repetitive work with n8n and AI tools.',
         ],
       },
       {
@@ -53,7 +53,7 @@ export const learnPages: LearnPage[] = [
       },
       {
         q: 'Which web development course should I choose?',
-        a: 'Pick by what you enjoy: design (UI/UX), the part people see (Frontend), the part behind the scenes (Backend), both (Full Stack), phone apps (Mobile) or business websites (WordPress). Come to the free first class and the mentors will help you choose.',
+        a: 'Pick by what you enjoy: design (UI/UX), the part people see (Frontend), the part behind the scenes (Backend), both (Full Stack), phone apps (Mobile) or automating work with AI (AI Automation). Come to the free first class and the mentors will help you choose.',
       },
       {
         q: 'Are the classes online or in person?',
@@ -77,7 +77,7 @@ export const learnPages: LearnPage[] = [
     slug: 'haryana',
     metaTitle: 'Learn Web Development in Haryana',
     metaDescription:
-      'Students from Hansi, Bhiwani, Rohtak and across Haryana join Innovaft courses in Hisar: UI/UX, frontend, backend, full stack, mobile and WordPress, with free first class.',
+      'Students from Hansi, Bhiwani, Rohtak and across Haryana join Innovaft courses in Hisar: UI/UX, frontend, backend, full stack, mobile and AI automation, with free first class.',
     h1: 'Learn web development from anywhere in Haryana',
     intro:
       'You do not need to live in Hisar to learn there. Students from Hansi, Bhiwani, Rohtak and other Haryana towns can join the in-person Innovaft courses at the Hisar centre. This page explains how it works if you are coming from outside the city.',
@@ -92,7 +92,7 @@ export const learnPages: LearnPage[] = [
       {
         heading: 'What you can study',
         paragraphs: [
-          'UI/UX Design, Frontend Development, Backend Development, Full Stack Development, Mobile App Development, and CMS and WordPress. Every course is built around real projects, mentor support, a completion certificate and job assistance covering resume, LinkedIn, mock interviews and a portfolio.',
+          'UI/UX Design, Frontend Development, Backend Development, Full Stack Development, Mobile App Development, and AI Automation. Every course is built around real projects, mentor support, a completion certificate and job assistance covering resume, LinkedIn, mock interviews and a portfolio.',
         ],
       },
       {
@@ -140,7 +140,7 @@ export const learnPages: LearnPage[] = [
       {
         heading: 'What you learn by building',
         paragraphs: [
-          'You choose from UI/UX Design, Frontend, Backend, Full Stack, Mobile App Development, and CMS and WordPress. Each is taught through real projects with a mentor, so you finish with a portfolio you can show to employers or clients.',
+          'You choose from UI/UX Design, Frontend, Backend, Full Stack, Mobile App Development, and AI Automation. Each is taught through real projects with a mentor, so you finish with a portfolio you can show to employers or clients.',
           'I teach and mentor the classes myself. I work on client projects as a full-stack developer, so what you learn is what is used on real work.',
         ],
       },

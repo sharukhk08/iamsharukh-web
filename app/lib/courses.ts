@@ -38,10 +38,11 @@ export const courses: Course[] = [
     topics: ['App development basics', 'Real projects'],
   },
   {
-    slug: 'cms-wordpress-development',
-    name: 'CMS & WordPress',
-    summary: 'Build and manage websites with a content management system.',
-    topics: ['WordPress', 'Themes and plugins', 'Client websites'],
+    slug: 'ai-automation',
+    name: 'AI Automation',
+    summary: 'Learn to automate repetitive work with n8n and AI tools.',
+    // Confirm the syllabus with Innovaft before adding more topics.
+    topics: ['n8n workflows', 'Connecting apps', 'AI tools and agents'],
   },
 ]
 
