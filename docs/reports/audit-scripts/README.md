@@ -22,9 +22,7 @@ npm run build && npm start        # in the website project, in another terminal 
 Each script has a `localhost:PORT` near the top (the reports used 3170 to 3180): change it to the port your server uses. They need a Chromium browser: set `executablePath` to your Chromium. The form script needs the site built with test EmailJS variables, for example:
 
 ```
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=test NEXT_PUBLIC_EMAILJS_SERVICE_ID=svc \
-NEXT_PUBLIC_EMAILJS_ADMIN_TEMPLATE_ID=a NEXT_PUBLIC_EMAILJS_USER_TEMPLATE_ID=b \
-NEXT_PUBLIC_EMAILJS_TO_EMAIL=owner@example.com npm run build
+npm run build  # no EmailJS variables are needed to build any more
 ```
 
 Numbers from these scripts are lab measurements on one machine. For real visitor data use Google Search Console and Google Analytics.

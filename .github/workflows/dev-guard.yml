@@ -4,7 +4,7 @@ name: dev-guard
 # Jobs (all run BEFORE any dependency install, so a malicious install script never gets to run):
 #   dev-guard           full-project scan: hidden VS Code tasks, .vscode folders, infected config files,
 #                       fake fonts, .gitignore fingerprint, known-bad npm packages and versions
-#   workflow-hygiene    workflow files must not use pull_request_target or pipe downloads into a shell
+#   workflow-hygiene    workflow files must not use the pull-request-target trigger or pipe downloads into a shell
 #   dependency-hygiene  no git/URL dependencies, no install scripts that download or evaluate code
 #   commit-integrity    flags rewritten history: author/committer timezone mismatch, clock rewound
 #   force-push-notice   alerts when a branch was force-pushed
@@ -144,9 +144,9 @@ jobs:
         run: |
           bad=0
           if [ -d .github/workflows ]; then
-            if grep -rnE 'pull_request_target' .github/workflows; then echo "::error::pull_request_target is not allowed (it runs untrusted PR code with secrets)"; bad=1; fi
+            if grep -rnE 'pull_request_targe[t]' .github/workflows; then echo "::error::the pull-request-target trigger is not allowed (it runs untrusted PR code with secrets)"; bad=1; fi
             if grep -rnE '(curl|wget)[^|]*\|[[:space:]]*(sudo[[:space:]]+)?(ba|z)?sh' .github/workflows; then echo "::error::workflow pipes a download into a shell"; bad=1; fi
-            if grep -rnE 'uses:[[:space:]]*[^./[:space:]][^@[:space:]]*@[^0-9a-f[:space:]]' .github/workflows | grep -vE '@[0-9a-f]{40}'; then echo "::warning::some actions are not pinned to a commit SHA"; fi
+            if grep -rnE 'uses[:][[:space:]]*[^./[:space:]][^@[:space:]]*@[^0-9a-f[:space:]]' .github/workflows | grep -vE '@[0-9a-f]{40}'; then echo "::warning::some actions are not pinned to a commit SHA"; fi
           fi
           exit $bad
 

@@ -66,3 +66,9 @@ Because the project was infected by malware earlier, **rotate anything that live
 - Any **private** EmailJS key (Account, Security) if one exists, and turn off "Allow EmailJS API for non-browser applications" unless you need it.
 - GitHub tokens and SSH keys used on that machine, Vercel tokens, and any `.env` files in other projects (for example `prompt-radar`), plus passwords saved in the browser.
 - Do not put a secret in a `NEXT_PUBLIC_*` variable ever. Secrets belong in plain (non-public) variables read only by server code, and this site has no server code.
+
+## Update, 2026-10-14
+
+- The contact form no longer sends from the browser. `/api/enquiry` (`app/api/enquiry/route.ts`, `app/lib/enquiryMail.ts`) holds the EmailJS keys as private `EMAILJS_*` variables. It is the only `ƒ` route, so the earlier "zero serverless routes" goal now has one deliberate exception. Reasons and limits: `docs/security-and-abuse-notes.md`.
+- `app/lib/seo.ts` (`pageMeta`) gives every page its own metadata and share image.
+- Home section order is set in `app/HomeClient.tsx`.
