@@ -46,7 +46,7 @@ const ServicesSection = () => {
           ))}
           <li>
             <Reveal delay={(services.length % 3) * 80} className="h-full">
-              <ServiceCtaCard />
+              <ServiceCtaCard variant="all" />
             </Reveal>
           </li>
         </ul>
