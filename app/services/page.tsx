@@ -42,7 +42,7 @@ export default function ServicesPage() {
       <h1 className="text-[36px] leading-tight md:text-[56px]">
         <RevealWords text="Web and mobile development services" />
       </h1>
-      <p className="mt-4 max-w-[680px] text-[16px] text-[#c9c4bd] md:text-[18px]">
+      <p className="mt-4 max-w-[680px] text-[16px] text-ink-soft md:text-[18px]">
         Using Next.js, React and React Native, I design, build and fix{' '}
         <RotatingWords
           wordClassName="shiny-text font-semibold"
@@ -64,7 +64,7 @@ export default function ServicesPage() {
           items={STACK.map((tech) => (
             <span
               key={tech}
-              className="rounded-full border border-[#e4ded7]/25 px-4 py-2 text-[14px] text-[#c9c4bd]"
+              className="rounded-full border border-ink/25 px-4 py-2 text-[14px] text-ink-soft"
             >
               {tech}
             </span>

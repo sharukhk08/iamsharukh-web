@@ -78,20 +78,20 @@ export default async function CaseStudyPage({ params }: PageProps) {
       <JsonLd data={work} />
       <JsonLd data={breadcrumb} />
 
-      <p className="text-[14px] text-[#c9c4bd]">
+      <p className="text-[14px] text-ink-soft">
         <Link href="/work" className="hover:underline">
           Work
         </Link>{' '}
         / {study.name}
       </p>
       <h1 className="mt-4 text-[36px] leading-tight md:text-[56px]">{study.name}</h1>
-      <p className="mt-4 max-w-[760px] text-[18px] text-[#c9c4bd]">{study.summary}</p>
+      <p className="mt-4 max-w-[760px] text-[18px] text-ink-soft">{study.summary}</p>
 
       <ul className="mt-6 flex flex-wrap gap-2">
         {study.technologies.map((tech) => (
           <li
             key={tech}
-            className="rounded-full border border-[#e4ded7]/30 px-4 py-2 text-[14px]"
+            className="rounded-full border border-ink/30 px-4 py-2 text-[14px]"
           >
             {tech}
           </li>
@@ -105,7 +105,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               href={study.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
+              className="rounded-md border-2 border-ink bg-ink px-6 py-3 text-[14px] font-semibold uppercase text-paper transition-colors hover:bg-transparent hover:text-ink"
             >
               View live site
             </a>
@@ -115,7 +115,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               href={study.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md border-2 border-[#e4ded7]/40 px-6 py-3 text-[14px] font-semibold uppercase text-[#e4ded7] transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
+              className="rounded-md border-2 border-ink/40 px-6 py-3 text-[14px] font-semibold uppercase text-ink transition-colors hover:border-ink hover:bg-ink hover:text-paper"
             >
               View code
             </a>
@@ -155,7 +155,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           text && (
             <Reveal key={heading} className="mt-12">
               <h2 className="text-[26px] md:text-[32px]">{heading}</h2>
-              <p className="mt-3 max-w-[760px] text-[16px] leading-relaxed text-[#c9c4bd] md:text-[18px]">
+              <p className="mt-3 max-w-[760px] text-[16px] leading-relaxed text-ink-soft md:text-[18px]">
                 {text}
               </p>
             </Reveal>
@@ -167,13 +167,13 @@ export default async function CaseStudyPage({ params }: PageProps) {
       <Reveal className="mt-16">
         <section className="rounded-3xl bg-secondary p-8 md:p-12">
           <h2 className="text-[26px] md:text-[32px]">Want something like this?</h2>
-          <p className="mt-3 max-w-[600px] text-[16px] text-[#c9c4bd]">
+          <p className="mt-3 max-w-[600px] text-[16px] text-ink-soft">
             Tell me about your project and I will reply with next steps.
           </p>
           <div className="mt-6 flex flex-wrap gap-4">
             <Link
               href={contactHref()}
-              className="rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
+              className="rounded-md border-2 border-ink bg-ink px-6 py-3 text-[14px] font-semibold uppercase text-paper transition-colors hover:bg-transparent hover:text-ink"
             >
               Send an enquiry
             </Link>
@@ -181,7 +181,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-md border-2 border-[#e4ded7]/40 px-6 py-3 text-[14px] font-semibold uppercase text-[#e4ded7] transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
+              className="rounded-md border-2 border-ink/40 px-6 py-3 text-[14px] font-semibold uppercase text-ink transition-colors hover:border-ink hover:bg-ink hover:text-paper"
             >
               Book a free 30-minute call
             </a>

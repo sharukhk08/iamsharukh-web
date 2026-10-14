@@ -49,11 +49,11 @@ export default function ShareButtons({
     { name: 'Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${encoded}` },
   ]
   const button =
-    'inline-flex items-center gap-2 rounded-md border-2 border-[#e4ded7]/40 px-4 py-2 text-[13px] font-semibold uppercase text-[#e4ded7] transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]'
+    'inline-flex items-center gap-2 rounded-md border-2 border-ink/40 px-4 py-2 text-[13px] font-semibold uppercase text-ink transition-colors hover:border-ink hover:bg-ink hover:text-paper'
 
   return (
     <aside aria-label="Share this page" className="mt-12">
-      <p className="mb-3 text-[13px] font-semibold uppercase tracking-wide text-[#c9c4bd]">Share this page</p>
+      <p className="mb-3 text-[13px] font-semibold uppercase tracking-wide text-ink-soft">Share this page</p>
       <div className="flex flex-wrap gap-3">
         <button type="button" onClick={share} className={button}>
           <Share2 size={16} aria-hidden="true" />

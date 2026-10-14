@@ -94,7 +94,7 @@ export default function LearnPage() {
           <h1 className="max-w-[900px] text-[36px] leading-tight md:text-[56px]">
             <RevealWords text="Learn web and app development with real mentoring" />
           </h1>
-          <p className="mt-6 max-w-[780px] text-[16px] leading-relaxed text-[#c9c4bd] md:text-[18px]">
+          <p className="mt-6 max-w-[780px] text-[16px] leading-relaxed text-ink-soft md:text-[18px]">
             I am a full-stack developer with 7 years of experience, and I handle
             the classes and mentoring at Innovaft in Hisar. I have trained 50+
             students, and 10 of them have been placed in jobs. Whether you are
@@ -105,7 +105,7 @@ export default function LearnPage() {
             <Magnet>
               <Link
                 href={contactHref('learning')}
-                className="inline-block rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
+                className="inline-block rounded-md border-2 border-ink bg-ink px-6 py-3 text-[14px] font-semibold uppercase text-paper transition-colors hover:bg-transparent hover:text-ink"
               >
                 Ask about a course
               </Link>
@@ -125,10 +125,10 @@ export default function LearnPage() {
             { to: 10, suffix: '', label: 'placed in jobs' },
           ].map((stat) => (
             <div key={stat.label} className="flex flex-col rounded-3xl bg-secondary p-4 md:p-6">
-              <dt className="order-2 mt-1 text-[12px] text-[#95979D] md:text-[14px]">
+              <dt className="order-2 mt-1 text-[12px] text-ink-mute md:text-[14px]">
                 {stat.label}
               </dt>
-              <dd className="text-[34px] font-bold text-[#e4ded7] md:text-[52px]">
+              <dd className="text-[34px] font-bold text-ink md:text-[52px]">
                 <CountUp to={stat.to} suffix={stat.suffix} />
               </dd>
             </div>
@@ -148,14 +148,14 @@ export default function LearnPage() {
                   return Icon ? <IconBadge icon={Icon} /> : null
                 })()}
                 <h3 className="mt-4 text-[20px]">{course.name}</h3>
-                <p className="mt-2 text-[15px] text-[#c9c4bd]">
+                <p className="mt-2 text-[15px] text-ink-soft">
                   {course.summary}
                 </p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {course.topics.map((topic) => (
                     <li
                       key={topic}
-                      className="rounded-full border border-[#e4ded7]/30 px-3 py-1 text-[13px]"
+                      className="rounded-full border border-ink/30 px-3 py-1 text-[13px]"
                     >
                       {topic}
                     </li>
@@ -165,7 +165,7 @@ export default function LearnPage() {
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-[14px] text-[#95979D]">
+        <p className="mt-4 text-[14px] text-ink-mute">
           Ask for the current syllabus, schedule and fees for each course.
         </p>
       </section>
@@ -175,7 +175,7 @@ export default function LearnPage() {
       <section className="mt-16 grid gap-6 md:grid-cols-2">
         <div className="rounded-3xl bg-secondary p-6 md:p-8">
           <h2 className="text-[22px]">How learning works</h2>
-          <ul className="mt-4 space-y-3 text-[15px] text-[#c9c4bd]">
+          <ul className="mt-4 space-y-3 text-[15px] text-ink-soft">
             {[
               'In-person classes in Hisar, with online support',
               'Hands-on projects, not just theory',
@@ -184,7 +184,7 @@ export default function LearnPage() {
               'A completion certificate',
             ].map((item) => (
               <li key={item} className="flex gap-3">
-                <Check size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-[#c9c4bd]" />
+                <Check size={18} aria-hidden="true" className="mt-0.5 shrink-0 text-ink-soft" />
                 {item}
               </li>
             ))}
@@ -192,7 +192,7 @@ export default function LearnPage() {
         </div>
         <div className="rounded-3xl bg-secondary p-6 md:p-8">
           <h2 className="text-[22px]">Not sure what to do next?</h2>
-          <p className="mt-4 text-[15px] leading-relaxed text-[#c9c4bd]">
+          <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">
             Many people come after school or college without a clear path. You
             do not need to decide before you talk to us. Come to a free first
             class, sit with the mentors and ask every question. And if you have
@@ -210,7 +210,7 @@ export default function LearnPage() {
           {faqs.map((faq) => (
             <div key={faq.q}>
               <dt className="text-[18px] font-semibold">{faq.q}</dt>
-              <dd className="mt-2 max-w-[760px] text-[15px] text-[#c9c4bd]">
+              <dd className="mt-2 max-w-[760px] text-[15px] text-ink-soft">
                 {faq.a}
               </dd>
             </div>
@@ -222,14 +222,14 @@ export default function LearnPage() {
       <Reveal>
       <section className="mt-16 rounded-3xl bg-secondary p-8 md:p-12">
         <h2 className="text-[26px] md:text-[32px]">Visit or get in touch</h2>
-        <p className="mt-3 text-[16px] text-[#c9c4bd]">
+        <p className="mt-3 text-[16px] text-ink-soft">
           {HISAR_OFFICE.name}, {HISAR_OFFICE.address}
         </p>
-        <p className="mt-1 text-[16px] text-[#c9c4bd]">{HISAR_OFFICE.hours}</p>
+        <p className="mt-1 text-[16px] text-ink-soft">{HISAR_OFFICE.hours}</p>
         <div className="mt-6 flex flex-wrap gap-4">
           <Link
             href={contactHref('learning')}
-            className="rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
+            className="rounded-md border-2 border-ink bg-ink px-6 py-3 text-[14px] font-semibold uppercase text-paper transition-colors hover:bg-transparent hover:text-ink"
           >
             Send an enquiry
           </Link>

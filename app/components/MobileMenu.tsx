@@ -37,7 +37,7 @@ export default function MobileMenu() {
         aria-expanded={open}
         aria-controls="mobile-menu"
         onClick={() => setOpen(true)}
-        className="rounded-md border-2 border-[#e4ded7]/40 p-2 lg:hidden"
+        className="rounded-md border-2 border-ink/40 p-2 lg:hidden"
       >
         <Menu size={22} aria-hidden="true" />
       </button>
@@ -48,7 +48,7 @@ export default function MobileMenu() {
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
-          className="fixed inset-0 z-[60] flex flex-col bg-[#08090d]/95 px-6 py-6 backdrop-blur-md lg:hidden"
+          className="fixed inset-0 z-[60] flex flex-col bg-primary/95 px-6 py-6 backdrop-blur-md lg:hidden"
         >
           <div className="flex justify-end">
             <button
@@ -56,7 +56,7 @@ export default function MobileMenu() {
               type="button"
               aria-label="Close menu"
               onClick={() => setOpen(false)}
-              className="rounded-md border-2 border-[#e4ded7]/40 p-2"
+              className="rounded-md border-2 border-ink/40 p-2"
             >
               <X size={22} aria-hidden="true" />
             </button>
@@ -76,7 +76,7 @@ export default function MobileMenu() {
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
-            className="mb-2 rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-4 text-center text-[14px] font-semibold uppercase text-[#0E1016]"
+            className="mb-2 rounded-md border-2 border-ink bg-ink px-6 py-4 text-center text-[14px] font-semibold uppercase text-paper"
           >
             Start a project
           </Link>

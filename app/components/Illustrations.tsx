@@ -4,11 +4,11 @@ import { ReactNode } from 'react'
 // site's dark palette, animated with the .anim-* classes in globals.css.
 // A designer can replace any of them: see docs/design-requests.md.
 
-const BG = '#1b1d23'
-const LINE = '#2c2f38'
-const CREAM = '#e4ded7'
-const MUTED = '#95979D'
-const ACCENT = '#b9bcc4'
+const BG = 'rgb(var(--c-secondary))'
+const LINE = 'rgb(var(--c-line))'
+const CREAM = 'rgb(var(--c-ink))'
+const MUTED = 'rgb(var(--c-ink-mute))'
+const ACCENT = 'rgb(var(--c-accent))'
 
 function Frame({ children }: { children: ReactNode }) {
   return (
@@ -60,11 +60,11 @@ export function WebsiteIllustration() {
       <path d="M160 168 H198" stroke={MUTED} strokeWidth="2" strokeDasharray="4 4" className="anim-blink" />
       <path d="M192 161 L202 168 L192 175" fill="none" stroke={CREAM} strokeWidth="2" />
       <g className="anim-float">
-        <rect x="214" y="58" width="236" height="204" rx="12" fill="#13151a" stroke={LINE} />
+        <rect x="214" y="58" width="236" height="204" rx="12" fill="rgb(var(--c-panel))" stroke={LINE} />
         <rect x="214" y="58" width="236" height="26" rx="12" fill={LINE} />
-        <circle cx="232" cy="71" r="4" fill="#ff6b6b" />
-        <circle cx="246" cy="71" r="4" fill="#ffd166" />
-        <circle cx="260" cy="71" r="4" fill="#5ad19a" />
+        <circle cx="232" cy="71" r="4" fill="rgb(var(--c-bad))" />
+        <circle cx="246" cy="71" r="4" fill="rgb(var(--c-warn))" />
+        <circle cx="260" cy="71" r="4" fill="rgb(var(--c-ok))" />
         <rect x="282" y="65" width="120" height="12" rx="6" fill={BG} />
         <rect x="232" y="102" width="110" height="12" rx="6" fill={CREAM} className="anim-grow-x" />
         <rect x="232" y="124" width="170" height="7" rx="3" fill={MUTED} opacity="0.6" className="anim-grow-x" style={{ animationDelay: '0.2s' }} />
@@ -84,7 +84,7 @@ export function DesignIllustration() {
   return (
     <Frame>
       <g className="anim-float">
-        <rect x="40" y="56" width="110" height="200" rx="14" fill="#13151a" stroke={ACCENT} />
+        <rect x="40" y="56" width="110" height="200" rx="14" fill="rgb(var(--c-panel))" stroke={ACCENT} />
         <rect x="52" y="74" width="86" height="64" rx="8" fill={LINE} />
         <rect x="52" y="150" width="60" height="8" rx="4" fill={CREAM} />
         <rect x="52" y="166" width="86" height="6" rx="3" fill={MUTED} opacity="0.6" />
@@ -92,7 +92,7 @@ export function DesignIllustration() {
         <rect x="52" y="204" width="86" height="28" rx="14" fill={ACCENT} opacity="0.85" />
       </g>
       <g className="anim-float-b">
-        <rect x="178" y="82" width="170" height="124" rx="10" fill="#13151a" stroke={LINE} />
+        <rect x="178" y="82" width="170" height="124" rx="10" fill="rgb(var(--c-panel))" stroke={LINE} />
         <rect x="190" y="94" width="146" height="14" rx="4" fill={LINE} />
         <rect x="190" y="118" width="64" height="76" rx="6" fill={LINE} />
         <rect x="264" y="118" width="72" height="10" rx="5" fill={CREAM} />
@@ -101,7 +101,7 @@ export function DesignIllustration() {
         <rect x="264" y="168" width="48" height="18" rx="9" fill={ACCENT} opacity="0.85" />
       </g>
       <g>
-        {[CREAM, ACCENT, '#c9c4bd', '#ffd166', '#ff6b6b'].map((color, i) => (
+        {[CREAM, ACCENT, 'rgb(var(--c-ink-soft))', 'rgb(var(--c-warn))', 'rgb(var(--c-bad))'].map((color, i) => (
           <circle key={color} cx={382 + (i % 3) * 26} cy={72 + Math.floor(i / 3) * 26} r="10" fill={color} className="anim-blink" style={{ animationDelay: `${i * 0.3}s` }} />
         ))}
       </g>
@@ -117,7 +117,7 @@ export function DashboardIllustration() {
   const bars = [46, 78, 58, 96, 70, 112, 88]
   return (
     <Frame>
-      <rect x="28" y="36" width="424" height="248" rx="14" fill="#13151a" stroke={LINE} />
+      <rect x="28" y="36" width="424" height="248" rx="14" fill="rgb(var(--c-panel))" stroke={LINE} />
       <rect x="28" y="36" width="64" height="248" rx="14" fill={LINE} opacity="0.7" />
       {[62, 94, 126, 158].map((y, i) => (
         <rect key={y} x="42" y={y} width="36" height="10" rx="5" fill={i === 0 ? ACCENT : MUTED} opacity={i === 0 ? 1 : 0.5} />
@@ -152,7 +152,7 @@ export function PhoneIllustration() {
   return (
     <Frame>
       <g className="anim-float">
-        <rect x="120" y="30" width="130" height="262" rx="22" fill="#13151a" stroke={CREAM} strokeOpacity="0.5" />
+        <rect x="120" y="30" width="130" height="262" rx="22" fill="rgb(var(--c-panel))" stroke={CREAM} strokeOpacity="0.5" />
         <rect x="170" y="38" width="30" height="6" rx="3" fill={LINE} />
         <rect x="134" y="58" width="102" height="50" rx="10" fill={ACCENT} opacity="0.85" />
         <rect x="134" y="120" width="48" height="56" rx="8" fill={LINE} />
@@ -165,7 +165,7 @@ export function PhoneIllustration() {
         ))}
       </g>
       <g className="anim-float-b">
-        <rect x="270" y="64" width="116" height="228" rx="20" fill="#13151a" stroke={LINE} />
+        <rect x="270" y="64" width="116" height="228" rx="20" fill="rgb(var(--c-panel))" stroke={LINE} />
         <rect x="284" y="84" width="88" height="14" rx="7" fill={LINE} />
         {[110, 150, 190, 230].map((y, i) => (
           <g key={y}>
@@ -201,23 +201,23 @@ export function CodeIllustration() {
   ]
   return (
     <Frame>
-      <rect x="40" y="44" width="300" height="232" rx="12" fill="#13151a" stroke={LINE} />
+      <rect x="40" y="44" width="300" height="232" rx="12" fill="rgb(var(--c-panel))" stroke={LINE} />
       <rect x="40" y="44" width="300" height="26" rx="12" fill={LINE} />
-      <circle cx="58" cy="57" r="4" fill="#ff6b6b" />
-      <circle cx="72" cy="57" r="4" fill="#ffd166" />
-      <circle cx="86" cy="57" r="4" fill="#5ad19a" />
+      <circle cx="58" cy="57" r="4" fill="rgb(var(--c-bad))" />
+      <circle cx="72" cy="57" r="4" fill="rgb(var(--c-warn))" />
+      <circle cx="86" cy="57" r="4" fill="rgb(var(--c-ok))" />
       {rows.map(([indent, width, color], i) => (
         <rect key={i} x={60 + indent} y={90 + i * 17} width={width} height="7" rx="3.5" fill={color} opacity="0.75" />
       ))}
       <rect x="48" y="88" width="284" height="14" rx="3" fill={ACCENT} opacity="0.12" className="anim-scan" />
       <g className="anim-float">
-        <rect x="352" y="68" width="96" height="44" rx="10" fill={BG} stroke="#5ad19a" />
-        <path d="M368 90 L376 98 L392 80" fill="none" stroke="#5ad19a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+        <rect x="352" y="68" width="96" height="44" rx="10" fill={BG} stroke="rgb(var(--c-ok))" />
+        <path d="M368 90 L376 98 L392 80" fill="none" stroke="rgb(var(--c-ok))" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
         <rect x="400" y="84" width="36" height="6" rx="3" fill={MUTED} opacity="0.7" />
       </g>
       <g className="anim-float-b">
-        <rect x="352" y="132" width="96" height="44" rx="10" fill={BG} stroke="#ffd166" />
-        <path d="M376 146 V160 M376 166 V167" stroke="#ffd166" strokeWidth="3" strokeLinecap="round" className="anim-blink" />
+        <rect x="352" y="132" width="96" height="44" rx="10" fill={BG} stroke="rgb(var(--c-warn))" />
+        <path d="M376 146 V160 M376 166 V167" stroke="rgb(var(--c-warn))" strokeWidth="3" strokeLinecap="round" className="anim-blink" />
         <rect x="392" y="150" width="44" height="6" rx="3" fill={MUTED} opacity="0.7" />
       </g>
       <g className="anim-float" style={{ animationDelay: '-2s' }}>
@@ -238,13 +238,13 @@ export function RoadmapIllustration() {
       ))}
       {[0, 1, 2].map((col) => (
         <g key={col}>
-          <rect x={40 + col * 140} y="100" width="124" height="176" rx="12" fill="#13151a" stroke={LINE} />
+          <rect x={40 + col * 140} y="100" width="124" height="176" rx="12" fill="rgb(var(--c-panel))" stroke={LINE} />
           <rect x={52 + col * 140} y="112" width="52" height="8" rx="4" fill={MUTED} opacity="0.7" />
           {Array.from({ length: 3 - col }).map((_, row) => (
             <g key={row} className="anim-float" style={{ animationDelay: `${-(col * 2 + row)}s` }}>
               <rect x={52 + col * 140} y={134 + row * 46} width="100" height="36" rx="8" fill={BG} stroke={LINE} />
               <rect x={62 + col * 140} y={144 + row * 46} width="60" height="6" rx="3" fill={CREAM} opacity="0.8" />
-              <rect x={62 + col * 140} y={156 + row * 46} width="36" height="5" rx="2.5" fill={col === 2 ? '#c9c4bd' : ACCENT} opacity="0.8" />
+              <rect x={62 + col * 140} y={156 + row * 46} width="36" height="5" rx="2.5" fill={col === 2 ? 'rgb(var(--c-ink-soft))' : ACCENT} opacity="0.8" />
             </g>
           ))}
         </g>
@@ -310,7 +310,7 @@ export function LocationIllustration() {
 export function AutomationIllustration() {
   const node = (x: number, y: number, w = 96, accent = false) => (
     <g>
-      <rect x={x} y={y} width={w} height="52" rx="12" fill="#13151a" stroke={accent ? ACCENT : LINE} strokeWidth={accent ? 2 : 1} />
+      <rect x={x} y={y} width={w} height="52" rx="12" fill="rgb(var(--c-panel))" stroke={accent ? ACCENT : LINE} strokeWidth={accent ? 2 : 1} />
       <circle cx={x + 20} cy={y + 26} r="8" fill={accent ? ACCENT : MUTED} opacity="0.85" />
       <rect x={x + 36} y={y + 17} width={w - 52} height="7" rx="3.5" fill={CREAM} opacity="0.8" />
       <rect x={x + 36} y={y + 30} width={(w - 52) * 0.6} height="5" rx="2.5" fill={MUTED} opacity="0.6" />

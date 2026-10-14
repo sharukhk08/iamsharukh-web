@@ -22,7 +22,7 @@ export default function AuthorBox() {
             Sharukh Khan
           </Link>
         </p>
-        <p className="mt-1 text-[14px] text-[#c9c4bd]">
+        <p className="mt-1 text-[14px] text-ink-soft">
           Full-stack developer with 7 years of experience, based in Hisar, Haryana, and co-founder
           and CTO of Innovaft. I build web and mobile products with Next.js, React and React Native,
           and I mentor students.

@@ -19,16 +19,16 @@ export default function ServiceCtaCard({
 }) {
   if (variant === 'all') {
     return (
-      <SpotlightCard className="h-full rounded-3xl bg-[#e4ded7] text-[#0E1016]">
+      <SpotlightCard className="h-full rounded-3xl bg-ink text-paper">
         <Link href="/services" className="group flex h-full flex-col p-6">
           <span className="relative inline-flex self-start">
-            <span aria-hidden="true" className="absolute inset-0 rounded-2xl bg-[#0E1016]/25 motion-safe:animate-ping" />
-            <span className="relative inline-flex rounded-2xl bg-[#0E1016] p-3 text-[#e4ded7]">
+            <span aria-hidden="true" className="absolute inset-0 rounded-2xl bg-paper/25 motion-safe:animate-ping" />
+            <span className="relative inline-flex rounded-2xl bg-paper p-3 text-ink">
               <LayoutGrid size={22} aria-hidden="true" />
             </span>
           </span>
           <Heading className="mt-4 text-[20px] leading-snug">View all services</Heading>
-          <p className="mt-2 text-[14px] text-[#0E1016]/70">
+          <p className="mt-2 text-[14px] text-paper/70">
             See what is included in each service, how it works and what to send me first.
           </p>
           <span aria-hidden="true" className="mt-4 flex -space-x-2">
@@ -37,7 +37,7 @@ export default function ServiceCtaCard({
               return Icon ? (
                 <span
                   key={slug}
-                  className="inline-flex rounded-full border-2 border-[#e4ded7] bg-[#0E1016]/10 p-2 transition-transform duration-300 group-hover:-translate-y-1"
+                  className="inline-flex rounded-full border-2 border-ink bg-paper/10 p-2 transition-transform duration-300 group-hover:-translate-y-1"
                 >
                   <Icon size={16} />
                 </span>
@@ -54,16 +54,16 @@ export default function ServiceCtaCard({
   }
 
   return (
-    <SpotlightCard className="h-full rounded-3xl border border-[#e4ded7]/40 bg-[#23262e]">
+    <SpotlightCard className="h-full rounded-3xl border border-ink/40 bg-raised">
       <Link href={contactHref()} className="group flex h-full flex-col p-6">
         <span className="relative inline-flex self-start">
-          <span aria-hidden="true" className="absolute inset-0 rounded-2xl bg-[#e4ded7]/30 motion-safe:animate-ping" />
-          <span className="relative inline-flex rounded-2xl bg-[#e4ded7] p-3 text-[#0E1016]">
+          <span aria-hidden="true" className="absolute inset-0 rounded-2xl bg-ink/30 motion-safe:animate-ping" />
+          <span className="relative inline-flex rounded-2xl bg-ink p-3 text-paper">
             <Plus size={22} aria-hidden="true" className="transition-transform duration-300 group-hover:rotate-90" />
           </span>
         </span>
         <Heading className="mt-4 text-[20px] leading-snug">Something else in mind?</Heading>
-        <p className="mt-2 text-[14px] text-[#c9c4bd]">
+        <p className="mt-2 text-[14px] text-ink-soft">
           Not sure which service fits? Tell me what you want to build and I will suggest the right approach.
         </p>
         <span className="mt-4 inline-flex items-center gap-1 text-[14px] font-semibold">

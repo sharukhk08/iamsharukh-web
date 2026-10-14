@@ -12,7 +12,7 @@ const stats = [
 
 const LearnTeaser = () => (
   <section
-    className="relative z-10 flex w-full flex-col items-center bg-[#0E1016] py-16 text-[#e4ded7] md:py-24"
+    className="relative z-10 flex w-full flex-col items-center bg-paper py-16 text-ink md:py-24"
     id="learn"
   >
     <div className="mx-auto w-[90%] lg:max-w-[1440px]">
@@ -25,7 +25,7 @@ const LearnTeaser = () => (
         <dl className="mx-auto mt-12 grid max-w-[900px] grid-cols-3 gap-3 text-center md:gap-6">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col rounded-3xl bg-secondary p-4 md:p-6">
-              <dt className="order-2 mt-1 text-[12px] uppercase text-[#95979D] md:text-[14px]">
+              <dt className="order-2 mt-1 text-[12px] uppercase text-ink-mute md:text-[14px]">
                 {stat.label}
               </dt>
               <dd className="text-[34px] font-bold md:text-[56px]">
@@ -39,19 +39,19 @@ const LearnTeaser = () => (
       <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
         <Link
           href="/learn"
-          className="rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
+          className="rounded-md border-2 border-ink bg-ink px-6 py-3 text-[14px] font-semibold uppercase text-paper transition-colors hover:bg-transparent hover:text-ink"
         >
           See the courses
         </Link>
         <Link
           href="/learn/hisar"
-          className="rounded-md border-2 border-[#e4ded7]/40 px-6 py-3 text-[14px] font-semibold uppercase transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
+          className="rounded-md border-2 border-ink/40 px-6 py-3 text-[14px] font-semibold uppercase transition-colors hover:border-ink hover:bg-ink hover:text-paper"
         >
           Courses in Hisar
         </Link>
         <Link
           href={contactHref('learning')}
-          className="rounded-md border-2 border-[#e4ded7]/40 px-6 py-3 text-[14px] font-semibold uppercase transition-colors hover:border-[#e4ded7] hover:bg-[#e4ded7] hover:text-[#0E1016]"
+          className="rounded-md border-2 border-ink/40 px-6 py-3 text-[14px] font-semibold uppercase transition-colors hover:border-ink hover:bg-ink hover:text-paper"
         >
           Ask about a course
         </Link>

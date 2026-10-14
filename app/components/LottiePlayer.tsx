@@ -57,5 +57,5 @@ export default function LottiePlayer({
     }
   }, [src, loop, staticFrame])
 
-  return <div ref={ref} aria-hidden="true" className={className} />
+  return <div ref={ref} aria-hidden="true" className={`lottie-themed ${className}`} />
 }

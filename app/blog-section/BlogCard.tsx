@@ -41,7 +41,7 @@ const BlogCard = ({ title, image, url, date, available, index }: blogProps) => {
         </h3>
       </div>
 
-      <div className="absolute bottom-0 mb-5 flex w-[90%] items-center justify-between text-[14px] font-bold text-[#95979D]">
+      <div className="absolute bottom-0 mb-5 flex w-[90%] items-center justify-between text-[14px] font-bold text-ink-mute">
         {available ? (
           <>
             {' '}
@@ -54,7 +54,7 @@ const BlogCard = ({ title, image, url, date, available, index }: blogProps) => {
             >
               <FontAwesomeIcon
                 icon={faArrowRight}
-                className=" w-[16px] rounded-full bg-primary p-3 text-[16px] text-[#fff] md:w-[20px] md:text-[20px] lg:w-[18px] lg:p-4 lg:text-[18px]"
+                className=" w-[16px] rounded-full bg-primary p-3 text-[16px] text-ink md:w-[20px] md:text-[20px] lg:w-[18px] lg:p-4 lg:text-[18px]"
                 data-blobity
                 data-blobity-radius="30"
                 data-blobity-offset-x="4"

@@ -17,7 +17,7 @@ export default function Journey() {
       <h2 id="journey-title" className="text-[28px] md:text-[40px]">
         My journey
       </h2>
-      <p className="mt-3 max-w-[640px] text-[16px] leading-relaxed text-[#c9c4bd]">
+      <p className="mt-3 max-w-[640px] text-[16px] leading-relaxed text-ink-soft">
         From learning to code to building software for clients, starting a company in Hisar and
         teaching the next group of developers.
       </p>
@@ -25,7 +25,7 @@ export default function Journey() {
       <dl className="mt-8 grid grid-cols-3 gap-2 sm:gap-4">
         {STATS.map((stat) => (
           <div key={stat.label} className="flex flex-col rounded-3xl bg-secondary p-3 text-center sm:p-6">
-            <dt className="order-2 mt-1 text-[11px] uppercase tracking-wide text-[#c9c4bd] sm:text-[13px]">
+            <dt className="order-2 mt-1 text-[11px] uppercase tracking-wide text-ink-soft sm:text-[13px]">
               {stat.label}
             </dt>
             <dd className="order-1 text-[32px] font-semibold md:text-[56px]">
@@ -35,22 +35,22 @@ export default function Journey() {
         ))}
       </dl>
 
-      <ol className="relative mt-10 space-y-6 border-l border-[#e4ded7]/20 pl-8 md:pl-12">
+      <ol className="relative mt-10 space-y-6 border-l border-ink/20 pl-8 md:pl-12">
         {journey.map((step, index) => (
           <li key={step.title} className="relative">
             <span
               aria-hidden="true"
-              className="absolute -left-[41px] top-6 h-3 w-3 rounded-full border-2 border-[#e4ded7] bg-[#0E1016] md:-left-[57px]"
+              className="absolute -left-[41px] top-6 h-3 w-3 rounded-full border-2 border-ink bg-paper md:-left-[57px]"
             />
             <Reveal delay={(index % 3) * 80}>
               <div className="flex gap-4 rounded-3xl bg-secondary p-6 md:p-8">
                 <IconBadge icon={step.icon} className="self-start" />
                 <div>
-                  <p className="text-[12px] font-semibold uppercase tracking-wide text-[#c9c4bd]">
+                  <p className="text-[12px] font-semibold uppercase tracking-wide text-ink-soft">
                     {step.label}
                   </p>
                   <h3 className="mt-1 text-[20px] md:text-[24px]">{step.title}</h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-[#c9c4bd]">{step.text}</p>
+                  <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{step.text}</p>
                 </div>
               </div>
             </Reveal>

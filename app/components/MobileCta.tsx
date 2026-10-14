@@ -11,7 +11,7 @@ export default function MobileCta() {
     <aside aria-label="Quick contact" className="pointer-events-none fixed inset-x-4 bottom-4 z-40 lg:hidden">
       <Link
         href="/contact"
-        className="pointer-events-auto block rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-center text-[14px] font-semibold uppercase text-[#0E1016] shadow-lg"
+        className="pointer-events-auto block rounded-md border-2 border-ink bg-ink px-6 py-3 text-center text-[14px] font-semibold uppercase text-paper shadow-lg"
       >
         Get a free quote
       </Link>

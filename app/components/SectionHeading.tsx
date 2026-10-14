@@ -10,7 +10,7 @@ export default function SectionHeading({
   intro?: string
 }) {
   return (
-    <div className="flex flex-col items-center text-center text-[#e4ded7]">
+    <div className="flex flex-col items-center text-center text-ink">
       <h2
         className={`${monaSans.className} font-extrabold uppercase leading-[0.9em] text-[clamp(48px,9vw,120px)]`}
       >

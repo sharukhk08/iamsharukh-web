@@ -68,14 +68,14 @@ export default async function PostPage({ params }: PageProps) {
       <JsonLd data={article} />
       <JsonLd data={breadcrumb} />
 
-      <p className="text-[14px] text-[#c9c4bd]">
+      <p className="text-[14px] text-ink-soft">
         <Link href="/blog" className="hover:underline">
           Blog
         </Link>{' '}
         / {formatDate(post.date)}
       </p>
       <h1 className="h1-compact mt-4 text-[34px] leading-tight md:text-[48px]">{post.title}</h1>
-      <p className="mt-4 text-[18px] text-[#c9c4bd]">{post.description}</p>
+      <p className="mt-4 text-[18px] text-ink-soft">{post.description}</p>
 
       <div className="mt-10">
         <Markdown source={post.content} />
@@ -87,13 +87,13 @@ export default async function PostPage({ params }: PageProps) {
 
       <section className="mt-16 rounded-3xl bg-secondary p-8">
         <h2 className="text-[24px]">Need a hand with your project?</h2>
-        <p className="mt-3 text-[16px] text-[#c9c4bd]">
+        <p className="mt-3 text-[16px] text-ink-soft">
           I am Sharukh Khan, a full-stack developer in Hisar, Haryana. Tell me
           what you are building and I will reply with next steps.
         </p>
         <Link
           href={contactHref()}
-          className="mt-6 inline-block rounded-md border-2 border-[#e4ded7] bg-[#e4ded7] px-6 py-3 text-[14px] font-semibold uppercase text-[#0E1016] transition-colors hover:bg-transparent hover:text-[#e4ded7]"
+          className="mt-6 inline-block rounded-md border-2 border-ink bg-ink px-6 py-3 text-[14px] font-semibold uppercase text-paper transition-colors hover:bg-transparent hover:text-ink"
         >
           Send an enquiry
         </Link>

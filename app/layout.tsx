@@ -4,6 +4,7 @@ import { ReactNode } from 'react'
 import './globals.css'
 import GoogleAnalytics from './GoogleAnalytics'
 import AnalyticsEvents from './components/AnalyticsEvents'
+import { THEME_INIT_SCRIPT } from './lib/theme'
 import { JsonLd, organizationJsonLd, personJsonLd, websiteJsonLd } from './lib/jsonLd'
 import { SITE } from './lib/site'
 
@@ -78,7 +79,8 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'dark',
+  colorScheme: 'dark light',
+  themeColor: '#08090d',
 }
 
 type RootLayoutProps = {
@@ -87,7 +89,11 @@ type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
+      <head>
+        {/* Applies the saved theme before first paint. Dark is the default. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
       <body
         className={`${syne.className} scroll-smooth scrollbar-thin scrollbar-track-primary scrollbar-thumb-secondary`}
       >

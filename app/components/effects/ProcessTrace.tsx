@@ -36,11 +36,11 @@ export default function ProcessTrace({
 
   return (
     <div className="rounded-3xl bg-secondary p-5">
-      <div className="flex items-center gap-2 text-[#c9c4bd]">
+      <div className="flex items-center gap-2 text-ink-soft">
         <Sparkles
           size={20}
           aria-hidden="true"
-          className={allDone ? 'text-[#c9c4bd]' : 'anim-blink text-[#e4ded7]'}
+          className={allDone ? 'text-ink-soft' : 'anim-blink text-ink'}
         />
         <p className="text-[16px] font-semibold">{title}</p>
         <ChevronUp size={16} aria-hidden="true" className="ml-auto opacity-60" />
@@ -54,12 +54,12 @@ export default function ProcessTrace({
             <li
               key={step}
               className={`flex items-center gap-3 text-[15px] transition-colors duration-500 ${
-                done ? 'text-[#95979D]' : current ? 'text-[#e4ded7]' : 'text-[#95979D]'
+                done ? 'text-ink-mute' : current ? 'text-ink' : 'text-ink-mute'
               }`}
             >
               <span className="flex h-5 w-5 shrink-0 items-center justify-center">
                 {done ? (
-                  <Check size={16} aria-hidden="true" className="text-[#c9c4bd]" />
+                  <Check size={16} aria-hidden="true" className="text-ink-soft" />
                 ) : (
                   <span
                     aria-hidden="true"

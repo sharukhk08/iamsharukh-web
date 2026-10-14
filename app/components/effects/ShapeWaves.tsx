@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef } from 'react'
+import { readColor, THEME_EVENT } from '../../lib/theme'
 
 // A field of triangles, circles and squares that brighten and grow along
 // rolling waves. Which shape appears where drifts slowly, so the field breaks
@@ -29,6 +30,7 @@ export default function ShapeWaves({
     let height = 0
     let dpr = 1
     let started = performance.now()
+    let ink = readColor('--c-ink')
 
     const resize = () => {
       dpr = Math.min(window.devicePixelRatio || 1, 2)
@@ -43,7 +45,7 @@ export default function ShapeWaves({
     const draw = (seconds: number) => {
       const t = seconds * speed
       ctx.clearRect(0, 0, width, height)
-      ctx.fillStyle = '#e4ded7'
+      ctx.fillStyle = ink
       const cols = Math.ceil(width / cell)
       const rows = Math.ceil(height / cell)
 
@@ -95,9 +97,15 @@ export default function ShapeWaves({
       visible = entry.isIntersecting
     })
     visibility.observe(canvas)
+    const onTheme = () => {
+      ink = readColor('--c-ink')
+      draw((performance.now() - started) / 1000)
+    }
+    window.addEventListener(THEME_EVENT, onTheme)
     if (!reduced) frame = requestAnimationFrame(loop)
 
     return () => {
+      window.removeEventListener(THEME_EVENT, onTheme)
       cancelAnimationFrame(frame)
       resizeObserver.disconnect()
       visibility.disconnect()

@@ -147,7 +147,7 @@ export function Markdown({ source }: { source: string }) {
   }
 
   return (
-    <div className="space-y-5 text-[16px] leading-relaxed text-[#c9c4bd] md:text-[18px]">
+    <div className="space-y-5 text-[16px] leading-relaxed text-ink-soft md:text-[18px]">
       {blocks}
     </div>
   )

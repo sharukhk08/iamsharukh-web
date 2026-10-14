@@ -38,10 +38,10 @@ const BlogCard = ({
         src={slash}
         alt=""
         aria-hidden="true"
-        className="absolute top-[34px] left-[28px] w-[51px]"
+        className="theme-invert absolute top-[34px] left-[28px] w-[51px]"
       />
 
-      <p className="mt-10 text-[18px] font-[500] leading-relaxed tracking-wide text-[#e4ded7]">
+      <p className="mt-10 text-[18px] font-[500] leading-relaxed tracking-wide text-ink">
         {testimonial}
       </p>
 
@@ -54,10 +54,10 @@ const BlogCard = ({
           className="h-[41px] w-[41px] rounded-full bg-contain bg-center object-cover grayscale"
         />
         <div className="flex flex-col gap-1 pr-7">
-          <h3 className="w-[176px] text-[23px] font-bold uppercase leading-[20.7px] tracking-[-0.46056px] text-[#e4ded7]">
+          <h3 className="w-[176px] text-[23px] font-bold uppercase leading-[20.7px] tracking-[-0.46056px] text-ink">
             {name}
           </h3>
-          <p className="text-sm font-[500] leading-[16px] text-[#95979D]">
+          <p className="text-sm font-[500] leading-[16px] text-ink-mute">
             {role} @ {company}
           </p>
         </div>

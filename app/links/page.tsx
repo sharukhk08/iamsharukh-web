@@ -56,22 +56,22 @@ export default function LinksPage() {
       <h1 className="text-[40px] leading-tight md:text-[64px]">
         <RevealWords text="Sharukh Khan" />
       </h1>
-      <p className="mt-3 text-[16px] text-[#c9c4bd]">
+      <p className="mt-3 text-[16px] text-ink-soft">
         Full-stack developer and software engineer in Hisar, Haryana. Co-founder and CTO of Innovaft.
       </p>
 
       {groups.map((group) => (
         <section key={group.title} className="mt-10">
-          <h2 className="text-[20px] uppercase tracking-wide text-[#95979D]">{group.title}</h2>
+          <h2 className="text-[20px] uppercase tracking-wide text-ink-mute">{group.title}</h2>
           <ul className="mt-3 space-y-3">
             {group.links.map((link) => {
               const external = /^https?:/.test(link.href)
               const classes =
-                'block rounded-2xl bg-secondary px-5 py-4 transition-colors hover:bg-[#23262e]'
+                'block rounded-2xl bg-secondary px-5 py-4 transition-colors hover:bg-raised'
               const body = (
                 <>
                   <span className="block text-[18px] font-semibold">{link.label}</span>
-                  <span className="block text-[14px] text-[#95979D]">{link.text}</span>
+                  <span className="block text-[14px] text-ink-mute">{link.text}</span>
                 </>
               )
               return (

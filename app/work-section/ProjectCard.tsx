@@ -22,7 +22,7 @@ const ProjectCard = ({
     <motion.div
       style={
         {
-          backgroundColor: '#1b1d23',
+          backgroundColor: 'rgb(var(--c-secondary))',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center center',
@@ -90,7 +90,7 @@ const ProjectCard = ({
         )}
       </div>
       <div
-        className={`absolute text-white  ${
+        className={`absolute text-ink  ${
           !(id % 2 === 0)
             ? 'right-0 top-28 sm:top-32 mr-0 ml-5 sm:ml-10 md:right-0 md:ml-0 lg:right-0 lg:top-60  lg:mr-4'
             : 'left-5 sm:left-10 top-28 sm:top-32 ml-0 md:mr-12 lg:top-52 lg:ml-4'
@@ -99,7 +99,7 @@ const ProjectCard = ({
         <AnimatedTitle
           text={name}
           className={
-            'max-w-[90%] text-[30px] sm:text-[40px] leading-none text-white md:text-[44px] md:leading-none lg:max-w-[450px] lg:text-[48px] lg:leading-none'
+            'max-w-[90%] text-[30px] sm:text-[40px] leading-none text-ink md:text-[44px] md:leading-none lg:max-w-[450px] lg:text-[48px] lg:leading-none'
           }
           wordSpace={'mr-[0.25em]'}
           charSpace={'-mr-[0.01em]'}
@@ -107,7 +107,7 @@ const ProjectCard = ({
         <AnimatedBody
           text={description}
           className={
-            'mt-4 w-[90%] max-w-[457px] text-[16px] font-semibold text-[#95979D] '
+            'mt-4 w-[90%] max-w-[457px] text-[16px] font-semibold text-ink-mute '
           }
         />
         <div className="mt-9 flex gap-1 sm:gap-4">

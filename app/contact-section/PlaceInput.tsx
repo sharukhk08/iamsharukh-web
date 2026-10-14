@@ -84,7 +84,7 @@ export default function PlaceInput({
         <ul
           id={`${id}-list`}
           role="listbox"
-          className="absolute left-0 right-0 top-full z-20 mt-1 max-h-60 overflow-auto rounded-xl border border-gray-600 bg-[#1b1d23] py-1 shadow-xl"
+          className="absolute left-0 right-0 top-full z-20 mt-1 max-h-60 overflow-auto rounded-xl border border-gray-600 bg-secondary py-1 shadow-xl"
         >
           {matches.map((place, index) => (
             <li
@@ -99,7 +99,7 @@ export default function PlaceInput({
               }}
               onMouseEnter={() => setActive(index)}
               className={`cursor-pointer px-3 py-2 text-[15px] ${
-                index === active ? 'bg-[#e4ded7]/15' : ''
+                index === active ? 'bg-ink/15' : ''
               }`}
             >
               {place}

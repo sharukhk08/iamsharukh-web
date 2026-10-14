@@ -35,13 +35,13 @@ export default function BlogPage() {
       <h1 className="text-[36px] leading-tight md:text-[56px]">
         <RevealWords text="Blog" />
       </h1>
-      <p className="mt-4 max-w-[680px] text-[16px] text-[#c9c4bd] md:text-[18px]">
+      <p className="mt-4 max-w-[680px] text-[16px] text-ink-soft md:text-[18px]">
         Practical notes on Next.js, React, Figma to code and getting AI-built
         apps ready for launch.
       </p>
 
       {posts.length === 0 ? (
-        <p className="mt-12 text-[#95979D]">Posts are coming soon.</p>
+        <p className="mt-12 text-ink-mute">Posts are coming soon.</p>
       ) : (
         <ul className="mt-12 grid gap-6 md:grid-cols-2">
           {posts.map((post, index) => (
@@ -49,13 +49,13 @@ export default function BlogPage() {
               <Reveal delay={(index % 2) * 80} className="h-full">
               <Link
                 href={`/blog/${post.slug}`}
-                className="flex h-full flex-col rounded-3xl bg-secondary p-6 transition hover:bg-[#23262e] md:p-8"
+                className="flex h-full flex-col rounded-3xl bg-secondary p-6 transition hover:bg-raised md:p-8"
               >
-                <p className="text-[13px] uppercase text-[#95979D]">
+                <p className="text-[13px] uppercase text-ink-mute">
                   {formatDate(post.date)}
                 </p>
                 <h2 className="mt-2 text-[22px] md:text-[26px]">{post.title}</h2>
-                <p className="mt-3 text-[15px] text-[#95979D]">
+                <p className="mt-3 text-[15px] text-ink-mute">
                   {post.description}
                 </p>
               </Link>
