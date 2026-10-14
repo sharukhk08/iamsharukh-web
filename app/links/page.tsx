@@ -20,6 +20,7 @@ const groups = [
       { label: 'Services', text: 'What I build and fix', href: '/services' },
       { label: 'Work', text: 'Selected projects', href: '/work' },
       { label: 'Learn', text: 'Mentoring and courses in Hisar', href: '/learn' },
+      { label: 'International clients', text: 'How I work across time zones', href: '/international' },
       { label: 'Blog', text: 'Practical notes', href: '/blog' },
       { label: 'Contact', text: 'Start a project or ask a question', href: '/contact' },
       { label: 'Book a free call', text: '30 minutes on Cal.com', href: BOOKING_URL },

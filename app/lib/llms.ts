@@ -42,6 +42,7 @@ export function llmsTxt(): string {
     ...getPosts().map((p) => `- [${p.title}](${url(`/blog/${p.slug}`)}): ${p.description}`),
     '',
     '## About and contact',
+    `- [International clients](${url('/international')}): how a project runs across time zones, from India`,
     `- [About](${url('/about')}): who he is, how he works, Innovaft`,
     `- [Contact](${url('/contact')}): enquiry form and booking link`,
     `- [Links](${url('/links')}): official profiles`,

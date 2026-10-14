@@ -65,6 +65,14 @@ export default function LocationsPage() {
           </li>
         ))}
       </ul>
+
+      <p className="mt-10 text-[15px] text-[#c9c4bd]">
+        Working from outside India?{' '}
+        <Link href="/international" className="underline underline-offset-2">
+          See how I work with international clients
+        </Link>
+        .
+      </p>
     </main>
   )
 }
