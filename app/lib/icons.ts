@@ -40,7 +40,7 @@ export const COURSE_ICONS: Record<string, LucideIcon> = {
   'backend-development': Server,
   'full-stack-development': Layers,
   'mobile-app-development': Smartphone,
-  'cms-wordpress-development': Globe,
+  'ai-automation': Workflow,
 }
 
 export const PROCESS_ICONS: LucideIcon[] = [Search, ClipboardList, Hammer, Rocket]
