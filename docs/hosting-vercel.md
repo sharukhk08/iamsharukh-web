@@ -28,3 +28,7 @@ Written 2026-10-14. Plan limits change often and could not be checked from the b
 ## Environment variables
 
 All variables are `NEXT_PUBLIC_*`: they are compiled into the JavaScript every visitor downloads, so they are **public by design**. This repository has no private secrets. See the table in `docs/reports/02-architecture-review.md` for which variable is what, and which accounts to rotate after the earlier malware.
+
+## Moving to a new GitHub repo
+
+Add the new repo as a second git remote and push `dev` and `main` to it. In Vercel, open the project, Settings, Git, disconnect the old repo and connect the new one: the domain and environment variables stay. Set Production Branch to `main`. Install the Vercel GitHub app on the new repo. Keep the old repo until the new deploy works.
