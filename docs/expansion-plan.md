@@ -116,3 +116,4 @@ Before each commit: `node scripts/dev-guard.mjs .`, `npx tsc --noEmit`, `npx esl
 38. **Analytics events.** More GA4 events (page group, scroll depth, service, learn and internal link clicks, email reveal) and the owner's GA4 setup steps are in `docs/analytics.md`. The custom dimensions listed there must be created in GA4 or the extra parameters will not appear in reports.
 39. **Working rules** for Claude Code sessions (pushing, the unpushed-commits hook, safety) are in `docs/working-with-claude.md`.
 40. **Light mode** (default stays dark): how it works and a checklist of what was checked and what the owner should look at are in `docs/light-mode-checklist.md`.
+41. **Hand-off.** `docs/PROJECT-CONTEXT.md` (and `CLAUDE.md` at the repo root, which Claude Code reads automatically) summarise the whole project for a new session or account. Update `PROJECT-CONTEXT.md` when something big changes.
