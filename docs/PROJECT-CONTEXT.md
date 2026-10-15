@@ -76,7 +76,7 @@ Other features: share buttons, per-page link previews, Lottie animations (form s
 
 ## 9. Hosting and deployment (`docs/hosting-vercel.md`)
 
-- Vercel (Hobby; its terms say non-commercial, so the owner should check Fair Use). `main` is still at the first commit, so **none of the `dev` work is live yet**. Merge `dev` into `main` through a pull request (not yet requested).
+- Vercel (Hobby; its terms say non-commercial, so the owner should check Fair Use). The owner merged `dev` into `main` through pull request #5 (up to the light mode commit `a81bf8c`), and the live site serves it (checked 2026-10-15: `/sitemap.xml` returns 200 with 32 URLs, `/robots.txt` and `/international` return 200, security headers present). Later `dev` commits (for example the hand-off docs) reach the live site only after the next pull request into `main`.
 - Moving to a new GitHub repo or Vercel project: add the new repo as a second remote and push; in Vercel, Settings, Git, reconnect (keeps domain and variables); production branch `main`; move the domain by removing it from the old project and adding it to the new one. The domain is at GoDaddy; Vercel shows a recommended A record `216.198.79.1` and a CNAME for `www`, and the legacy records still work. Do not touch MX records.
 - Preview deployments need their host in `ALLOWED_HOSTS` for the form to work.
 - CI (`.github/workflows/dev-guard.yml`): the `workflow-hygiene` job was failing on its own text; fixed in commit `b7d6316`. PR #2 exists; recheck its checks.
@@ -93,7 +93,8 @@ Other features: share buttons, per-page link previews, Lottie animations (form s
 8. Replace SVG illustrations with real images over time; add real testimonials with permission.
 9. Review light mode by eye (checklist in `docs/light-mode-checklist.md`); optional cookie consent banner.
 10. Optional: a 12th service (for example website speed and technical SEO) only if offered for real; Tailwind 4 and ESLint upgrade to clear 10 build-time `npm audit` findings (production dependencies have 0).
-11. Merge `dev` into `main` when happy.
+11. Search Console: sitemap `https://www.iamsharukh.com/sitemap.xml` was submitted on 2026-10-15 and showed "Couldn't fetch" at first even though the file is valid; recheck after a day, and resubmit if needed. Later: Core Web Vitals and Pages reports in Search Console.
+12. Merge `dev` into `main` through a pull request when new work is ready.
 
 ## 11. Where things are
 
